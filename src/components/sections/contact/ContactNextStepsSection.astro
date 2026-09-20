@@ -1,0 +1,80 @@
+---
+import { nextSteps } from "../../../content/pages/contact";
+---
+
+<section
+  class="contact-next section section--subtle"
+  aria-labelledby="contact-next-title"
+>
+  <div class="container">
+    <header class="contact-next__header">
+      <p>What happens next</p>
+      <h2 id="contact-next-title">A considered first conversation.</h2>
+    </header>
+    <ol>
+      {nextSteps.map((step, index) => (
+        <li>
+          <span aria-hidden="true">0{index + 1}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <aside class="contact-next__privacy" aria-labelledby="privacy-note-title">
+      <h3 id="privacy-note-title">A narrow request for information</h3>
+      <p>
+        We only ask for information needed to respond to your enquiry. Please do
+        not send student records or sensitive personal information.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .contact-next__header {
+    max-width: var(--width-reading);
+  }
+  .contact-next__header > p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-next ol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    margin: var(--space-12) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .contact-next li {
+    border-top: 1px solid var(--color-border-strong);
+    padding-top: var(--space-5);
+  }
+  .contact-next li > span {
+    display: block;
+    margin-bottom: var(--space-8);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-next li p,
+  .contact-next__privacy p {
+    color: var(--color-text-muted);
+  }
+  .contact-next__privacy {
+    max-width: var(--width-reading);
+    margin-top: var(--space-16);
+    padding-inline-start: var(--space-6);
+    border-inline-start: 2px solid var(--color-accent);
+  }
+  @media (max-width: 48rem) {
+    .contact-next ol {
+      grid-template-columns: 1fr;
+    }
+    .contact-next li > span {
+      margin-bottom: var(--space-3);
+    }
+  }
+</style>

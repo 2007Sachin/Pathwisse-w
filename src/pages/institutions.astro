@@ -1,0 +1,38 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import EarlierStructureSection from "../components/sections/institutions/EarlierStructureSection.astro";
+import FragmentedActivitySection from "../components/sections/institutions/FragmentedActivitySection.astro";
+import ImplementationPrinciplesSection from "../components/sections/institutions/ImplementationPrinciplesSection.astro";
+import InstitutionFAQSection from "../components/sections/institutions/InstitutionFAQSection.astro";
+import InstitutionFinalCTASection from "../components/sections/institutions/InstitutionFinalCTASection.astro";
+import InstitutionPerspectiveSection from "../components/sections/institutions/InstitutionPerspectiveSection.astro";
+import InstitutionProgramsSection from "../components/sections/institutions/InstitutionProgramsSection.astro";
+import InstitutionsHeroSection from "../components/sections/institutions/InstitutionsHeroSection.astro";
+import InstitutionTimingSection from "../components/sections/institutions/InstitutionTimingSection.astro";
+import InstitutionTrustSection from "../components/sections/institutions/InstitutionTrustSection.astro";
+import PathwisseConnectsSection from "../components/sections/institutions/PathwisseConnectsSection.astro";
+import StudentJourneySection from "../components/sections/institutions/StudentJourneySection.astro";
+import TPOPerspectiveSection from "../components/sections/institutions/TPOPerspectiveSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="A connected employability approach for institutions"
+  description="Explore how colleges, universities, and placement teams can think about employability as a connected journey before placement season."
+>
+  <PageShell>
+    <InstitutionsHeroSection />
+    <InstitutionTimingSection />
+    <FragmentedActivitySection />
+    <InstitutionPerspectiveSection />
+    <EarlierStructureSection />
+    <StudentJourneySection />
+    <TPOPerspectiveSection />
+    <PathwisseConnectsSection />
+    <InstitutionProgramsSection />
+    <ImplementationPrinciplesSection />
+    <InstitutionTrustSection />
+    <InstitutionFAQSection />
+    <InstitutionFinalCTASection />
+  </PageShell>
+</BaseLayout>

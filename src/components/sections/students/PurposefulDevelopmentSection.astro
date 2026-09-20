@@ -1,0 +1,89 @@
+---
+import { studentPrinciples } from "../../../content/pages/students";
+const content = studentPrinciples.development;
+---
+
+<section
+  class="development section section--subtle"
+  aria-labelledby="development-title"
+>
+  <div class="container development__grid">
+    <header>
+      <p>{content.eyebrow}</p>
+      <h2 id="development-title">{content.title}</h2>
+    </header>
+    <div>
+      <p class="development__lead">{content.lead}</p>
+      <div class="development__contrast">
+        <p>
+          <span>Accumulation</span>
+          {content.contrast[0]}
+        </p>
+        <i aria-hidden="true"></i>
+        <p>
+          <span>Intention</span>
+          {content.contrast[1]}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .development__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .development header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .development__lead {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .development__contrast {
+    display: grid;
+    grid-template-columns: 1fr 4rem 1fr;
+    gap: var(--space-4);
+    align-items: center;
+    margin-top: var(--space-12);
+    padding-block: var(--space-6);
+    border-block: 1px solid var(--color-border);
+  }
+  .development__contrast p {
+    margin: 0;
+    font-size: var(--text-body-lg);
+    font-weight: var(--font-weight-medium);
+  }
+  .development__contrast span {
+    display: block;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+    text-transform: uppercase;
+  }
+  .development__contrast i {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-accent)
+    );
+  }
+  @media (max-width: 48rem) {
+    .development__grid {
+      grid-template-columns: 1fr;
+    }
+    .development__contrast {
+      grid-template-columns: 1fr;
+    }
+    .development__contrast i {
+      width: 1px;
+      height: 3rem;
+      margin-left: var(--space-2);
+    }
+  }
+</style>

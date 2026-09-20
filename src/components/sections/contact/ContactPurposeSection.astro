@@ -1,0 +1,51 @@
+---
+import { conversationTopics } from "../../../content/pages/contact";
+---
+
+<section
+  class="contact-purpose section section--dark"
+  aria-labelledby="contact-purpose-title"
+>
+  <div class="container contact-purpose__grid">
+    <header>
+      <p>Purpose of the conversation</p>
+      <h2 id="contact-purpose-title">
+        Start with the situation, not a sales script.
+      </h2>
+    </header>
+    <ul>
+      {conversationTopics.map((topic) => (
+        <li>{topic}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact-purpose__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .contact-purpose header p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-purpose ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .contact-purpose li {
+    padding-block: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    color: var(--color-text-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .contact-purpose__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,68 @@
+<section
+  class="earlier section section--subtle"
+  aria-labelledby="earlier-title"
+>
+  <div class="container earlier__grid">
+    <header>
+      <p>Earlier structure</p>
+      <h2 id="earlier-title">
+        Structure the journey before the final conversation.
+      </h2>
+    </header>
+    <div>
+      <p class="earlier__lead">
+        When development begins with a clearer purpose, later placement
+        preparation can draw on a more coherent set of decisions and
+        experiences.
+      </p>
+      <ul>
+        <li>Clearer progression</li>
+        <li>More intentional development</li>
+        <li>Earlier alignment between learning and preparation</li>
+        <li>Stronger context for placement conversations</li>
+      </ul>
+      <p class="earlier__boundary">
+        These are principles for designing an employability journey—not
+        predictive interventions, alerts, analytics, or automated
+        recommendations.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .earlier__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .earlier header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .earlier__lead {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .earlier ul {
+    margin: var(--space-10) 0;
+    padding: 0;
+    list-style: none;
+  }
+  .earlier li {
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+  }
+  .earlier__boundary {
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border-strong);
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 48rem) {
+    .earlier__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

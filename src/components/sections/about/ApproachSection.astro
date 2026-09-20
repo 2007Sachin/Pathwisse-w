@@ -1,0 +1,54 @@
+---
+import JourneyPath from "../../media/JourneyPath.astro";
+import { aboutJourney } from "../../../content/pages/about";
+---
+
+<section
+  class="about-approach section section--subtle"
+  aria-labelledby="about-approach-title"
+>
+  <div class="container">
+    <header class="about-approach__header">
+      <div>
+        <p>Our approach</p>
+        <h2 id="about-approach-title">
+          Employability as a connected progression.
+        </h2>
+      </div>
+      <p>
+        This model guides how Pathwisse thinks about the journey. It should not
+        be read as a literal promise that every stage is currently implemented
+        in software.
+      </p>
+    </header>
+    <JourneyPath
+      stages={aboutJourney}
+      label="The Pathwisse employability design philosophy"
+      motion="reveal"
+    />
+  </div>
+</section>
+
+<style>
+  .about-approach__header {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: end;
+    margin-bottom: var(--space-16);
+  }
+  .about-approach__header div p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .about-approach__header > p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .about-approach__header {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

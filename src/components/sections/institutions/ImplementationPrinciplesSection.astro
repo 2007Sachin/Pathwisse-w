@@ -1,0 +1,69 @@
+---
+import { implementationPrinciples } from "../../../content/pages/institutions";
+---
+
+<section
+  class="implementation section section--subtle"
+  aria-labelledby="implementation-title"
+>
+  <div class="container implementation__grid">
+    <header>
+      <p>Implementation and adoption principles</p>
+      <h2 id="implementation-title">
+        Begin with context, not a deployment promise.
+      </h2>
+      <p>
+        Implementation details, integrations, responsibilities, and timelines
+        remain unverified. A useful institutional conversation can still begin
+        with sound principles.
+      </p>
+    </header>
+    <ol>
+      {implementationPrinciples.map((principle, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          {principle}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .implementation__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .implementation header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .implementation header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .implementation ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .implementation li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+  }
+  .implementation li span {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .implementation__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

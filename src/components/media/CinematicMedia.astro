@@ -1,0 +1,163 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+interface Props {
+  /** Public path without extension, e.g. /media/home/hero/pathwisse-hero-journey */
+  src: string;
+  /** Public path to an optimized poster (WebP/AVIF). */
+  poster?: string;
+  ratio?: string;
+  /** Decorative media is hidden from assistive technology. */
+  decorative?: boolean;
+  /** Required accessible name when decorative is false. */
+  label?: string;
+  /** Only the hero should use "high". */
+  priority?: "high" | "low";
+  class?: string;
+}
+
+const {
+  src,
+  poster,
+  ratio = "16 / 9",
+  decorative = true,
+  label,
+  priority = "low",
+  class: className,
+} = Astro.props;
+
+// Files are optional. Anything missing at build time is simply not rendered,
+// so the slotted fallback composition is always what visitors see until real
+// media is added to /public.
+const onDisk = (publicPath: string) =>
+  existsSync(join(process.cwd(), "public", publicPath));
+const sources = [
+  { type: "video/webm", path: `${src}.webm` },
+  { type: "video/mp4", path: `${src}.mp4` },
+].filter((source) => onDisk(source.path));
+const posterPath = poster && onDisk(poster) ? poster : undefined;
+---
+
+<div
+  class:list={["cinematic", className]}
+  style={`--ratio: ${ratio}`}
+  data-cinematic
+  aria-hidden={decorative ? "true" : undefined}
+  role={decorative ? undefined : "img"}
+  aria-label={decorative ? undefined : label}
+>
+  <div class="cinematic__fallback">
+    <slot />
+  </div>
+  {posterPath && (
+    <img
+      class="cinematic__poster"
+      src={posterPath}
+      alt=""
+      decoding="async"
+      loading={priority === "high" ? "eager" : "lazy"}
+      fetchpriority={priority === "high" ? "high" : "auto"}
+    />
+  )}
+  {sources.length > 0 && (
+    <video
+      class="cinematic__video"
+      muted
+      loop
+      playsinline
+      preload="none"
+      disablepictureinpicture
+      tabindex="-1"
+    >
+      {sources.map((source) => (
+        <source src={source.path} type={source.type} />
+      ))}
+    </video>
+  )}
+  <div class="cinematic__overlay">
+    <slot name="overlay" />
+  </div>
+</div>
+
+<style>
+  .cinematic {
+    position: relative;
+    aspect-ratio: var(--ratio);
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: var(--radius-lg);
+    background: var(--color-ink);
+  }
+  .cinematic__fallback,
+  .cinematic__poster,
+  .cinematic__video,
+  .cinematic__overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .cinematic__poster,
+  .cinematic__video {
+    object-fit: cover;
+  }
+  .cinematic__video {
+    opacity: 0;
+    transition: opacity var(--motion-story) var(--ease-standard);
+  }
+  .cinematic.is-playing .cinematic__video {
+    opacity: 1;
+  }
+  .cinematic__overlay {
+    pointer-events: none;
+  }
+  .cinematic__overlay > :global(*) {
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  // Decorative loops start only when the visitor has not asked for reduced
+  // motion or data saving, and pause whenever they leave the viewport.
+  const connection = (
+    navigator as Navigator & { connection?: { saveData?: boolean } }
+  ).connection;
+  const allowed =
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    !connection?.saveData &&
+    "IntersectionObserver" in window;
+
+  if (allowed) {
+    document
+      .querySelectorAll<HTMLElement>("[data-cinematic]")
+      .forEach((media) => {
+        const video = media.querySelector("video");
+        if (!video) return;
+        video.addEventListener(
+          "playing",
+          () => media.classList.add("is-playing"),
+          { once: true },
+        );
+        const start = () => {
+          video.preload = "auto";
+          void video.play().catch(() => undefined);
+        };
+        const watcher = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) {
+                video.pause();
+              } else if (document.readyState === "complete") {
+                start();
+              } else {
+                window.addEventListener("load", start, { once: true });
+              }
+            }
+          },
+          { threshold: 0.25 },
+        );
+        watcher.observe(media);
+      });
+  }
+</script>

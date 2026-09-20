@@ -1,0 +1,197 @@
+---
+import { navigationActions, primaryNavigation } from "../../content/navigation";
+
+const normalizePath = (path: string) =>
+  path === "/" ? path : path.replace(/\/$/, "");
+const currentPath = normalizePath(Astro.url.pathname);
+---
+
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Pathwisse home">
+      Pathwisse
+    </a>
+    <button
+      class="menu-trigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+    >
+      <span class="menu-trigger__label" data-menu-label>
+        Menu
+      </span>
+    </button>
+    <nav
+      id="site-navigation"
+      class="site-navigation"
+      aria-label="Primary"
+      data-open="false"
+    >
+      <ul class="site-navigation__list">
+        {primaryNavigation.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={currentPath === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="site-navigation__actions">
+        {navigationActions.map((action) => (
+          <a
+            class:list={[
+              "button",
+              action.variant === "primary"
+                ? "button--primary"
+                : "site-navigation__utility",
+            ]}
+            href={action.href}
+          >
+            {action.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>(".menu-trigger");
+  const navigation = document.querySelector<HTMLElement>("#site-navigation");
+  const label = trigger?.querySelector<HTMLElement>("[data-menu-label]");
+
+  if (trigger && navigation) {
+    const closeMenu = (restoreFocus = false) => {
+      trigger.setAttribute("aria-expanded", "false");
+      navigation.dataset.open = "false";
+      if (label) label.textContent = "Menu";
+      if (restoreFocus) trigger.focus();
+    };
+
+    trigger.addEventListener("click", () => {
+      const willOpen = trigger.getAttribute("aria-expanded") !== "true";
+      trigger.setAttribute("aria-expanded", String(willOpen));
+      navigation.dataset.open = String(willOpen);
+      if (label) label.textContent = willOpen ? "Close" : "Menu";
+      if (willOpen) navigation.querySelector<HTMLAnchorElement>("a")?.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navigation.dataset.open === "true")
+        closeMenu(true);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) closeMenu();
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    border-bottom: var(--border-width) solid var(--color-border);
+    background: rgb(248 250 252 / 0.97);
+  }
+  .site-header__inner {
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+  .brand {
+    color: var(--color-ink);
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+  .site-navigation {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+  .site-navigation__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-navigation a {
+    text-decoration: none;
+  }
+  .site-navigation__list a,
+  .site-navigation__utility {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+  .site-navigation__list a:hover,
+  .site-navigation__list a[aria-current="page"],
+  .site-navigation__utility:hover {
+    color: var(--color-ink);
+  }
+  .site-navigation__list a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.4em;
+  }
+  .site-navigation__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .menu-trigger {
+    display: none;
+    min-height: 2.75rem;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding-inline: var(--space-4);
+  }
+  @media (max-width: 64rem) {
+    .site-header__inner {
+      flex-wrap: wrap;
+      padding-block: var(--space-3);
+    }
+    .menu-trigger {
+      display: inline-flex;
+      align-items: center;
+    }
+    .site-navigation {
+      display: none;
+      flex-basis: 100%;
+      align-items: stretch;
+      flex-direction: column;
+      padding-block: var(--space-4) var(--space-6);
+      border-top: var(--border-width) solid var(--color-border);
+    }
+    .site-navigation[data-open="true"] {
+      display: flex;
+    }
+    .site-navigation__list,
+    .site-navigation__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .site-navigation a {
+      display: flex;
+      min-height: 3rem;
+      align-items: center;
+    }
+    .site-navigation__actions {
+      gap: var(--space-3);
+    }
+    .site-navigation__actions .button {
+      justify-content: center;
+    }
+  }
+</style>

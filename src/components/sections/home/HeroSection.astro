@@ -1,0 +1,567 @@
+---
+import { productLinks } from "../../../content/site";
+import CinematicMedia from "../../media/CinematicMedia.astro";
+
+const pathData =
+  "M50 620 C130 620 150 530 220 520 S330 560 360 470 S310 380 380 330 S470 320 470 230 S430 150 500 110";
+const nodes = [
+  [50, 620],
+  [220, 520],
+  [360, 470],
+  [380, 330],
+  [470, 230],
+  [500, 110],
+] as const;
+---
+
+<section
+  id="hero"
+  class="hero section"
+  aria-labelledby="hero-title"
+  data-pointer
+  data-scrub="leave"
+>
+  <div class="container-wide hero__grid">
+    <div class="hero__content">
+      <p class="eyebrow">Employability Operating System for higher education</p>
+      <h1 id="hero-title">
+        Learning gives you knowledge.{" "}
+        <span>Employability asks what comes next.</span>
+      </h1>
+      <p class="hero__lead">
+        Pathwisse is being built to bring career direction, relevant
+        development, application, and placement preparation into one clearer
+        employability journey.
+      </p>
+      <div class="hero__actions cluster">
+        <a class="button button--primary" href={productLinks.getStarted}>
+          Start Your Journey
+        </a>
+        <a class="button button--secondary" href="/how-it-works">
+          See How Pathwisse Works
+        </a>
+      </div>
+      <a class="action-link hero__institution-link" href="/institutions">
+        For colleges and universities
+      </a>
+    </div>
+
+    <div class="hero__stage" data-motion="hero">
+      <CinematicMedia
+        src="/media/home/hero/pathwisse-hero-journey"
+        poster="/media/home/hero/pathwisse-hero-poster.webp"
+        ratio="6 / 7"
+        priority="high"
+      >
+        <div class="scene">
+          <div class="layer layer--bleed scene__bg" style="--d: 10"></div>
+          <div class="layer layer--bleed scene__grid" style="--d: 14"></div>
+          <div class="layer scene__glow" style="--d: 16"></div>
+
+          <svg
+            class="layer scene__path"
+            style="--d: 24"
+            viewBox="0 0 600 700"
+            fill="none"
+          >
+            <path class="scene__trace" d={pathData} />
+            <path class="scene__line" pathLength="1" d={pathData} />
+            <path class="scene__comet" pathLength="1" d={pathData} />
+            {nodes.map(([cx, cy], index) => (
+              <circle
+                class:list={[
+                  "scene__node",
+                  { "scene__node--dest": index === nodes.length - 1 },
+                ]}
+                style={`--i: ${index}`}
+                cx={cx}
+                cy={cy}
+                r="9"
+              />
+            ))}
+          </svg>
+
+          <div class="layer scene__objects" style="--d: 40">
+            <div
+              class="obj obj--notes"
+              style="--x: 22%; --y: 81%; --w: 19cqw; --r: -5deg; --sx: -9cqw; --sy: 7cqw; --sr: -14deg; --n: 0"
+            >
+              <svg viewBox="0 0 120 150">
+                <rect class="paper" width="120" height="150" rx="7"></rect>
+                <rect
+                  class="blue"
+                  x="14"
+                  y="16"
+                  width="52"
+                  height="9"
+                  rx="2"
+                ></rect>
+                <path
+                  class="rule"
+                  d="M14 44h92M14 58h92M14 72h92M14 86h70M14 100h92"
+                ></path>
+                <path
+                  class="scribble"
+                  d="M14 122c10-8 18 8 28 0s18 8 28 0"
+                ></path>
+              </svg>
+              <span>Course notes</span>
+            </div>
+
+            <div
+              class="obj obj--course"
+              style="--x: 36%; --y: 57%; --w: 22cqw; --r: 4deg; --sx: -11cqw; --sy: -3cqw; --sr: 13deg; --n: 1"
+            >
+              <svg viewBox="0 0 160 112">
+                <rect class="paper" width="160" height="112" rx="7"></rect>
+                <rect
+                  class="frame"
+                  x="9"
+                  y="9"
+                  width="142"
+                  height="94"
+                  rx="4"
+                ></rect>
+                <path class="rule" d="M28 34h64M28 48h48"></path>
+                <circle class="seal" cx="122" cy="74" r="15"></circle>
+                <circle class="seal-inner" cx="122" cy="74" r="7"></circle>
+              </svg>
+              <span>Certificate</span>
+            </div>
+
+            <div
+              class="obj obj--project"
+              style="--x: 80%; --y: 72%; --w: 22cqw; --r: -3deg; --sx: 12cqw; --sy: 6cqw; --sr: 11deg; --n: 2"
+            >
+              <svg viewBox="0 0 150 112">
+                <rect class="paper" width="150" height="112" rx="7"></rect>
+                <rect
+                  class="sketch"
+                  x="12"
+                  y="12"
+                  width="126"
+                  height="18"
+                  rx="3"
+                ></rect>
+                <rect
+                  class="sketch"
+                  x="12"
+                  y="40"
+                  width="58"
+                  height="58"
+                  rx="3"
+                ></rect>
+                <path class="sketch" d="M82 46h56M82 62h56M82 78h36"></path>
+                <path class="blue-line" d="M20 88l14-16 12 8 14-20"></path>
+              </svg>
+              <span>Project</span>
+            </div>
+
+            <div
+              class="obj obj--evidence"
+              style="--x: 30%; --y: 39%; --w: 21cqw; --r: 3deg; --sx: -8cqw; --sy: -10cqw; --sr: -11deg; --n: 3"
+            >
+              <svg viewBox="0 0 150 120">
+                <rect
+                  class="paper back"
+                  x="14"
+                  y="4"
+                  width="132"
+                  height="100"
+                  rx="7"
+                ></rect>
+                <rect
+                  class="paper"
+                  x="4"
+                  y="14"
+                  width="132"
+                  height="100"
+                  rx="7"
+                ></rect>
+                <path class="rule" d="M22 40h70M22 54h50M22 68h60"></path>
+                <circle class="badge" cx="108" cy="86" r="15"></circle>
+                <path class="tick" d="M100 86l6 6 11-13"></path>
+              </svg>
+              <span>Work to show</span>
+            </div>
+
+            <div
+              class="obj obj--interview"
+              style="--x: 45%; --y: 19%; --w: 22cqw; --r: -2deg; --sx: 6cqw; --sy: -12cqw; --sr: 10deg; --n: 4"
+            >
+              <svg viewBox="0 0 150 110">
+                <rect
+                  class="paper"
+                  x="4"
+                  y="6"
+                  width="90"
+                  height="52"
+                  rx="10"
+                ></rect>
+                <path class="rule" d="M20 26h56M20 40h36"></path>
+                <rect
+                  class="bubble"
+                  x="56"
+                  y="50"
+                  width="90"
+                  height="52"
+                  rx="10"
+                ></rect>
+                <path class="bubble-line" d="M74 70h54M74 84h34"></path>
+              </svg>
+              <span>Interview prep</span>
+            </div>
+
+            <p class="scene__dest">Opportunity</p>
+          </div>
+        </div>
+      </CinematicMedia>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(3rem, 7vw, 6rem) var(--section-spacious);
+    background:
+      radial-gradient(
+        60rem 40rem at 88% 12%,
+        rgb(23 92 211 / 0.09),
+        transparent 70%
+      ),
+      var(--color-bg);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+  .eyebrow {
+    margin-bottom: var(--space-8);
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    max-width: 15ch;
+    margin-bottom: var(--space-8);
+    font-size: clamp(2.75rem, 4.2vw, 4.75rem);
+  }
+  h1 span {
+    color: var(--color-primary);
+  }
+  .hero__lead {
+    max-width: 38rem;
+    margin-bottom: var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .hero__actions {
+    margin-bottom: var(--space-6);
+  }
+  .hero__institution-link {
+    font-size: var(--text-small);
+  }
+
+  .hero__stage {
+    position: relative;
+    width: 100%;
+    max-width: 40rem;
+    justify-self: end;
+  }
+  .hero__stage::before {
+    position: absolute;
+    z-index: -1;
+    inset: -12%;
+    background: radial-gradient(
+      closest-side,
+      rgb(23 92 211 / 0.32),
+      transparent 72%
+    );
+    content: "";
+  }
+  .hero__stage :global(.cinematic) {
+    box-shadow: 0 2.5rem 6rem rgb(8 23 45 / 0.28);
+  }
+
+  .scene {
+    position: absolute;
+    inset: 0;
+    container-type: inline-size;
+    color: var(--color-text-on-dark);
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(calc(var(--p, 0) * var(--d) * -1.4px));
+    translate: calc(var(--px, 0) * var(--d) * -0.55px)
+      calc(var(--py, 0) * var(--d) * -0.55px);
+    transition: translate 700ms var(--ease-standard);
+  }
+  .layer--bleed {
+    inset: -7%;
+    width: 114%;
+    height: 114%;
+  }
+  .scene__bg {
+    background:
+      radial-gradient(
+        70% 45% at 18% 88%,
+        rgb(23 92 211 / 0.55),
+        transparent 72%
+      ),
+      radial-gradient(
+        55% 40% at 80% 14%,
+        rgb(23 92 211 / 0.22),
+        transparent 70%
+      ),
+      linear-gradient(165deg, var(--color-ink-raised), var(--color-ink-deep));
+  }
+  .scene__grid {
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 6cqw 6cqw;
+    mask-image: radial-gradient(70% 70% at 60% 45%, #000, transparent 85%);
+  }
+  .scene__glow {
+    background: radial-gradient(
+      16% 14% at 83.3% 15.7%,
+      rgb(200 104 35 / 0.55),
+      transparent 100%
+    );
+    opacity: 1;
+  }
+
+  .scene__path {
+    overflow: visible;
+  }
+  .scene__path path {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .scene__trace {
+    stroke: rgb(255 255 255 / 0.16);
+    stroke-width: 2;
+    stroke-dasharray: 3 9;
+  }
+  .scene__line {
+    stroke: #4d8bff;
+    stroke-width: 3.5;
+  }
+  .scene__comet {
+    stroke: #d6e4ff;
+    stroke-width: 6;
+    stroke-dasharray: 0.07 2;
+    stroke-dashoffset: -1.2;
+  }
+  .scene__node {
+    fill: var(--color-ink-deep);
+    stroke: #4d8bff;
+    stroke-width: 3.5;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .scene__node--dest {
+    stroke: var(--color-accent);
+    fill: #f0a56b;
+  }
+
+  .obj {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: var(--w);
+    translate: -50% -50%;
+    transform: rotate(var(--r));
+  }
+  .obj svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 1.6cqw 2.4cqw rgb(0 0 0 / 0.4));
+  }
+  .obj span {
+    display: block;
+    margin-top: 0.7cqw;
+    color: var(--color-text-muted-on-dark);
+    font-size: max(0.6875rem, 2.3cqw);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .paper {
+    fill: var(--color-paper);
+  }
+  .paper.back {
+    fill: #cfdcf0;
+  }
+  .rule {
+    fill: none;
+    stroke: #175cd3;
+    stroke-opacity: 0.32;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .blue {
+    fill: #175cd3;
+  }
+  .scribble,
+  .blue-line {
+    fill: none;
+    stroke: #175cd3;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .frame {
+    fill: none;
+    stroke: #175cd3;
+    stroke-opacity: 0.5;
+    stroke-width: 1.5;
+  }
+  .seal {
+    fill: #175cd3;
+  }
+  .seal-inner {
+    fill: none;
+    stroke: var(--color-paper);
+    stroke-width: 2;
+  }
+  .sketch {
+    fill: none;
+    stroke: #08172d;
+    stroke-opacity: 0.55;
+    stroke-width: 2;
+    stroke-dasharray: 4 4;
+    stroke-linecap: round;
+  }
+  .badge {
+    fill: #175cd3;
+  }
+  .tick {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .bubble {
+    fill: #175cd3;
+  }
+  .bubble-line {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+  .scene__dest {
+    position: absolute;
+    top: 15.7%;
+    right: 20.5%;
+    margin: 0;
+    translate: 0 -50%;
+    color: #f0a56b;
+    font-size: max(0.6875rem, 2.5cqw);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Tier 3/4: finite hero sequence, once. Static composition is the default. */
+  :global(.motion-enhanced) .scene__line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  :global(.motion-enhanced) .scene__node {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  :global(.motion-enhanced) .scene__glow,
+  :global(.motion-enhanced) .scene__dest {
+    opacity: 0;
+  }
+  :global(.motion-enhanced) .obj {
+    opacity: 0;
+    transform: translate(var(--sx), var(--sy))
+      rotate(calc(var(--r) + var(--sr)));
+  }
+  :global(.motion-enhanced) .is-motion-visible .scene__line {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 2000ms var(--ease-emphasis) 350ms;
+  }
+  :global(.motion-enhanced) .is-motion-visible .scene__comet {
+    animation: comet 2100ms var(--ease-emphasis) 350ms 1 both;
+  }
+  :global(.motion-enhanced) .is-motion-visible .scene__node {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 500ms var(--ease-standard),
+      transform 700ms var(--ease-emphasis);
+    transition-delay: calc(500ms + var(--i) * 340ms);
+  }
+  :global(.motion-enhanced) .is-motion-visible .obj {
+    opacity: 1;
+    transform: rotate(var(--r));
+    transition:
+      opacity 700ms var(--ease-standard),
+      transform 1300ms var(--ease-emphasis);
+    transition-delay: calc(120ms + var(--n) * 170ms);
+  }
+  :global(.motion-enhanced) .is-motion-visible .scene__glow,
+  :global(.motion-enhanced) .is-motion-visible .scene__dest {
+    opacity: 1;
+    transition: opacity 1400ms var(--ease-standard) 2300ms;
+  }
+  @keyframes comet {
+    from {
+      stroke-dashoffset: 0.07;
+    }
+    to {
+      stroke-dashoffset: -1.07;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .hero__stage {
+      max-width: 34rem;
+      justify-self: start;
+    }
+  }
+  @media (max-width: 34rem) {
+    .hero__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .hero__actions .button {
+      width: 100%;
+    }
+    .obj span {
+      display: none;
+    }
+    .obj--project,
+    .obj--evidence,
+    .obj--interview {
+      --w: 24cqw;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .layer {
+      transform: none;
+      translate: none;
+    }
+  }
+</style>

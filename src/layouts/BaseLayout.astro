@@ -1,0 +1,54 @@
+---
+import "../styles/global.css";
+import { site } from "../content/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  bodyClass?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = site.defaultTitle,
+  description = site.defaultDescription,
+  canonicalPath = Astro.url.pathname,
+  bodyClass,
+  noindex = false,
+} = Astro.props;
+const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
+const canonicalPathname =
+  canonicalPath === "/" ? canonicalPath : canonicalPath.replace(/\/+$/, "");
+// noindex pages (style guide, 404) are never given a canonical URL.
+const canonical = noindex
+  ? undefined
+  : new URL(canonicalPathname, site.siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="generator" content={Astro.generator} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">
+      Skip to main content
+    </a>
+    <slot />
+  </body>
+</html>

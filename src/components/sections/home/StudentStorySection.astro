@@ -1,0 +1,442 @@
+---
+import { studentJourney } from "../../../content/pages/home";
+import CinematicMedia from "../../media/CinematicMedia.astro";
+---
+
+<section
+  id="student-story"
+  class="story section section--subtle"
+  aria-labelledby="story-title"
+  data-stages="line"
+>
+  <div class="container story__grid">
+    <div class="story__left">
+      <div class="story__intro">
+        <p class="story__label">Illustrative student journey</p>
+        <h2 id="story-title">
+          Aanya has ambition. What she needs is a direction.
+        </h2>
+        <p>
+          Aanya knows she wants a technology career, but she does not yet know
+          which role fits or how her learning should add up. This fictional
+          story illustrates the journey Pathwisse is working toward. It is not a
+          product walkthrough or a real student result.
+        </p>
+      </div>
+
+      <div class="story__scene">
+        <CinematicMedia
+          src="/media/home/student-journey/student-journey"
+          poster="/media/home/student-journey/student-journey-poster.webp"
+          ratio="5 / 4"
+        >
+          <svg class="desk" viewBox="0 0 500 400" fill="none">
+            <rect class="desk__top" width="500" height="400"></rect>
+            <ellipse
+              class="desk__pool"
+              cx="250"
+              cy="200"
+              rx="230"
+              ry="160"
+            ></ellipse>
+
+            <g class="lyr" style="--min: -1">
+              <g class="note" transform="rotate(-8 90 90)">
+                <rect x="50" y="56" width="84" height="70" rx="4"></rect>
+                <path d="M62 80h44M62 94h30"></path>
+              </g>
+              <g class="note" transform="rotate(7 400 80)">
+                <rect x="360" y="50" width="84" height="70" rx="4"></rect>
+                <path d="M372 74h44M372 88h28"></path>
+              </g>
+              <g class="pen" transform="rotate(-24 410 330)">
+                <rect x="360" y="326" width="100" height="9" rx="4"></rect>
+              </g>
+            </g>
+
+            <g class="lyr lyr--q">
+              <text class="q" x="82" y="112">
+                ?
+              </text>
+              <text class="q" x="392" y="106">
+                ?
+              </text>
+              <text class="q q--big" x="235" y="72">
+                ?
+              </text>
+            </g>
+
+            <g class="lyr" style="--min: -1">
+              <g class="book">
+                <rect x="90" y="150" width="170" height="200" rx="6"></rect>
+                <rect x="260" y="150" width="170" height="200" rx="6"></rect>
+                <path
+                  class="book__rule"
+                  d="M110 190h130M110 212h130M110 234h100"
+                ></path>
+                <path
+                  class="book__rule"
+                  d="M280 190h130M280 212h130M280 234h130M280 256h90"
+                ></path>
+              </g>
+            </g>
+
+            <g class="lyr" style="--min: 1">
+              <path
+                class="dir"
+                d="M116 322C168 322 168 286 222 286"
+                pathLength="1"
+              ></path>
+              <path class="dir dir--arrow" d="M214 278l12 8-12 8"></path>
+              <text class="tag" x="112" y="344">
+                Direction
+              </text>
+            </g>
+
+            <g class="lyr" style="--min: 2">
+              <g class="list" transform="rotate(3 350 200)">
+                <rect x="296" y="170" width="118" height="150" rx="5"></rect>
+                <path
+                  class="list__rule"
+                  d="M334 202h64M334 228h64M334 254h64M334 280h44"
+                ></path>
+                <circle class="list__box" cx="316" cy="202" r="6"></circle>
+                <circle class="list__box" cx="316" cy="228" r="6"></circle>
+                <circle class="list__box" cx="316" cy="254" r="6"></circle>
+                <circle class="list__box" cx="316" cy="280" r="6"></circle>
+              </g>
+            </g>
+            <g class="lyr" style="--min: 3">
+              <path
+                class="tick"
+                d="M312 202l3 3 6-7M312 228l3 3 6-7M312 254l3 3 6-7"
+              ></path>
+            </g>
+
+            <g class="lyr" style="--min: 4">
+              <g class="sketch" transform="rotate(-4 170 110)">
+                <rect x="80" y="40" width="180" height="120" rx="5"></rect>
+                <rect
+                  class="sk"
+                  x="96"
+                  y="56"
+                  width="148"
+                  height="20"
+                  rx="3"
+                ></rect>
+                <rect
+                  class="sk"
+                  x="96"
+                  y="88"
+                  width="66"
+                  height="56"
+                  rx="3"
+                ></rect>
+                <path class="sk" d="M176 96h68M176 114h68M176 132h44"></path>
+              </g>
+            </g>
+
+            <g class="lyr" style="--min: 5">
+              <path class="reflect" d="M118 306h112M118 324h84"></path>
+            </g>
+
+            <g class="lyr" style="--min: 6">
+              <g class="talk">
+                <rect
+                  class="talk__a"
+                  x="316"
+                  y="44"
+                  width="130"
+                  height="58"
+                  rx="12"
+                ></rect>
+                <path class="talk__aline" d="M334 66h74M334 82h48"></path>
+                <rect
+                  class="talk__b"
+                  x="266"
+                  y="112"
+                  width="120"
+                  height="52"
+                  rx="12"
+                ></rect>
+                <path class="talk__bline" d="M284 132h72M284 148h40"></path>
+                <circle class="dest" cx="452" cy="132" r="9"></circle>
+              </g>
+            </g>
+          </svg>
+        </CinematicMedia>
+      </div>
+    </div>
+
+    <ol class="story__steps">
+      {studentJourney.map((step, index) => (
+        <li data-stage>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          {step}
+        </li>
+      ))}
+    </ol>
+
+    <p class="story__close">
+      A clearer story begins to take shape—not a promised result, but work and
+      decisions Aanya can explain.
+    </p>
+  </div>
+</section>
+
+<style>
+  .story__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+    gap: var(--space-12) clamp(3rem, 7vw, 7rem);
+  }
+  .story__left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+  .story__label {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .story__intro h2 {
+    margin-block: var(--space-6);
+  }
+  .story__intro > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .story__scene {
+    width: 100%;
+  }
+  .story__scene :global(.cinematic) {
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .story__steps {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .story__steps::before {
+    position: absolute;
+    top: 1.65rem;
+    bottom: 1.65rem;
+    left: 1rem;
+    width: 1px;
+    background: linear-gradient(var(--color-primary), var(--color-accent));
+    content: "";
+  }
+  .story__steps li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--space-5);
+    align-items: center;
+    padding-block: var(--space-5);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+    transition:
+      color var(--motion-standard) var(--ease-standard),
+      opacity var(--motion-standard) var(--ease-standard);
+  }
+  .story__steps li > span {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+    transition:
+      background-color var(--motion-standard) var(--ease-standard),
+      color var(--motion-standard) var(--ease-standard);
+  }
+  .story__close {
+    grid-column: 1 / -1;
+    max-width: 34rem;
+    margin: 0 0 0 auto;
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+
+  /* Scene: browser-built editorial illustration, not product UI. */
+  .desk {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-sans);
+  }
+  .desk__top {
+    fill: #dfe7f3;
+  }
+  .desk__pool {
+    fill: #eef3fa;
+  }
+  .lyr {
+    --a: var(--active, 6);
+    opacity: clamp(0, calc(var(--a) - var(--min, 0) + 1), 1);
+    transition: opacity 700ms var(--ease-standard);
+  }
+  .lyr--q {
+    opacity: clamp(0, calc(1 - var(--a)), 1);
+  }
+  .note rect,
+  .list rect {
+    fill: #fff;
+    stroke: #c3d0e3;
+  }
+  .note path,
+  .list__rule {
+    stroke: #175cd3;
+    stroke-opacity: 0.35;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+  .pen rect {
+    fill: #08172d;
+  }
+  .q {
+    fill: #175cd3;
+    font-size: 30px;
+    font-weight: 650;
+  }
+  .q--big {
+    font-size: 44px;
+    fill: #536176;
+  }
+  .book rect {
+    fill: #fff;
+    stroke: #b7c6dc;
+    stroke-width: 1.5;
+  }
+  .book__rule {
+    stroke: #175cd3;
+    stroke-opacity: 0.22;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+  .dir {
+    stroke: #175cd3;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .tag {
+    fill: #175cd3;
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .list__box {
+    fill: none;
+    stroke: #175cd3;
+    stroke-width: 1.5;
+  }
+  .tick {
+    stroke: #175cd3;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .sketch rect:first-child {
+    fill: #fff;
+    stroke: #08172d;
+    stroke-opacity: 0.4;
+    stroke-width: 1.5;
+  }
+  .sk {
+    fill: none;
+    stroke: #08172d;
+    stroke-opacity: 0.5;
+    stroke-width: 2;
+    stroke-dasharray: 5 4;
+    stroke-linecap: round;
+  }
+  .reflect {
+    stroke: #175cd3;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .talk__a {
+    fill: #fff;
+    stroke: #b7c6dc;
+  }
+  .talk__aline {
+    stroke: #175cd3;
+    stroke-opacity: 0.4;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .talk__b {
+    fill: #175cd3;
+  }
+  .talk__bline {
+    stroke: #fff;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .dest {
+    fill: var(--color-accent);
+  }
+
+  @media (min-width: 56rem) {
+    .story__left {
+      align-self: stretch;
+    }
+    .story__scene {
+      position: sticky;
+      top: var(--space-8);
+    }
+    :global(.motion-enhanced) .story__steps li {
+      min-height: 26vh;
+    }
+    :global(.motion-enhanced) .story__steps li:last-child {
+      min-height: 22vh;
+    }
+  }
+  :global(.motion-enhanced) .story__steps li:not(.is-active):not(.is-past) {
+    color: var(--color-text-muted);
+  }
+  :global(.motion-enhanced) .story__steps li.is-active {
+    color: var(--color-ink);
+  }
+  :global(.motion-enhanced) .story__steps li.is-active > span,
+  :global(.motion-enhanced) .story__steps li.is-past > span {
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+  :global(.motion-enhanced) .story__steps li:last-child.is-active > span {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+  }
+  @media (max-width: 55.99rem) {
+    .story__grid {
+      grid-template-columns: 1fr;
+    }
+    .story__close {
+      grid-column: auto;
+      margin-left: 0;
+    }
+    .story__left {
+      display: contents;
+    }
+    .story__scene {
+      position: sticky;
+      z-index: 3;
+      top: var(--space-3);
+      width: min(100%, 18rem);
+      justify-self: center;
+    }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import { institutionActivities } from "../../../content/pages/institutions";
+---
+
+<section
+  class="fragmented section section--subtle"
+  aria-labelledby="fragmented-title"
+>
+  <div class="container fragmented__grid">
+    <header>
+      <p>Fragmented employability activity</p>
+      <h2 id="fragmented-title">
+        Important activity can still be difficult to connect.
+      </h2>
+      <p>
+        The issue is not that institutions are doing nothing. It is that
+        valuable experiences often happen in different places, at different
+        times, and with different immediate purposes.
+      </p>
+    </header>
+    <ol aria-label="Institutional employability activities">
+      {institutionActivities.map((activity, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{activity}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .fragmented__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .fragmented header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .fragmented header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .fragmented ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .fragmented li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .fragmented li span {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .fragmented li strong {
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .fragmented__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

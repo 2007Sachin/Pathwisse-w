@@ -1,0 +1,91 @@
+---
+import { productLinks } from "../../../content/site";
+---
+
+<section
+  class="student-hero section section--spacious"
+  aria-labelledby="page-title"
+>
+  <div class="container-wide student-hero__grid">
+    <div>
+      <p class="student-hero__eyebrow">For students</p>
+      <h1 id="page-title">
+        You’re already learning. What is it all building toward?
+      </h1>
+    </div>
+    <div class="student-hero__aside">
+      <p>
+        Pathwisse is being built around a clearer journey from career direction
+        through development and preparation for opportunity.
+      </p>
+      <div class="cluster">
+        <a class="button button--primary" href={productLinks.getStarted}>
+          Start Your Journey
+        </a>
+        <a class="action-link" href="/how-it-works">
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container-wide student-hero__path" aria-hidden="true">
+    <span></span>
+    <i></i>
+  </div>
+</section>
+
+<style>
+  .student-hero__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .student-hero__eyebrow {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .student-hero h1 {
+    max-width: 15ch;
+    margin: var(--space-6) 0 0;
+  }
+  .student-hero__aside > p {
+    margin-bottom: var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .student-hero__path {
+    position: relative;
+    height: 8rem;
+    margin-top: var(--space-20);
+    border-top: 1px solid var(--color-border);
+  }
+  .student-hero__path span {
+    display: block;
+    width: 62%;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  .student-hero__path i {
+    position: absolute;
+    top: -0.4rem;
+    left: 62%;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+  @media (max-width: 48rem) {
+    .student-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .student-hero__path {
+      height: 3rem;
+    }
+  }
+</style>

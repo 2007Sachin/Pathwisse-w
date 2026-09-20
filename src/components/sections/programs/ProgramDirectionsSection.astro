@@ -1,0 +1,78 @@
+---
+import { conceptualProgramRoles } from "../../../content/pages/programs";
+---
+
+<section
+  class="program-directions section"
+  aria-labelledby="program-directions-title"
+>
+  <div class="container program-directions__header">
+    <p>Conceptual program roles</p>
+    <h2 id="program-directions-title">
+      Start with the need a program is meant to support.
+    </h2>
+    <p>
+      These are evaluation categories, not published Pathwisse offerings. A real
+      catalogue requires approved names and exact delivery details.
+    </p>
+  </div>
+  <div class="container program-directions__list">
+    {conceptualProgramRoles.map((role, index) => (
+      <article>
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <h3>{role.title}</h3>
+        <p>{role.copy}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .program-directions__header {
+    display: grid;
+    grid-template-columns: 0.45fr 0.9fr 0.65fr;
+    gap: var(--space-10);
+  }
+  .program-directions__header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .program-directions__header > p:last-child {
+    color: var(--color-text-muted);
+  }
+  .program-directions__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: var(--space-16);
+    border-top: 1px solid var(--color-border-strong);
+  }
+  .program-directions article {
+    padding: var(--space-6) var(--space-6) var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .program-directions article span {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+  }
+  .program-directions article h3 {
+    margin-block: var(--space-8) var(--space-4);
+  }
+  .program-directions article p {
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 52rem) {
+    .program-directions__header {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .program-directions__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 34rem) {
+    .program-directions__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

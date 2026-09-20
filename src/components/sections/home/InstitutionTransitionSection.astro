@@ -1,0 +1,58 @@
+<section
+  id="institutions"
+  class="institution-transition section section--spacious"
+  aria-labelledby="institution-transition-title"
+>
+  <div class="container institution-transition__grid" data-scrub>
+    <p>From one student journey to a shared responsibility</p>
+    <div>
+      <h2 id="institution-transition-title">
+        A student journey should not become visible only during
+        <span>placement season.</span>
+      </h2>
+      <p>
+        When learning, application, and placement preparation remain
+        disconnected, useful support conversations can arrive later than they
+        should.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .institution-transition__grid {
+    display: grid;
+    grid-template-columns: 0.45fr 1.55fr;
+    gap: var(--space-16);
+  }
+  .institution-transition__grid > p {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-small);
+  }
+  .institution-transition__grid div > p {
+    max-width: 46rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .institution-transition__grid h2 {
+    margin-bottom: var(--space-8);
+    font-size: var(--text-statement);
+    line-height: 1;
+  }
+  .institution-transition__grid h2 span {
+    color: var(--color-primary);
+    background: linear-gradient(var(--color-primary), var(--color-primary)) 0
+      100% / calc(var(--p, 1) * 100%) 0.06em no-repeat;
+    padding-bottom: 0.06em;
+  }
+  :global(.motion-enhanced) .institution-transition__grid {
+    --p: 0;
+  }
+  @media (max-width: 46rem) {
+    .institution-transition__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

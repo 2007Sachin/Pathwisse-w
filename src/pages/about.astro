@@ -1,0 +1,34 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import AboutFinalCTASection from "../components/sections/about/AboutFinalCTASection.astro";
+import AboutHeroSection from "../components/sections/about/AboutHeroSection.astro";
+import ApproachSection from "../components/sections/about/ApproachSection.astro";
+import BeliefsSection from "../components/sections/about/BeliefsSection.astro";
+import ClaimsBoundarySection from "../components/sections/about/ClaimsBoundarySection.astro";
+import CompanySection from "../components/sections/about/CompanySection.astro";
+import EmployabilityDefinitionSection from "../components/sections/about/EmployabilityDefinitionSection.astro";
+import FutureDirectionSection from "../components/sections/about/FutureDirectionSection.astro";
+import LastMileSection from "../components/sections/about/LastMileSection.astro";
+import ProblemSection from "../components/sections/about/ProblemSection.astro";
+import WhyPathwisseSection from "../components/sections/about/WhyPathwisseSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About Pathwisse and Shaquantum Labs"
+  description="Learn why Shaquantum Labs Private Limited is building Pathwisse around a more connected journey from learning to opportunity."
+>
+  <PageShell>
+    <AboutHeroSection />
+    <ProblemSection />
+    <LastMileSection />
+    <WhyPathwisseSection />
+    <ApproachSection />
+    <BeliefsSection />
+    <EmployabilityDefinitionSection />
+    <CompanySection />
+    <ClaimsBoundarySection />
+    <FutureDirectionSection />
+    <AboutFinalCTASection />
+  </PageShell>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import { contactPage } from "../../../content/pages/contact";
+---
+
+<section
+  class="contact-hero section section--spacious"
+  aria-labelledby="page-title"
+>
+  <div class="container-wide contact-hero__grid">
+    <div>
+      <p class="contact-hero__eyebrow">{contactPage.eyebrow}</p>
+      <h1 id="page-title">{contactPage.heading}</h1>
+    </div>
+    <div class="contact-hero__aside">
+      <p>{contactPage.introduction}</p>
+      <a class="action-link" href="#contact-email">
+        Email Pathwisse
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-hero__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .contact-hero__eyebrow {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .contact-hero h1 {
+    max-width: 15ch;
+    margin-bottom: 0;
+  }
+  .contact-hero__aside p {
+    margin-bottom: var(--space-6);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .contact-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

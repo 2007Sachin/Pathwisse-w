@@ -1,0 +1,68 @@
+---
+import { studentValues } from "../../../content/pages/home";
+---
+
+<section id="student-value" class="value section" aria-labelledby="value-title">
+  <div class="container">
+    <header class="value__header">
+      <p>What this means for a student</p>
+      <h2 id="value-title">A clearer way to move forward.</h2>
+    </header>
+    <ol class="value__list">
+      {studentValues.map((value, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{value.title}</h3>
+          <p>{value.copy}</p>
+        </li>
+      ))}
+    </ol>
+    <a class="button button--secondary" href="/students">
+      Explore Pathwisse for Students
+    </a>
+  </div>
+</section>
+
+<style>
+  .value__header {
+    max-width: 48rem;
+  }
+  .value__header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .value__list {
+    margin: var(--space-16) 0 var(--space-10);
+    padding: 0;
+    list-style: none;
+  }
+  .value__list li {
+    display: grid;
+    grid-template-columns: 3rem 0.8fr 1.2fr;
+    gap: var(--space-8);
+    padding-block: var(--space-6);
+    border-top: var(--border-width) solid var(--color-border);
+    align-items: baseline;
+  }
+  .value__list span {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+  }
+  .value__list h3,
+  .value__list p {
+    margin: 0;
+  }
+  .value__list p {
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 46rem) {
+    .value__list li {
+      grid-template-columns: 2rem 1fr;
+      gap: var(--space-3) var(--space-4);
+    }
+    .value__list p {
+      grid-column: 2;
+    }
+  }
+</style>

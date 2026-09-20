@@ -1,0 +1,49 @@
+---
+import JourneyPath from "../../media/JourneyPath.astro";
+import { institutionJourney } from "../../../content/pages/institutions";
+---
+
+<section class="perspective section" aria-labelledby="perspective-title">
+  <div class="container">
+    <header class="perspective__header">
+      <div>
+        <p>The Pathwisse institutional perspective</p>
+        <h2 id="perspective-title">Design employability as a progression.</h2>
+      </div>
+      <p>
+        The Pathwisse approach connects the ideas that shape a student journey.
+        It does not claim that institutions can currently monitor these stages
+        in software.
+      </p>
+    </header>
+    <JourneyPath
+      stages={institutionJourney}
+      label="The Pathwisse institutional employability approach"
+      motion="reveal"
+    />
+  </div>
+</section>
+
+<style>
+  .perspective__header {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: end;
+    margin-bottom: var(--space-16);
+  }
+  .perspective__header div p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .perspective__header > p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .perspective__header {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

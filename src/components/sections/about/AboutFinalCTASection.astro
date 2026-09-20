@@ -1,0 +1,78 @@
+<section
+  class="about-final section section--dark"
+  aria-labelledby="about-final-title"
+>
+  <div class="container">
+    <h2 id="about-final-title">
+      Continue from the perspective that matters to you.
+    </h2>
+    <div class="about-final__paths">
+      <div>
+        <p>For students</p>
+        <h3>See what the journey could mean for your next step.</h3>
+        <a class="button button--primary" href="/students">
+          Explore Pathwisse for Students
+        </a>
+      </div>
+      <div>
+        <p>For institutions</p>
+        <h3>Discuss how the employability journey fits your context.</h3>
+        <a class="button button--secondary" href="/contact">
+          Request a Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-final h2 {
+    margin-bottom: var(--space-12);
+    font-size: var(--text-h3);
+  }
+  .about-final__paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .about-final__paths > div {
+    display: flex;
+    min-height: 21rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-8) var(--space-8) 0 0;
+  }
+  .about-final__paths > div + div {
+    padding-left: var(--space-8);
+    border-left: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .about-final__paths p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+  }
+  .about-final__paths h3 {
+    max-width: 18ch;
+    margin-block: var(--space-8) auto;
+    color: var(--color-text-on-dark);
+    font-size: var(--text-h2);
+  }
+  .about-final .button--secondary {
+    border-color: rgb(255 255 255 / 0.5);
+    background: transparent;
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 44rem) {
+    .about-final__paths {
+      grid-template-columns: 1fr;
+    }
+    .about-final__paths > div {
+      min-height: 18rem;
+      padding-right: 0;
+    }
+    .about-final__paths > div + div {
+      padding-left: 0;
+      border-top: 1px solid rgb(255 255 255 / 0.22);
+      border-left: 0;
+    }
+  }
+</style>

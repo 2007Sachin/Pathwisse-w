@@ -1,0 +1,76 @@
+---
+import { fragmentedJourney } from "../../../content/pages/howItWorks";
+---
+
+<section
+  class="fragmented section section--subtle"
+  aria-labelledby="fragmented-title"
+>
+  <div class="container fragmented__grid">
+    <header>
+      <p>Why the journey breaks apart</p>
+      <h2 id="fragmented-title">
+        The experiences exist. The connection often does not.
+      </h2>
+      <p>
+        Students can move through years of learning and activity without one
+        clear thread connecting those experiences to an opportunity
+        conversation. That is a structural gap—not a personal failure.
+      </p>
+    </header>
+    <ol aria-label="A commonly fragmented education-to-hiring journey">
+      {fragmentedJourney.map((stage, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{stage}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .fragmented__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+  .fragmented header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .fragmented header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .fragmented ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .fragmented li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .fragmented li:nth-child(4) {
+    margin-bottom: var(--space-8);
+    border-bottom-style: dashed;
+  }
+  .fragmented span {
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+  }
+  .fragmented strong {
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .fragmented__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

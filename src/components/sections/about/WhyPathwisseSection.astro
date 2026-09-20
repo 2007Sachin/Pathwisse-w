@@ -1,0 +1,50 @@
+<section class="why-pathwisse section" aria-labelledby="why-pathwisse-title">
+  <div class="container why-pathwisse__grid">
+    <header>
+      <p>Why Pathwisse exists</p>
+      <h2 id="why-pathwisse-title">
+        Bring the parts of employability into a more coherent journey.
+      </h2>
+    </header>
+    <div>
+      <p>
+        Pathwisse is being built around the connection between career direction,
+        relevant development, application, demonstration, and placement
+        preparation.
+      </p>
+      <p>
+        That sentence describes an intended product role and a design
+        philosophy. It does not imply that every supporting software workflow is
+        currently verified.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-pathwisse__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .why-pathwisse header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .why-pathwisse__grid > div p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .why-pathwisse__grid > div p + p {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .why-pathwisse__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

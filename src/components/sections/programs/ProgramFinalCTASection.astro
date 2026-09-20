@@ -1,0 +1,82 @@
+---
+import { productLinks } from "../../../content/site";
+---
+
+<section
+  class="program-final section section--dark"
+  aria-labelledby="program-final-title"
+>
+  <div class="container">
+    <h2 id="program-final-title">
+      Continue from the journey, not an invented catalogue.
+    </h2>
+    <div class="program-final__paths">
+      <div>
+        <p>For students</p>
+        <h3>Understand what you are building toward.</h3>
+        <a class="button button--primary" href={productLinks.getStarted}>
+          Start Your Journey
+        </a>
+      </div>
+      <div>
+        <p>For institutions</p>
+        <h3>Discuss where structured development may fit.</h3>
+        <a class="button button--secondary" href="/contact">
+          Request a Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .program-final h2 {
+    margin-bottom: var(--space-12);
+    font-size: var(--text-h3);
+  }
+  .program-final__paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .program-final__paths > div {
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-8) var(--space-8) 0 0;
+  }
+  .program-final__paths > div + div {
+    padding-left: var(--space-8);
+    border-left: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .program-final__paths p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+  }
+  .program-final__paths h3 {
+    max-width: 17ch;
+    margin-block: var(--space-8) auto;
+    color: var(--color-text-on-dark);
+    font-size: var(--text-h2);
+  }
+  .program-final .button--secondary {
+    border-color: rgb(255 255 255 / 0.5);
+    background: transparent;
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 44rem) {
+    .program-final__paths {
+      grid-template-columns: 1fr;
+    }
+    .program-final__paths > div {
+      min-height: 17rem;
+      padding-right: 0;
+    }
+    .program-final__paths > div + div {
+      padding-left: 0;
+      border-top: 1px solid rgb(255 255 255 / 0.22);
+      border-left: 0;
+    }
+  }
+</style>

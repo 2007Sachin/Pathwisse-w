@@ -1,0 +1,69 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested Pathwisse page could not be found."
+  noindex
+>
+  <PageShell>
+    <section
+      class="not-found section section--spacious"
+      aria-labelledby="page-title"
+    >
+      <div class="container not-found__content">
+        <p>404</p>
+        <h1 id="page-title">This path does not lead to a page.</h1>
+        <p>
+          The address may have changed, or the page may no longer be available.
+          You can return home or continue with one of the main Pathwisse paths.
+        </p>
+        <nav class="not-found__actions" aria-label="Page not found options">
+          <a class="button button--primary" href="/">
+            Return home
+          </a>
+          <a class="button button--secondary" href="/how-it-works">
+            How It Works
+          </a>
+          <a class="action-link" href="/students">
+            For Students
+          </a>
+          <a class="action-link" href="/institutions">
+            For Institutions
+          </a>
+        </nav>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>
+
+<style>
+  .not-found__content {
+    max-width: var(--width-reading);
+  }
+  .not-found__content > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+  }
+  .not-found__content > p:not(:first-child) {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  @media (max-width: 32rem) {
+    .not-found__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+</style>

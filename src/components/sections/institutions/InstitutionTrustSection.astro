@@ -1,0 +1,58 @@
+---
+import { trustPrinciples } from "../../../content/pages/institutions";
+---
+
+<section
+  class="institution-trust section section--dark"
+  aria-labelledby="institution-trust-title"
+>
+  <div class="container institution-trust__grid">
+    <header>
+      <p>Trust and data responsibility</p>
+      <h2 id="institution-trust-title">
+        Specifics should be proven before they are promised.
+      </h2>
+      <p>
+        Privacy, security, permissions, retention, and governance details must
+        come from approved product and policy sources—not marketing inference.
+      </p>
+    </header>
+    <ul>
+      {trustPrinciples.map((principle) => (
+        <li>{principle}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .institution-trust__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .institution-trust header > p:first-child {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .institution-trust header > p:last-child {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .institution-trust ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .institution-trust li {
+    padding-block: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 48rem) {
+    .institution-trust__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

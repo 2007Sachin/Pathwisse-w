@@ -1,0 +1,76 @@
+---
+import { alternativePaths } from "../../../content/pages/contact";
+---
+
+<section class="contact-paths section" aria-labelledby="contact-paths-title">
+  <div class="container">
+    <header>
+      <p>Not ready to talk?</p>
+      <h2 id="contact-paths-title">Choose the most useful next path.</h2>
+    </header>
+    <div class="contact-paths__links">
+      {alternativePaths.map((path) => (
+        <a href={path.href}>
+          <span>{path.title}</span>
+          <small>{path.copy}</small>
+        </a>
+      ))}
+    </div>
+    <footer>
+      <p>
+        Pathwisse is built by <strong>Shaquantum Labs Private Limited</strong>.
+      </p>
+      <p>
+        Any future conversation should begin with a clear understanding of your
+        context and the boundaries of what Pathwisse can support.
+      </p>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .contact-paths header {
+    max-width: var(--width-reading);
+  }
+  .contact-paths header > p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-paths__links {
+    margin-top: var(--space-12);
+    border-top: 1px solid var(--color-border-strong);
+  }
+  .contact-paths__links a {
+    display: grid;
+    grid-template-columns: 0.45fr 0.55fr;
+    gap: var(--space-6);
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  .contact-paths__links span {
+    color: var(--color-ink);
+    font-size: var(--text-body-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-paths__links small,
+  .contact-paths footer p {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .contact-paths footer {
+    display: grid;
+    grid-template-columns: 0.45fr 0.55fr;
+    gap: var(--space-6);
+    margin-top: var(--space-16);
+    padding-top: var(--space-6);
+    border-top: 2px solid var(--color-primary);
+  }
+  @media (max-width: 40rem) {
+    .contact-paths__links a,
+    .contact-paths footer {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

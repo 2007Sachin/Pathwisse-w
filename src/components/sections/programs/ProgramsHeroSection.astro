@@ -1,0 +1,82 @@
+<section
+  class="programs-hero section section--spacious"
+  aria-labelledby="page-title"
+>
+  <div class="container-wide programs-hero__grid">
+    <div>
+      <p>Programs</p>
+      <h1 id="page-title">
+        Programs should help students move forward with purpose.
+      </h1>
+    </div>
+    <div class="programs-hero__aside">
+      <p>
+        Pathwisse treats structured programs as possible interventions within a
+        broader employability journey—not as isolated credentials or a course
+        marketplace.
+      </p>
+      <a class="action-link" href="/how-it-works">
+        See the wider journey
+      </a>
+    </div>
+  </div>
+  <div class="container-wide programs-hero__line" aria-hidden="true">
+    <span></span>
+    <i></i>
+  </div>
+</section>
+
+<style>
+  .programs-hero__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .programs-hero__grid > div:first-child p {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .programs-hero h1 {
+    max-width: 15ch;
+    margin: var(--space-6) 0 0;
+  }
+  .programs-hero__aside p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .programs-hero__line {
+    position: relative;
+    height: 8rem;
+    margin-top: var(--space-20);
+    border-top: 1px solid var(--color-border);
+  }
+  .programs-hero__line span {
+    display: block;
+    width: 64%;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  .programs-hero__line i {
+    position: absolute;
+    top: -0.4rem;
+    left: 64%;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+  @media (max-width: 48rem) {
+    .programs-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .programs-hero__line {
+      height: 3rem;
+    }
+  }
+</style>

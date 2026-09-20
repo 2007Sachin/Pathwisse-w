@@ -1,0 +1,273 @@
+---
+import { learningFragments } from "../../../content/pages/home";
+
+const desktopPaths = [64, 147, 230, 313, 396];
+const mobileAnchors = [
+  [72, 70],
+  [180, 70],
+  [288, 70],
+  [126, 188],
+  [234, 188],
+];
+---
+
+<section id="employment-gap" class="gap section" aria-labelledby="gap-title">
+  <div class="container">
+    <header class="gap__header">
+      <p>From personal uncertainty to a shared gap</p>
+      <h2 id="gap-title">
+        Learning and getting hired are often treated as separate journeys.
+      </h2>
+    </header>
+
+    <div
+      class="gapstage"
+      data-scrub
+      role="img"
+      aria-label="Separate learning experiences—a course, a certificate, a project, an assignment, and a skill—are connected by one line into a clearer answer for a hiring conversation."
+    >
+      <svg class="gapstage__lines gapstage__lines--wide" viewBox="0 0 900 460">
+        {desktopPaths.map((y, index) => (
+          <path
+            class="gapstage__join"
+            style={`--i: ${index}`}
+            pathLength="1"
+            d={`M215 ${y} C380 ${y} 430 230 560 230`}
+          />
+        ))}
+        <path class="gapstage__main" pathLength="1" d="M560 230H708"></path>
+        <circle class="gapstage__hub" cx="560" cy="230" r="6"></circle>
+        <circle class="gapstage__dest" cx="714" cy="230" r="8"></circle>
+      </svg>
+      <svg class="gapstage__lines gapstage__lines--tall" viewBox="0 0 360 600">
+        {mobileAnchors.map(([x, y], index) => (
+          <path
+            class="gapstage__join"
+            style={`--i: ${index}`}
+            pathLength="1"
+            d={`M${x} ${y} C${x} ${y + 90} 180 210 180 300`}
+          />
+        ))}
+        <path class="gapstage__main" pathLength="1" d="M180 300V398"></path>
+        <circle class="gapstage__hub" cx="180" cy="300" r="6"></circle>
+        <circle class="gapstage__dest" cx="180" cy="406" r="8"></circle>
+      </svg>
+
+      {learningFragments.map((fragment, index) => (
+        <span
+          class="gapstage__chip"
+          style={`--i: ${index}; ${fragment.style}`}
+          aria-hidden="true"
+        >
+          {fragment.label}
+        </span>
+      ))}
+
+      <div class="gapstage__answer" aria-hidden="true">
+        <span>Hiring conversation</span>
+        <strong>“What can you do?”</strong>
+      </div>
+    </div>
+
+    <div class="gap__perspectives">
+      <article>
+        <p>Student</p>
+        <h3>What should I learn next?</h3>
+        <span>Direction</span>
+      </article>
+      <article>
+        <p>College</p>
+        <h3>Where could support be useful before placement season?</h3>
+        <span>Context</span>
+      </article>
+      <article>
+        <p>Hiring conversation</p>
+        <h3>What can this student demonstrate?</h3>
+        <span>Evidence</span>
+      </article>
+    </div>
+    <p class="gap__close">
+      The challenge is not a lack of activity. It is the missing connection
+      between direction, development, applied work, and preparation.
+    </p>
+  </div>
+</section>
+
+<style>
+  .gap__header {
+    display: grid;
+    grid-template-columns: 0.55fr 1.45fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+  .gap__header > p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .gap__header h2 {
+    font-size: var(--text-statement);
+    line-height: 1;
+  }
+
+  .gapstage {
+    --dx: 14%;
+    position: relative;
+    aspect-ratio: 900 / 460;
+    margin-top: var(--space-16);
+    container-type: inline-size;
+  }
+  .gapstage__lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .gapstage__lines--tall {
+    display: none;
+  }
+  .gapstage__lines path {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .gapstage__join {
+    --q: clamp(0, calc((var(--p, 1) - 0.4 - var(--i) * 0.06) / 0.3), 1);
+    stroke: var(--color-primary);
+    stroke-opacity: 0.55;
+    stroke-width: 2;
+    stroke-dasharray: 1;
+    stroke-dashoffset: calc(1 - var(--q));
+  }
+  .gapstage__main {
+    --q: clamp(0, calc((var(--p, 1) - 0.72) / 0.22), 1);
+    stroke: var(--color-primary);
+    stroke-width: 4;
+    stroke-dasharray: 1;
+    stroke-dashoffset: calc(1 - var(--q));
+  }
+  .gapstage__hub {
+    fill: var(--color-primary);
+    opacity: clamp(0, calc((var(--p, 1) - 0.5) * 6), 1);
+  }
+  .gapstage__dest {
+    fill: var(--color-accent);
+    opacity: clamp(0, calc((var(--p, 1) - 0.92) * 14), 1);
+  }
+
+  .gapstage__chip {
+    --k: clamp(0, calc(var(--p, 1) * 2 - var(--i) * 0.1), 1);
+    position: absolute;
+    top: var(--cy);
+    left: var(--cx, var(--dx));
+    padding: 0.5em 0.9em;
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: 999px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-subtle);
+    color: var(--color-ink);
+    font-size: max(0.875rem, 1.9cqw);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+    translate: -50% -50%;
+    transform: translate(
+        calc((1 - var(--k)) * var(--sx)),
+        calc((1 - var(--k)) * var(--sy))
+      )
+      rotate(calc((1 - var(--k)) * var(--sr)));
+  }
+  .gapstage__answer {
+    position: absolute;
+    top: 50%;
+    left: 82%;
+    display: grid;
+    gap: var(--space-2);
+    max-width: 17%;
+    translate: 0 -50%;
+  }
+  .gapstage__answer span {
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .gapstage__answer strong {
+    color: var(--color-ink);
+    font-size: max(1.125rem, 2.7cqw);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .gap__perspectives {
+    margin-top: var(--space-16);
+    border-top: var(--border-width) solid var(--color-border-strong);
+  }
+  .gap__perspectives article {
+    display: grid;
+    grid-template-columns: 0.55fr 1.2fr 0.25fr;
+    gap: var(--space-8);
+    align-items: baseline;
+    padding-block: var(--space-8);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+  .gap__perspectives article p,
+  .gap__perspectives article span {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .gap__perspectives article h3 {
+    margin: 0;
+  }
+  .gap__perspectives article span {
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .gap__close {
+    max-width: 48rem;
+    margin: var(--space-16) 0 0 auto;
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+
+  @media (max-width: 46rem) {
+    .gap__header {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .gapstage {
+      aspect-ratio: 360 / 600;
+      max-width: 26rem;
+      margin-inline: auto;
+    }
+    .gapstage__lines--wide {
+      display: none;
+    }
+    .gapstage__lines--tall {
+      display: block;
+    }
+    .gapstage__chip {
+      top: var(--my);
+      left: var(--mx);
+      font-size: 0.875rem;
+    }
+    .gapstage__answer {
+      top: 70%;
+      left: 50%;
+      max-width: none;
+      translate: -50% 0;
+      text-align: center;
+    }
+    .gapstage__answer strong {
+      font-size: 1.375rem;
+    }
+    .gap__perspectives article {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+    .gap__perspectives article span {
+      text-align: left;
+    }
+  }
+</style>

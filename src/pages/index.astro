@@ -1,0 +1,44 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import ApproachSequenceSection from "../components/sections/home/ApproachSequenceSection.astro";
+import BrandBeliefSection from "../components/sections/home/BrandBeliefSection.astro";
+import EmploymentGapSection from "../components/sections/home/EmploymentGapSection.astro";
+import FinalCTASection from "../components/sections/home/FinalCTASection.astro";
+import HeroSection from "../components/sections/home/HeroSection.astro";
+import InstitutionTransitionSection from "../components/sections/home/InstitutionTransitionSection.astro";
+import InstitutionValueSection from "../components/sections/home/InstitutionValueSection.astro";
+import ProgramsSection from "../components/sections/home/ProgramsSection.astro";
+import StudentRealitySection from "../components/sections/home/StudentRealitySection.astro";
+import StudentStorySection from "../components/sections/home/StudentStorySection.astro";
+import StudentValueSection from "../components/sections/home/StudentValueSection.astro";
+import TrustSection from "../components/sections/home/TrustSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Pathwisse"
+  description="Pathwisse is being built around a clearer journey from learning and application to placement preparation."
+>
+  <PageShell>
+    <HeroSection />
+    <StudentRealitySection />
+    <EmploymentGapSection />
+    <div
+      class="bridge bridge--to-dark"
+      aria-hidden="true"
+      data-scrub
+      data-scrub-from="1"
+      data-scrub-to="0.55"
+    ></div>
+    <ApproachSequenceSection />
+    <div class="bridge bridge--from-dark" aria-hidden="true"></div>
+    <StudentStorySection />
+    <StudentValueSection />
+    <InstitutionTransitionSection />
+    <InstitutionValueSection />
+    <ProgramsSection />
+    <TrustSection />
+    <BrandBeliefSection />
+    <FinalCTASection />
+  </PageShell>
+</BaseLayout>

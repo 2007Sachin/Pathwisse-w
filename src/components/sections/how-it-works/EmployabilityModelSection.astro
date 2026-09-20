@@ -1,0 +1,59 @@
+---
+import JourneyPath from "../../media/JourneyPath.astro";
+import { employabilityJourney } from "../../../content/pages/howItWorks";
+---
+
+<section
+  id="employability-model"
+  class="model section section--dark"
+  aria-labelledby="model-title"
+>
+  <div class="container">
+    <header class="model__header">
+      <p>The employability model</p>
+      <div>
+        <h2 id="model-title">One journey. Six connected ideas.</h2>
+        <p>
+          This is the employability journey Pathwisse is being built around. It
+          is a strategic model, not a list of verified software modules.
+        </p>
+      </div>
+    </header>
+    <div class="model__path">
+      <JourneyPath
+        stages={employabilityJourney}
+        dark
+        motion="reveal"
+        label="Direction, development, application, demonstration, preparation, and opportunity"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .model__header {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    gap: var(--space-12);
+  }
+  .model__header > p,
+  .model__header div > p {
+    color: var(--color-text-muted-on-dark);
+  }
+  .model__header > p {
+    font-size: var(--text-small);
+  }
+  .model__header div > p {
+    max-width: 43rem;
+    font-size: var(--text-body-lg);
+  }
+  .model__path {
+    margin-top: var(--space-20);
+  }
+  @media (max-width: 48rem) {
+    .model__header {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import { employabilityElements } from "../../../content/pages/about";
+---
+
+<section
+  class="employability-definition section section--dark"
+  aria-labelledby="employability-definition-title"
+>
+  <div class="container employability-definition__grid">
+    <header>
+      <p>How we think about employability</p>
+      <h2 id="employability-definition-title">
+        Not “having a job.” A developing ability to move toward opportunity.
+      </h2>
+      <p>
+        Employability describes a combination of direction, relevant
+        development, application, communication, and preparation. It is
+        contextual and never a measure of someone’s worth.
+      </p>
+    </header>
+    <ol>
+      {employabilityElements.map((element, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          {element}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .employability-definition__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .employability-definition header > p:first-child {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .employability-definition header > p:last-child {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .employability-definition ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .employability-definition li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    color: var(--color-text-on-dark);
+  }
+  .employability-definition li span {
+    color: #79a8ff;
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .employability-definition__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

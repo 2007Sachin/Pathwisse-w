@@ -1,0 +1,297 @@
+---
+import { approachStages } from "../../../content/pages/home";
+---
+
+<section
+  id="introducing-pathwisse"
+  class="approach"
+  aria-labelledby="approach-title"
+  data-stages="pin"
+>
+  <div class="approach__pin">
+    <div class="approach__light" aria-hidden="true"></div>
+    <div class="container approach__inner">
+      <header class="approach__header">
+        <p>So what would a connected journey look like?</p>
+        <h2 id="approach-title">Meet Pathwisse.</h2>
+        <p>
+          Pathwisse is being built around a connected approach to career
+          direction, relevant development, application, and placement
+          preparation—so each stage can lead more clearly to the next.
+        </p>
+      </header>
+
+      <ol class="approach__list">
+        {approachStages.map((stage, index) => (
+          <li data-stage>
+            <span class="approach__node" aria-hidden="true" />
+            <span class="approach__number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3>{stage.title}</h3>
+            <p>{stage.copy}</p>
+          </li>
+        ))}
+      </ol>
+
+      <footer class="approach__foot">
+        <p>
+          This is the intended journey and design philosophy. Specific product
+          workflows will be shown only after they are verified.
+        </p>
+        <a class="action-link" href="/how-it-works">
+          Understand the complete journey
+        </a>
+      </footer>
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach {
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      var(--color-ink) 0%,
+      var(--color-ink-deep) 100%
+    );
+    color: var(--color-text-on-dark);
+  }
+  .approach__pin {
+    position: relative;
+    overflow: clip;
+    padding-block: var(--section-standard);
+  }
+  .approach__light {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        38rem 22rem at calc(8% + var(--f, 0.5) * 84%) 62%,
+        rgb(23 92 211 / 0.3),
+        transparent 70%
+      ),
+      radial-gradient(
+        30rem 18rem at 92% 6%,
+        rgb(200 104 35 / calc(var(--f, 1) * 0.16)),
+        transparent 70%
+      );
+  }
+  .approach__inner {
+    position: relative;
+  }
+
+  .approach__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-4) var(--space-12);
+    align-items: end;
+  }
+  .approach__header > p:first-child {
+    grid-column: 1 / -1;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+  }
+  .approach__header h2 {
+    margin: 0;
+    color: var(--color-text-on-dark);
+    font-size: var(--text-statement);
+    line-height: 0.96;
+  }
+  .approach__header > p:last-child {
+    max-width: 30rem;
+    margin: 0;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+
+  .approach__list {
+    position: relative;
+    display: grid;
+    margin: var(--space-16) 0 var(--space-10);
+    padding: 0;
+    list-style: none;
+  }
+  .approach__list li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    column-gap: var(--space-3);
+    align-content: start;
+    padding: 0 0 var(--space-8) 0;
+  }
+  .approach__node {
+    grid-row: 1 / span 3;
+    position: relative;
+    z-index: 1;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.2rem;
+    border: 3px solid #4d8bff;
+    border-radius: 50%;
+    background: var(--color-ink-deep);
+    transition:
+      background-color var(--motion-standard) var(--ease-standard),
+      box-shadow var(--motion-standard) var(--ease-standard),
+      border-color var(--motion-standard) var(--ease-standard);
+  }
+  .approach__list li:last-child .approach__node {
+    border-color: var(--color-accent);
+  }
+  .approach__number {
+    grid-column: 2;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-caption);
+    letter-spacing: 0.1em;
+  }
+  .approach h3 {
+    grid-column: 2;
+    margin: var(--space-1) 0 var(--space-2);
+    color: var(--color-text-on-dark);
+    font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+    transition:
+      opacity var(--motion-standard) var(--ease-standard),
+      transform var(--motion-standard) var(--ease-emphasis);
+  }
+  .approach li > p {
+    grid-column: 2;
+    max-width: 24rem;
+    margin: 0;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+    transition: opacity var(--motion-standard) var(--ease-standard);
+  }
+  .approach__list li:not(:last-child)::before,
+  .approach__list li:not(:last-child)::after {
+    position: absolute;
+    top: 1.3rem;
+    bottom: -0.3rem;
+    left: 0.5625rem;
+    width: 1px;
+    background: rgb(255 255 255 / 0.2);
+    content: "";
+  }
+  .approach__list li:not(:last-child)::after {
+    width: 2px;
+    margin-left: -0.5px;
+    background: #4d8bff;
+    transform-origin: top;
+    transition: transform 700ms var(--ease-emphasis);
+  }
+
+  .approach__foot {
+    display: grid;
+    max-width: 36rem;
+    gap: var(--space-4);
+  }
+  .approach__foot p {
+    margin: 0;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+  }
+  .approach .action-link {
+    color: #8db4ff;
+  }
+
+  /* Tier 3: stage progression. All copy stays in the DOM and readable. */
+  :global(.motion-enhanced) .approach__list li:not(:last-child)::after {
+    transform: scaleY(0);
+  }
+  :global(.motion-enhanced) .approach__list li.is-past::after {
+    transform: scaleY(1);
+  }
+  :global(.motion-enhanced) .approach__list li:not(.is-active):not(.is-past) {
+    & h3 {
+      opacity: 0.5;
+    }
+    & > p {
+      opacity: 0.62;
+    }
+    & .approach__node {
+      border-color: rgb(255 255 255 / 0.35);
+    }
+  }
+  :global(.motion-enhanced) .approach__list li.is-active h3 {
+    transform: translateY(-2px);
+  }
+  :global(.motion-enhanced) .approach__list li.is-active .approach__node,
+  :global(.motion-enhanced) .approach__list li.is-past .approach__node {
+    background: #4d8bff;
+    box-shadow: 0 0 0 0.35rem rgb(77 139 255 / 0.22);
+  }
+  :global(.motion-enhanced)
+    .approach__list
+    li:last-child.is-active
+    .approach__node {
+    border-color: var(--color-accent);
+    background: #f0a56b;
+    box-shadow: 0 0 0 0.5rem rgb(200 104 35 / 0.3);
+  }
+
+  @media (max-width: 48rem) {
+    .approach__header {
+      grid-template-columns: 1fr;
+    }
+    .approach__list {
+      margin-top: var(--space-12);
+    }
+  }
+
+  /* Desktop: native-scroll pin. The list becomes one horizontal path. */
+  @media (min-width: 64rem) {
+    .approach__list {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      column-gap: 0;
+    }
+    .approach__list li {
+      grid-template-columns: 1fr;
+      padding: var(--space-8) var(--space-6) 0 0;
+    }
+    .approach__node {
+      grid-row: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+    }
+    .approach__number,
+    .approach h3,
+    .approach li > p {
+      grid-column: 1;
+    }
+    .approach__list li:not(:last-child)::before,
+    .approach__list li:not(:last-child)::after {
+      top: 0.5625rem;
+      right: -0.5625rem;
+      bottom: auto;
+      left: 0.5625rem;
+      width: auto;
+      height: 1px;
+      margin: 0;
+    }
+    .approach__list li:not(:last-child)::after {
+      height: 2px;
+      margin-top: -0.5px;
+      transform-origin: left;
+    }
+    :global(.motion-enhanced) .approach__list li:not(:last-child)::after {
+      transform: scaleX(0);
+    }
+    :global(.motion-enhanced) .approach__list li.is-past::after {
+      transform: scaleX(1);
+    }
+  }
+  @media (min-width: 64rem) and (min-height: 44rem) {
+    :global(.motion-enhanced) .approach {
+      height: 340vh;
+    }
+    :global(.motion-enhanced) .approach__pin {
+      position: sticky;
+      top: 0;
+      display: grid;
+      height: 100vh;
+      align-items: center;
+      padding-block: var(--space-8);
+    }
+  }
+</style>

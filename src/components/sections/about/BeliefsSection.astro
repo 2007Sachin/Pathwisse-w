@@ -1,0 +1,63 @@
+---
+import { beliefs } from "../../../content/pages/about";
+---
+
+<section class="about-beliefs section" aria-labelledby="about-beliefs-title">
+  <div class="container about-beliefs__header">
+    <p>What we believe</p>
+    <h2 id="about-beliefs-title">
+      Five principles for keeping the journey grounded.
+    </h2>
+  </div>
+  <div class="container about-beliefs__list">
+    {beliefs.map((belief, index) => (
+      <article>
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <h3>{belief.title}</h3>
+        <p>{belief.copy}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .about-beliefs__header {
+    display: grid;
+    grid-template-columns: 0.45fr 1.55fr;
+    gap: var(--space-10);
+  }
+  .about-beliefs__header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .about-beliefs__list {
+    margin-top: var(--space-16);
+    border-top: 1px solid var(--color-border-strong);
+  }
+  .about-beliefs article {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr 1fr;
+    gap: clamp(1.5rem, 5vw, 5rem);
+    padding-block: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .about-beliefs article span {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+  }
+  .about-beliefs article h3,
+  .about-beliefs article p {
+    margin: 0;
+  }
+  .about-beliefs article p {
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 48rem) {
+    .about-beliefs__header,
+    .about-beliefs article {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

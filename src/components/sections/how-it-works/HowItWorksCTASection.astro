@@ -1,0 +1,80 @@
+---
+import { productLinks } from "../../../content/site";
+---
+
+<section class="hiw-cta section section--dark" aria-labelledby="hiw-cta-title">
+  <div class="container">
+    <p>Choose the next conversation</p>
+    <h2 id="hiw-cta-title">Where do you enter the journey?</h2>
+    <div class="hiw-cta__actions">
+      <div>
+        <h3>For students</h3>
+        <p>
+          Explore what a more connected employability journey could mean for
+          you.
+        </p>
+        <a class="button button--primary" href={productLinks.getStarted}>
+          Start Your Journey
+        </a>
+      </div>
+      <div>
+        <h3>For institutions</h3>
+        <p>
+          Discuss how employability development and placement preparation could
+          connect.
+        </p>
+        <a class="button button--secondary" href="/contact">
+          Request a Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hiw-cta > div > p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-small);
+  }
+  .hiw-cta__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: var(--space-12);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .hiw-cta__actions > div {
+    display: flex;
+    min-height: 22rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-8) var(--space-8) 0 0;
+  }
+  .hiw-cta__actions > div + div {
+    padding-left: var(--space-8);
+    border-left: 1px solid rgb(255 255 255 / 0.22);
+  }
+  .hiw-cta__actions p {
+    max-width: 30rem;
+    margin-bottom: auto;
+    color: var(--color-text-muted-on-dark);
+  }
+  .hiw-cta .button--secondary {
+    border-color: rgb(255 255 255 / 0.5);
+    background: transparent;
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 44rem) {
+    .hiw-cta__actions {
+      grid-template-columns: 1fr;
+    }
+    .hiw-cta__actions > div {
+      min-height: 19rem;
+      padding-right: 0;
+    }
+    .hiw-cta__actions > div + div {
+      padding-left: 0;
+      border-top: 1px solid rgb(255 255 255 / 0.22);
+      border-left: 0;
+    }
+  }
+</style>

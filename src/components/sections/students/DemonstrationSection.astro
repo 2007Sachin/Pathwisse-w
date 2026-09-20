@@ -1,0 +1,77 @@
+---
+import { studentPrinciples } from "../../../content/pages/students";
+const content = studentPrinciples.demonstration;
+---
+
+<section
+  class="demonstration section section--subtle"
+  aria-labelledby="demonstration-title"
+>
+  <div class="container demonstration__grid">
+    <header>
+      <p>{content.eyebrow}</p>
+      <h2 id="demonstration-title">{content.title}</h2>
+      <p>{content.lead}</p>
+    </header>
+    <div
+      class="demonstration__shift"
+      aria-label="From a skill label to a grounded example"
+    >
+      <p>
+        <span>From</span>
+        {content.before}
+      </p>
+      <i aria-hidden="true"></i>
+      <p>
+        <span>Toward</span>
+        {content.after}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .demonstration__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .demonstration header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .demonstration header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .demonstration__shift {
+    display: grid;
+    align-content: center;
+    gap: var(--space-5);
+  }
+  .demonstration__shift p {
+    margin: 0;
+    padding-block: var(--space-6);
+    border-block: 1px solid var(--color-border);
+    font-size: var(--text-h3);
+  }
+  .demonstration__shift span {
+    display: block;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+    text-transform: uppercase;
+  }
+  .demonstration__shift i {
+    width: 1px;
+    height: 2.5rem;
+    margin-left: var(--space-4);
+    background: var(--color-primary);
+  }
+  @media (max-width: 48rem) {
+    .demonstration__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

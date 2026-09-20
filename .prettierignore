@@ -1,0 +1,7 @@
+dist
+.astro
+node_modules
+ECC
+package-lock.json
+.playwright-mcp
+artifacts

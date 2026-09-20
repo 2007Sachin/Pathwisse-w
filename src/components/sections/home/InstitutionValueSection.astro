@@ -1,0 +1,196 @@
+---
+import { institutionValues } from "../../../content/pages/home";
+---
+
+<section
+  id="institution-value"
+  class="institution-value section section--subtle"
+  aria-labelledby="institution-value-title"
+>
+  <div class="container">
+    <header class="institution-value__header">
+      <p>For colleges and universities</p>
+      <h2 id="institution-value-title">
+        Make support more connected to the student journey.
+      </h2>
+      <p>
+        Pathwisse’s institutional direction is to bring employability
+        development and placement preparation closer together. Specific
+        workflows and visibility remain subject to product verification.
+      </p>
+    </header>
+    <div
+      class="institution-value__visual"
+      data-motion="lines"
+      aria-label="Student journeys connected with faculty, mentor, and placement support"
+    >
+      <div class="institution-value__orbit" aria-hidden="true">
+        <span class="institution-value__student">Students</span>
+        <span>Faculty</span>
+        <span>Mentors</span>
+        <span>Placement team</span>
+        <svg viewBox="0 0 800 260">
+          <path
+            pathLength="1"
+            d="M90 130C210 25 310 40 400 130S590 240 710 130"
+          />
+          <path
+            pathLength="1"
+            d="M90 130c125 100 230 88 310 0S590 18 710 130"
+          />
+        </svg>
+      </div>
+      <p>
+        One student journey. A shared direction for the people supporting it.
+      </p>
+    </div>
+    <div class="institution-value__items">
+      {institutionValues.map((value, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{value.title}</h3>
+          <p>{value.copy}</p>
+        </article>
+      ))}
+    </div>
+    <div class="cluster">
+      <a class="button button--primary" href="/contact">
+        Request a Demo
+      </a>
+      <a class="button button--secondary" href="/institutions">
+        Explore for Institutions
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .institution-value__header {
+    display: grid;
+    grid-template-columns: 0.45fr 0.9fr 0.65fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+  .institution-value__header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .institution-value__header > p:last-child {
+    color: var(--color-text-muted);
+  }
+  .institution-value__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-block: var(--space-16) var(--space-10);
+    border-top: var(--border-width) solid var(--color-border-strong);
+  }
+  .institution-value__visual {
+    margin-top: var(--space-16);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: var(--color-ink);
+    color: var(--color-text-on-dark);
+  }
+  .institution-value__orbit {
+    position: relative;
+    min-height: 17rem;
+  }
+  .institution-value__orbit svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .institution-value__orbit path {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 2;
+    opacity: 0.7;
+  }
+  :global(.motion-enhanced) .institution-value__visual path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  :global(.motion-enhanced) .institution-value__visual.is-motion-visible path {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset var(--motion-story) var(--ease-emphasis);
+  }
+  :global(.motion-enhanced)
+    .institution-value__visual.is-motion-visible
+    path
+    + path {
+    transition-delay: var(--motion-fast);
+  }
+  .institution-value__orbit span {
+    position: absolute;
+    z-index: 1;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid rgb(255 255 255 / 0.28);
+    background: var(--color-ink);
+    font-size: var(--text-small);
+  }
+  .institution-value__orbit span:nth-of-type(1) {
+    top: 43%;
+    left: 44%;
+    border-color: var(--color-primary);
+  }
+  .institution-value__orbit span:nth-of-type(2) {
+    top: 8%;
+    left: 10%;
+  }
+  .institution-value__orbit span:nth-of-type(3) {
+    right: 11%;
+    bottom: 8%;
+  }
+  .institution-value__orbit span:nth-of-type(4) {
+    top: 11%;
+    right: 9%;
+  }
+  .institution-value__visual > p {
+    max-width: 35rem;
+    margin: var(--space-6) 0 0 auto;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .institution-value__items article {
+    padding: var(--space-6) var(--space-6) var(--space-8) 0;
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+  .institution-value__items span {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+  }
+  .institution-value__items h3 {
+    margin-block: var(--space-8) var(--space-4);
+  }
+  .institution-value__items p {
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 52rem) {
+    .institution-value__header {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .institution-value__items {
+      grid-template-columns: 1fr;
+    }
+    .institution-value__orbit {
+      min-height: 14rem;
+    }
+    .institution-value__orbit span:nth-of-type(1) {
+      left: 38%;
+    }
+  }
+  @media (max-width: 34rem) {
+    .institution-value .cluster {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .institution-value__visual path {
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+  }
+</style>

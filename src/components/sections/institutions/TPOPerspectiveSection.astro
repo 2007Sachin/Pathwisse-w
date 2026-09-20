@@ -1,0 +1,57 @@
+---
+import { tpoQuestions } from "../../../content/pages/institutions";
+---
+
+<section class="tpo section section--dark" aria-labelledby="tpo-title">
+  <div class="container tpo__grid">
+    <header>
+      <p>For placement teams and TPOs</p>
+      <h2 id="tpo-title">
+        Ask the questions before preparation becomes urgent.
+      </h2>
+      <p>
+        These are strategic questions for shaping support. They are not
+        dashboard fields or claims about information Pathwisse currently
+        provides.
+      </p>
+    </header>
+    <ul>
+      {tpoQuestions.map((question) => (
+        <li>{question}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tpo__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .tpo header > p:first-child {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tpo header > p:last-child {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .tpo ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tpo li {
+    padding-block: var(--space-6);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    color: var(--color-text-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .tpo__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

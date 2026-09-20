@@ -1,0 +1,92 @@
+---
+import { studentProgramQuestions } from "../../../content/pages/programs";
+---
+
+<section
+  class="student-perspective section section--subtle"
+  aria-labelledby="student-program-title"
+>
+  <div class="container perspective__grid">
+    <header>
+      <p>For students</p>
+      <h2 id="student-program-title">Choose the purpose before the program.</h2>
+      <p>
+        Without a verified catalogue, the most useful starting point is a better
+        set of questions.
+      </p>
+    </header>
+    <ul>
+      {studentProgramQuestions.map((question) => (
+        <li>{question}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+<section
+  class="institution-perspective section section--dark"
+  aria-labelledby="institution-program-title"
+>
+  <div class="container perspective__grid">
+    <header>
+      <p>For institutions</p>
+      <h2 id="institution-program-title">
+        Place a program where it serves the journey.
+      </h2>
+    </header>
+    <div>
+      <p>
+        A program may support an employability initiative, student development,
+        or placement preparation when its purpose and scope are clearly defined.
+      </p>
+      <p>
+        Pathwisse does not currently publish a verified institutional delivery
+        model, cohort workflow, integration, dashboard, or measurement approach.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .perspective__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .perspective__grid header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .perspective__grid header > p:last-child,
+  .student-perspective li {
+    color: var(--color-text-muted);
+  }
+  .student-perspective ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .student-perspective li {
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-body-lg);
+  }
+  .institution-perspective header > p:first-child {
+    color: #79a8ff;
+  }
+  .institution-perspective .perspective__grid > div p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .institution-perspective .perspective__grid > div p + p {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .perspective__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

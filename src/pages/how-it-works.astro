@@ -1,0 +1,28 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import ApproachStagesSection from "../components/sections/how-it-works/ApproachStagesSection.astro";
+import AudiencePerspectivesSection from "../components/sections/how-it-works/AudiencePerspectivesSection.astro";
+import BoundariesSection from "../components/sections/how-it-works/BoundariesSection.astro";
+import ConnectedJourneySection from "../components/sections/how-it-works/ConnectedJourneySection.astro";
+import EmployabilityModelSection from "../components/sections/how-it-works/EmployabilityModelSection.astro";
+import FragmentedJourneySection from "../components/sections/how-it-works/FragmentedJourneySection.astro";
+import HowItWorksCTASection from "../components/sections/how-it-works/HowItWorksCTASection.astro";
+import HowItWorksHero from "../components/sections/how-it-works/HowItWorksHero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="How the Pathwisse employability approach works"
+  description="Understand the connected Pathwisse approach from direction and relevant development through application and preparation for opportunity."
+>
+  <PageShell>
+    <HowItWorksHero />
+    <FragmentedJourneySection />
+    <EmployabilityModelSection />
+    <ApproachStagesSection />
+    <ConnectedJourneySection />
+    <AudiencePerspectivesSection />
+    <BoundariesSection />
+    <HowItWorksCTASection />
+  </PageShell>
+</BaseLayout>

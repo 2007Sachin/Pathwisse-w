@@ -1,0 +1,55 @@
+---
+import { productLinks } from "../../../content/site";
+---
+
+<section
+  class="student-final section section--dark"
+  aria-labelledby="student-final-title"
+>
+  <div class="container student-final__grid">
+    <div>
+      <p>Choose the next step</p>
+      <h2 id="student-final-title">Build toward something you can explain.</h2>
+    </div>
+    <div>
+      <p>
+        Begin the current student journey, or take a closer look at the
+        employability approach first.
+      </p>
+      <div class="cluster">
+        <a class="button button--primary" href={productLinks.getStarted}>
+          Start Your Journey
+        </a>
+        <a class="student-final__link" href="/how-it-works">
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .student-final__grid {
+    display: grid;
+    grid-template-columns: 1fr 0.75fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .student-final__grid > div:first-child p {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .student-final__grid > div:last-child > p {
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .student-final__link {
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 48rem) {
+    .student-final__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

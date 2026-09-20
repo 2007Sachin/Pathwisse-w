@@ -1,0 +1,38 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import ApplicationSection from "../components/sections/students/ApplicationSection.astro";
+import DemonstrationSection from "../components/sections/students/DemonstrationSection.astro";
+import DirectionSection from "../components/sections/students/DirectionSection.astro";
+import PathwisseFitSection from "../components/sections/students/PathwisseFitSection.astro";
+import PlacementPreparationSection from "../components/sections/students/PlacementPreparationSection.astro";
+import PurposefulDevelopmentSection from "../components/sections/students/PurposefulDevelopmentSection.astro";
+import StudentFAQSection from "../components/sections/students/StudentFAQSection.astro";
+import StudentFinalCTASection from "../components/sections/students/StudentFinalCTASection.astro";
+import StudentJourneySection from "../components/sections/students/StudentJourneySection.astro";
+import StudentProgramsSection from "../components/sections/students/StudentProgramsSection.astro";
+import StudentQuestionsSection from "../components/sections/students/StudentQuestionsSection.astro";
+import StudentRealitySection from "../components/sections/students/StudentRealitySection.astro";
+import StudentsHeroSection from "../components/sections/students/StudentsHeroSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="A clearer employability journey for students"
+  description="Explore a student-first approach to career direction, relevant development, applied work, and preparation for opportunity."
+>
+  <PageShell>
+    <StudentsHeroSection />
+    <StudentRealitySection />
+    <StudentQuestionsSection />
+    <DirectionSection />
+    <PurposefulDevelopmentSection />
+    <ApplicationSection />
+    <DemonstrationSection />
+    <PlacementPreparationSection />
+    <StudentJourneySection />
+    <PathwisseFitSection />
+    <StudentProgramsSection />
+    <StudentFAQSection />
+    <StudentFinalCTASection />
+  </PageShell>
+</BaseLayout>

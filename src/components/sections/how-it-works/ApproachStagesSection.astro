@@ -1,0 +1,94 @@
+---
+import { approachStages } from "../../../content/pages/howItWorks";
+---
+
+<div class="stages" aria-label="Five stages in the Pathwisse approach">
+  {approachStages.map((stage, index) => (
+    <section
+      id={stage.id}
+      class:list={["stage section", { "stage--subtle": index % 2 === 1 }]}
+      aria-labelledby={`${stage.id}-title`}
+    >
+      <div class="container stage__grid">
+        <div class="stage__marker" aria-hidden="true">
+          <span>{stage.number}</span>
+          <i></i>
+        </div>
+        <header>
+          <p>{stage.eyebrow}</p>
+          <h2 id={`${stage.id}-title`}>{stage.title}</h2>
+          <p>{stage.lead}</p>
+        </header>
+        <div class="stage__body">
+          {stage.body.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+          <p class="stage__contrast">{stage.contrast}</p>
+        </div>
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .stage--subtle {
+    background: var(--color-surface-subtle);
+  }
+  .stage__grid {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .stage__marker {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-4);
+    min-height: 12rem;
+    color: var(--color-primary);
+    font-size: var(--text-small);
+  }
+  .stage__marker span {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+  }
+  .stage__marker i {
+    width: 1px;
+    height: 100%;
+    background: var(--color-primary);
+    opacity: 0.4;
+  }
+  .stage header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .stage header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .stage__body {
+    max-width: 40rem;
+    color: var(--color-text-muted);
+  }
+  .stage__contrast {
+    margin-top: var(--space-10);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border-strong);
+    color: var(--color-ink);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .stage__grid {
+      grid-template-columns: 3rem 1fr;
+      gap: var(--space-6);
+    }
+    .stage__body {
+      grid-column: 2;
+    }
+  }
+</style>

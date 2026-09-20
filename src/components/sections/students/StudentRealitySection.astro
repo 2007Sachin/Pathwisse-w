@@ -1,0 +1,71 @@
+---
+import { studentWork } from "../../../content/pages/students";
+---
+
+<section
+  class="student-reality section section--subtle"
+  aria-labelledby="student-reality-title"
+>
+  <div class="container student-reality__grid">
+    <header>
+      <p>You’ve been doing the work</p>
+      <h2 id="student-reality-title">
+        The effort is real. The connection can still be unclear.
+      </h2>
+      <p>
+        These experiences can all matter without automatically becoming one
+        coherent story about where you are going or what you can do.
+      </p>
+    </header>
+    <ol aria-label="Familiar student experiences">
+      {studentWork.map((item, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{item}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .student-reality__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .student-reality header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .student-reality header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .student-reality ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .student-reality li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .student-reality li span {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .student-reality li strong {
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .student-reality__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

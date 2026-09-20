@@ -1,0 +1,81 @@
+---
+import { pathwisseConnections } from "../../../content/pages/institutions";
+---
+
+<section
+  class="connects section section--subtle"
+  aria-labelledby="connects-title"
+>
+  <div class="container connects__header">
+    <p>What Pathwisse is being built to connect</p>
+    <h2 id="connects-title">
+      One institutional idea, viewed across the student journey.
+    </h2>
+    <p>
+      Pathwisse is being built around the relationship between these domains.
+      The exact product workflows remain subject to authoritative verification.
+    </p>
+  </div>
+  <div class="container connects__list">
+    {pathwisseConnections.map((item, index) => (
+      <article>
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <h3>{item.title}</h3>
+        <p>{item.copy}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .connects__header {
+    display: grid;
+    grid-template-columns: 0.45fr 0.9fr 0.65fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+  .connects__header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .connects__header > p:last-child {
+    color: var(--color-text-muted);
+  }
+  .connects__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: var(--space-16);
+    border-top: 1px solid var(--color-border-strong);
+  }
+  .connects article {
+    padding: var(--space-6) var(--space-5) var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .connects article span {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+  }
+  .connects article h3 {
+    margin-block: var(--space-8) var(--space-4);
+    font-size: var(--text-body-lg);
+  }
+  .connects article p {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 62rem) {
+    .connects__header {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .connects__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 36rem) {
+    .connects__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,82 @@
+<section
+  class="about-hero section section--spacious"
+  aria-labelledby="page-title"
+>
+  <div class="container-wide about-hero__grid">
+    <div>
+      <p>About Pathwisse</p>
+      <h1 id="page-title">
+        We believe learning should connect more clearly to what comes after it.
+      </h1>
+    </div>
+    <div class="about-hero__aside">
+      <p>
+        Pathwisse is being built around a simple problem: students learn, build,
+        and prepare in many places, but those experiences do not always form one
+        clear journey toward employment.
+      </p>
+      <a class="action-link" href="/how-it-works">
+        See the approach
+      </a>
+    </div>
+  </div>
+  <div class="container-wide about-hero__line" aria-hidden="true">
+    <span></span>
+    <i></i>
+  </div>
+</section>
+
+<style>
+  .about-hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .about-hero__grid > div:first-child p {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .about-hero h1 {
+    max-width: 16ch;
+    margin: var(--space-6) 0 0;
+  }
+  .about-hero__aside p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .about-hero__line {
+    position: relative;
+    height: 8rem;
+    margin-top: var(--space-20);
+    border-top: 1px solid var(--color-border);
+  }
+  .about-hero__line span {
+    display: block;
+    width: 61%;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  .about-hero__line i {
+    position: absolute;
+    top: -0.4rem;
+    left: 61%;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+  @media (max-width: 48rem) {
+    .about-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .about-hero__line {
+      height: 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+<section
+  class="institution-programs section"
+  aria-labelledby="institution-programs-title"
+>
+  <div class="container institution-programs__grid">
+    <header>
+      <p>Programs and interventions</p>
+      <h2 id="institution-programs-title">
+        Place each program inside a larger purpose.
+      </h2>
+    </header>
+    <div>
+      <p>
+        A structured program may support direction, relevant development, or
+        placement preparation. Pathwisse will publish program names, formats,
+        access details, and outcomes only after verification.
+      </p>
+      <div
+        class="institution-programs__sequence"
+        aria-label="Conceptual program roles"
+      >
+        <span>Direction</span>
+        <span>Development</span>
+        <span>Placement preparation</span>
+      </div>
+      <a class="action-link" href="/programs">
+        Explore Programs
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .institution-programs__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .institution-programs header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .institution-programs__grid > div > p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .institution-programs__sequence {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-block: var(--space-10);
+    border-block: 1px solid var(--color-border);
+  }
+  .institution-programs__sequence span {
+    padding: var(--space-5) var(--space-4) var(--space-5) 0;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .institution-programs__grid {
+      grid-template-columns: 1fr;
+    }
+    .institution-programs__sequence {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

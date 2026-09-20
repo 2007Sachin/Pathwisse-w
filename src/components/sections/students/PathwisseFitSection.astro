@@ -1,0 +1,49 @@
+---
+import JourneyPath from "../../media/JourneyPath.astro";
+import { pathwisseFit } from "../../../content/pages/students";
+---
+
+<section class="fit section section--subtle" aria-labelledby="fit-title">
+  <div class="container fit__grid">
+    <header>
+      <p>Where Pathwisse fits</p>
+      <h2 id="fit-title">Built around the connections between the steps.</h2>
+    </header>
+    <div>
+      <p>
+        Pathwisse is being developed around a product-safe sequence: start with
+        direction, connect development to it, apply learning, and prepare to
+        communicate the work.
+      </p>
+      <JourneyPath
+        stages={pathwisseFit}
+        compact
+        label="The intended Pathwisse student journey"
+        motion="reveal"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .fit__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .fit header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .fit__grid > div > p {
+    margin-bottom: var(--space-16);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .fit__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

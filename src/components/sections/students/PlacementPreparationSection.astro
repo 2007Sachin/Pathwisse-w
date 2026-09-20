@@ -1,0 +1,48 @@
+---
+import { studentPrinciples } from "../../../content/pages/students";
+const content = studentPrinciples.preparation;
+---
+
+<section
+  class="preparation section section--dark"
+  aria-labelledby="preparation-title"
+>
+  <div class="container preparation__grid">
+    <header>
+      <p>{content.eyebrow}</p>
+      <h2 id="preparation-title">{content.title}</h2>
+    </header>
+    <div>
+      <p class="preparation__lead">{content.lead}</p>
+      <p class="preparation__note">{content.note}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .preparation__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .preparation header p {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .preparation__lead {
+    color: var(--color-text-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .preparation__note {
+    margin-top: var(--space-10);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.25);
+    color: var(--color-text-muted-on-dark);
+  }
+  @media (max-width: 48rem) {
+    .preparation__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

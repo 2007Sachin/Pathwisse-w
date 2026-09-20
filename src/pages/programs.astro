@@ -1,0 +1,28 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import ProgramDirectionsSection from "../components/sections/programs/ProgramDirectionsSection.astro";
+import ProgramFAQSection from "../components/sections/programs/ProgramFAQSection.astro";
+import ProgramFinalCTASection from "../components/sections/programs/ProgramFinalCTASection.astro";
+import ProgramPerspectivesSection from "../components/sections/programs/ProgramPerspectivesSection.astro";
+import ProgramPrinciplesSection from "../components/sections/programs/ProgramPrinciplesSection.astro";
+import ProgramsFitSection from "../components/sections/programs/ProgramsFitSection.astro";
+import ProgramsHeroSection from "../components/sections/programs/ProgramsHeroSection.astro";
+import WhyProgramsSection from "../components/sections/programs/WhyProgramsSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="How programs fit the employability journey"
+  description="Understand how structured programs may support direction, development, application, and preparation within the wider Pathwisse approach."
+>
+  <PageShell>
+    <ProgramsHeroSection />
+    <WhyProgramsSection />
+    <ProgramsFitSection />
+    <ProgramDirectionsSection />
+    <ProgramPerspectivesSection />
+    <ProgramPrinciplesSection />
+    <ProgramFAQSection />
+    <ProgramFinalCTASection />
+  </PageShell>
+</BaseLayout>

@@ -1,0 +1,91 @@
+<section
+  class="institution-hero section section--spacious"
+  aria-labelledby="page-title"
+>
+  <div class="container-wide institution-hero__grid">
+    <div>
+      <p class="institution-hero__eyebrow">
+        For colleges, universities, and placement teams
+      </p>
+      <h1 id="page-title">
+        Employability should not become visible only when placement season
+        begins.
+      </h1>
+    </div>
+    <div class="institution-hero__aside">
+      <p>
+        Pathwisse is being built to help institutions think about employability
+        as a connected journey from direction and development through placement
+        preparation.
+      </p>
+      <div class="cluster">
+        <a class="button button--primary" href="/contact">
+          Request a Demo
+        </a>
+        <a class="action-link" href="/how-it-works">
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container-wide institution-hero__line" aria-hidden="true">
+    <span></span>
+    <i></i>
+  </div>
+</section>
+
+<style>
+  .institution-hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: end;
+  }
+  .institution-hero__eyebrow {
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .institution-hero h1 {
+    max-width: 16ch;
+    margin: var(--space-6) 0 0;
+  }
+  .institution-hero__aside > p {
+    margin-bottom: var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .institution-hero__line {
+    position: relative;
+    height: 8rem;
+    margin-top: var(--space-20);
+    border-top: 1px solid var(--color-border);
+  }
+  .institution-hero__line span {
+    display: block;
+    width: 68%;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  .institution-hero__line i {
+    position: absolute;
+    top: -0.4rem;
+    left: 68%;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+  @media (max-width: 48rem) {
+    .institution-hero__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .institution-hero__line {
+      height: 3rem;
+    }
+  }
+</style>

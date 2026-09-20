@@ -1,0 +1,130 @@
+---
+import { studentDevelopmentJourney } from "../../../content/pages/institutions";
+---
+
+<section
+  class="institution-student section"
+  aria-labelledby="institution-student-title"
+>
+  <div class="container">
+    <header class="institution-student__header">
+      <div>
+        <p>The student development journey</p>
+        <h2 id="institution-student-title">
+          See the journey from the student’s side.
+        </h2>
+      </div>
+      <p>
+        This conceptual progression keeps institutional strategy connected to
+        the person moving through it. It is not a tracked workflow or measured
+        student record.
+      </p>
+    </header>
+    <ol class="institution-student__steps" data-motion="sequence">
+      {studentDevelopmentJourney.map((step, index) => (
+        <li data-motion-item style={`--motion-index: ${index}`}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{step}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .institution-student__header {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: end;
+    margin-bottom: var(--space-16);
+  }
+  .institution-student__header div p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .institution-student__header > p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .institution-student__steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .institution-student__steps::before {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary) 0 86%,
+      var(--color-accent)
+    );
+    content: "";
+  }
+  .institution-student__steps li {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-8) var(--space-4) 0 0;
+  }
+  .institution-student__steps li::before {
+    position: absolute;
+    top: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 3px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-bg);
+    content: "";
+  }
+  .institution-student__steps li:last-child::before {
+    border-color: var(--color-accent);
+  }
+  .institution-student__steps span {
+    color: var(--color-text-muted);
+    font-size: var(--text-caption);
+  }
+  .institution-student__steps strong {
+    max-width: 13ch;
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .institution-student__header {
+      grid-template-columns: 1fr;
+    }
+    .institution-student__steps {
+      grid-template-columns: 1fr;
+      padding-left: var(--space-8);
+    }
+    .institution-student__steps::before {
+      top: 0.5rem;
+      bottom: 0.5rem;
+      left: 0.5rem;
+      width: 1px;
+      height: auto;
+      background: linear-gradient(
+        180deg,
+        var(--color-primary) 0 86%,
+        var(--color-accent)
+      );
+    }
+    .institution-student__steps li {
+      min-height: 5rem;
+      padding: 0 0 var(--space-6);
+    }
+    .institution-student__steps li::before {
+      left: calc(-1 * var(--space-8));
+    }
+    .institution-student__steps strong {
+      max-width: none;
+    }
+  }
+</style>

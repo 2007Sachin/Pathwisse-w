@@ -1,0 +1,17 @@
+---
+interface Props {
+  heading: string;
+  message?: string;
+}
+
+const { heading, message = "Content pending PRD implementation." } =
+  Astro.props;
+---
+
+<section class="development-shell" aria-labelledby="page-heading">
+  <div class="container development-shell__content">
+    <p>Development shell</p>
+    <h1 id="page-heading">{heading}</h1>
+    <p>{message}</p>
+  </div>
+</section>

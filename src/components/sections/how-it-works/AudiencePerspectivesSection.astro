@@ -1,0 +1,111 @@
+---
+import {
+  institutionPerspective,
+  studentPerspective,
+} from "../../../content/pages/howItWorks";
+---
+
+<div class="perspectives">
+  <section
+    class="perspective perspective--student section section--subtle"
+    aria-labelledby="student-perspective-title"
+  >
+    <div class="container perspective__grid">
+      <header>
+        <p>Student perspective</p>
+        <h2 id="student-perspective-title">Move with more intention.</h2>
+        <p>
+          The model offers a way to connect decisions that can otherwise feel
+          separate.
+        </p>
+      </header>
+      <div>
+        <ul>
+          {studentPerspective.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <a class="button button--secondary" href="/students">
+          Explore Pathwisse for Students
+        </a>
+      </div>
+    </div>
+  </section>
+  <section
+    class="perspective perspective--institution section section--dark"
+    aria-labelledby="institution-perspective-title"
+  >
+    <div class="container perspective__grid">
+      <header>
+        <p>Institution perspective</p>
+        <h2 id="institution-perspective-title">
+          Design employability as a journey.
+        </h2>
+        <p>
+          The same model can frame development as more than a placement-season
+          activity.
+        </p>
+      </header>
+      <div>
+        <ul>
+          {institutionPerspective.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <a class="button button--secondary" href="/institutions">
+          Explore Pathwisse for Institutions
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .perspective__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .perspective header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .perspective header > p:last-child {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .perspective ul {
+    margin: 0 0 var(--space-10);
+    padding: 0;
+    border-top: 1px solid var(--color-border-strong);
+    list-style: none;
+  }
+  .perspective li {
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .perspective--institution header > p:first-child {
+    color: var(--color-text-muted-on-dark);
+  }
+  .perspective--institution header > p:last-child,
+  .perspective--institution li {
+    color: var(--color-text-muted-on-dark);
+  }
+  .perspective--institution ul {
+    border-color: rgb(255 255 255 / 0.35);
+  }
+  .perspective--institution li {
+    border-color: rgb(255 255 255 / 0.18);
+  }
+  .perspective--institution .button {
+    border-color: rgb(255 255 255 / 0.5);
+    background: transparent;
+    color: var(--color-text-on-dark);
+  }
+  @media (max-width: 48rem) {
+    .perspective__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

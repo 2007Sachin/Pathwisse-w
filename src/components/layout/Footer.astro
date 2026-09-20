@@ -1,0 +1,137 @@
+---
+import { site } from "../../content/site";
+
+const footerGroups = [
+  {
+    label: "Product",
+    links: [
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "Programs", href: "/programs" },
+    ],
+  },
+  {
+    label: "Explore",
+    links: [
+      { label: "For Students", href: "/students" },
+      { label: "For Institutions", href: "/institutions" },
+    ],
+  },
+  {
+    label: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    label: "Legal",
+    links: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" aria-label="Pathwisse home">
+        {site.name}
+      </a>
+      <p>Built by {site.company}</p>
+    </div>
+    <nav class="site-footer__navigation" aria-label="Footer">
+      {footerGroups.map((group) => (
+        <div>
+          <h2>{group.label}</h2>
+          <ul>
+            {group.links.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+    <p class="site-footer__legal">
+      <small>
+        &copy; {new Date().getFullYear()} {site.company}
+      </small>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: var(--border-width) solid var(--color-border);
+    background: var(--color-surface-subtle);
+  }
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) 2fr;
+    gap: var(--space-12);
+    padding-block: var(--space-16) var(--space-8);
+  }
+  .site-footer__brand a {
+    color: var(--color-ink);
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+  .site-footer__brand p,
+  .site-footer__legal {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .site-footer__navigation {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+  .site-footer h2 {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .site-footer ul {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-footer a {
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    text-decoration-color: transparent;
+  }
+  .site-footer a:hover {
+    color: var(--color-ink);
+    text-decoration-color: var(--color-primary);
+  }
+  .site-footer__legal {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding-top: var(--space-8);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+  @media (max-width: 44rem) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+    .site-footer__navigation {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 26rem) {
+    .site-footer__navigation {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

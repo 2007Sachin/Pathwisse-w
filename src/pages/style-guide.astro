@@ -1,0 +1,196 @@
+---
+import PageShell from "../components/layout/PageShell.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import JourneyPath from "../components/media/JourneyPath.astro";
+const swatches = [
+  "bg",
+  "surface",
+  "surface-subtle",
+  "ink",
+  "text",
+  "text-muted",
+  "primary",
+  "accent",
+  "border",
+  "success",
+  "error",
+];
+---
+
+<BaseLayout
+  title="Internal style guide"
+  description="Internal Pathwisse design-system reference."
+  noindex
+  bodyClass="style-guide-page"
+>
+  <PageShell>
+    <div class="container section stack style-guide-layout">
+      <header class="reading-width stack">
+        <p class="style-guide-label">Internal development reference</p>
+        <h1>Pathwisse visual system</h1>
+        <p class="style-guide-lead">
+          A provisional reference for typography, color, actions, surfaces,
+          spacing, and focus behavior. This route is excluded from public
+          navigation and search indexing.
+        </p>
+      </header>
+
+      <section class="stack" aria-labelledby="type-heading">
+        <h2 id="type-heading">Typography</h2>
+        <div class="type-samples">
+          <p class="type-display">Direction becomes progress.</p>
+          <p class="type-heading-one">Learning should lead somewhere.</p>
+          <h2>Build capability you can explain.</h2>
+          <h3>A clear next step</h3>
+          <p class="body-large reading-width">
+            Pathwisse connects learning, applied work, evidence, and preparation
+            in one coherent journey.
+          </p>
+          <p class="reading-width">
+            Body text is designed for sustained reading across student and
+            institution stories without feeling bureaucratic or overly
+            technical.
+          </p>
+          <small>Caption and supporting information</small>
+        </div>
+      </section>
+
+      <section class="stack" aria-labelledby="color-heading">
+        <h2 id="color-heading">Semantic color</h2>
+        <div class="swatches">
+          {swatches.map((swatch) => (
+            <div class="swatch">
+              <span style={`--swatch: var(--color-${swatch})`}></span>
+              <code>--color-{swatch}</code>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="stack" aria-labelledby="actions-heading">
+        <h2 id="actions-heading">Actions and links</h2>
+        <div class="cluster">
+          <a class="button button--primary" href="#actions-heading">
+            Get Started
+          </a>
+          <a class="button button--secondary" href="#actions-heading">
+            See How It Works
+          </a>
+          <a class="action-link" href="#actions-heading">
+            Explore for Students
+          </a>
+          <button class="button button--primary" disabled>
+            Unavailable
+          </button>
+        </div>
+        <p>
+          Body links remain{" "}
+          <a href="#actions-heading">visibly underlined and interactive</a>.
+        </p>
+      </section>
+
+      <section class="stack" aria-labelledby="surfaces-heading">
+        <h2 id="surfaces-heading">Surfaces</h2>
+        <div class="surface-grid">
+          <div class="surface surface-example">Base surface</div>
+          <div class="surface--subtle surface-example">Subtle section</div>
+          <div class="surface--bordered surface-example">Bordered grouping</div>
+          <div class="surface--emphasis surface-example">
+            Dark narrative emphasis
+          </div>
+        </div>
+      </section>
+
+      <section class="stack" aria-labelledby="path-heading">
+        <h2 id="path-heading">Journey path</h2>
+        <p class="reading-width">
+          The shared line, node, label, and destination treatment used in
+          explanatory homepage visuals.
+        </p>
+        <JourneyPath
+          stages={[
+            "Direction",
+            "Development",
+            "Applied work",
+            "Evidence",
+            "Preparation",
+            "Opportunity",
+          ]}
+          label="Path visual primitive example"
+        />
+      </section>
+    </div>
+  </PageShell>
+</BaseLayout>
+
+<style>
+  .style-guide-label {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .style-guide-layout {
+    gap: var(--space-16);
+  }
+  .style-guide-lead,
+  .body-large {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .type-samples {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .type-samples > * {
+    margin: 0;
+  }
+  .type-display {
+    color: var(--color-ink);
+    font-size: var(--text-display);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.055em;
+    line-height: var(--leading-display);
+  }
+  .type-heading-one {
+    color: var(--color-ink);
+    font-size: var(--text-h1);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.035em;
+    line-height: var(--leading-display);
+    text-wrap: balance;
+  }
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--space-4);
+  }
+  .swatch {
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  .swatch span {
+    min-height: 5rem;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--swatch);
+  }
+  .surface-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+  .surface-example {
+    min-height: 9rem;
+    padding: var(--space-6);
+  }
+  @media (max-width: 40rem) {
+    .surface-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

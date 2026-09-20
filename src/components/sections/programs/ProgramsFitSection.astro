@@ -1,0 +1,50 @@
+---
+import JourneyPath from "../../media/JourneyPath.astro";
+import { programJourney } from "../../../content/pages/programs";
+---
+
+<section
+  class="programs-fit section section--subtle"
+  aria-labelledby="programs-fit-title"
+>
+  <div class="container programs-fit__grid">
+    <header>
+      <p>Where programs fit</p>
+      <h2 id="programs-fit-title">An intervention inside a larger journey.</h2>
+    </header>
+    <div>
+      <p>
+        A program should support a defined need at a particular stage. It should
+        not be assumed that every program spans the complete journey.
+      </p>
+      <JourneyPath
+        stages={programJourney}
+        label="Conceptual stages where a program may provide support"
+        motion="reveal"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .programs-fit__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .programs-fit header p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .programs-fit__grid > div > p {
+    margin-bottom: var(--space-16);
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 48rem) {
+    .programs-fit__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

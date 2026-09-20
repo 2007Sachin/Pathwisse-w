@@ -1,0 +1,61 @@
+---
+import { studentPrinciples } from "../../../content/pages/students";
+const content = studentPrinciples.direction;
+---
+
+<section class="direction section" aria-labelledby="direction-title">
+  <div class="container direction__grid">
+    <header>
+      <p>{content.eyebrow}</p>
+      <h2 id="direction-title">{content.title}</h2>
+      <p>{content.lead}</p>
+    </header>
+    <ol>
+      {content.points.map((point, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          {point}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .direction__grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .direction header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .direction header > p:last-child {
+    max-width: 40rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .direction ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .direction li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+  }
+  .direction li span {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 48rem) {
+    .direction__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

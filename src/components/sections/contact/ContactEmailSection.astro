@@ -1,0 +1,77 @@
+---
+import { emailCopy } from "../../../content/pages/contact";
+import { site } from "../../../content/site";
+---
+
+<section
+  class="contact-email section section--spacious"
+  id="contact-email"
+  aria-labelledby="contact-email-title"
+>
+  <div class="container contact-email__grid">
+    <header>
+      <p>{emailCopy.eyebrow}</p>
+      <h2 id="contact-email-title">{emailCopy.heading}</h2>
+      <p>{emailCopy.introduction}</p>
+    </header>
+    <div class="contact-email__panel">
+      <p class="contact-email__address">
+        <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+      </p>
+      <h3>{emailCopy.includeHeading}</h3>
+      <ul>
+        {emailCopy.include.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <p class="contact-email__note">{emailCopy.privacyNote}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-email__grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: start;
+  }
+  .contact-email header > p:first-child {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .contact-email header > p:last-child {
+    color: var(--color-text-muted);
+  }
+  .contact-email__panel {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-6);
+    border-top: var(--border-width) solid var(--color-border-strong);
+  }
+  .contact-email__address {
+    margin: 0;
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-semibold);
+    overflow-wrap: anywhere;
+  }
+  .contact-email__panel h3 {
+    margin: 0;
+    font-size: var(--text-body);
+  }
+  .contact-email__panel ul {
+    margin: 0;
+    padding-inline-start: var(--space-5);
+  }
+  .contact-email__note {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+  @media (max-width: 56rem) {
+    .contact-email__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

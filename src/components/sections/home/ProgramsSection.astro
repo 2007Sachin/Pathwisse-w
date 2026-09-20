@@ -1,0 +1,68 @@
+<section
+  id="programs"
+  class="programs section"
+  aria-labelledby="programs-title"
+>
+  <!-- TODO: Add program categories only after catalogue, audience, format, and access details are verified. -->
+  <div class="container programs__grid">
+    <div>
+      <p>Programs</p>
+      <h2 id="programs-title">
+        A program is one intervention inside a larger journey.
+      </h2>
+    </div>
+    <div class="programs__body">
+      <p>
+        Pathwisse programs should connect a career direction to relevant
+        capability, applied work, evidence, and preparation. Verified program
+        categories, formats, and access details will be published only after
+        approval.
+      </p>
+      <div class="programs__sequence" aria-label="How programs fit">
+        <span>Direction</span>
+        <span>Capability</span>
+        <span>Applied work</span>
+        <span>Evidence</span>
+      </div>
+      <a class="action-link" href="/programs">
+        Understand where programs fit
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .programs__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 9vw, 9rem);
+  }
+  .programs__grid > div:first-child > p {
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .programs__body > p {
+    color: var(--color-text-muted);
+    font-size: var(--text-body-lg);
+  }
+  .programs__sequence {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-block: var(--space-10);
+    border-block: var(--border-width) solid var(--color-border);
+  }
+  .programs__sequence span {
+    padding: var(--space-5) var(--space-3) var(--space-5) 0;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (max-width: 48rem) {
+    .programs__grid {
+      grid-template-columns: 1fr;
+    }
+    .programs__sequence {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

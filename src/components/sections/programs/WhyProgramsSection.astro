@@ -1,0 +1,51 @@
+<section
+  class="why-programs section section--dark"
+  aria-labelledby="why-programs-title"
+>
+  <div class="container why-programs__grid">
+    <p>Why structured development matters</p>
+    <div>
+      <h2 id="why-programs-title">
+        Activity becomes more useful when it has a reason.
+      </h2>
+      <p>
+        A program can create focus around a defined development need. Its value
+        should come from what the student is trying to understand, practise, or
+        prepare for—not from adding another completion label.
+      </p>
+      <p class="why-programs__status">
+        No named Pathwisse program is currently verified for public listing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-programs__grid {
+    display: grid;
+    grid-template-columns: 0.45fr 1.55fr;
+    gap: var(--space-16);
+  }
+  .why-programs__grid > p {
+    color: #79a8ff;
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .why-programs__grid div > p {
+    max-width: 48rem;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--text-body-lg);
+  }
+  .why-programs__status {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    font-size: var(--text-small) !important;
+  }
+  @media (max-width: 48rem) {
+    .why-programs__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

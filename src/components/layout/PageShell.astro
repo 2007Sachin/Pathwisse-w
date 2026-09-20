@@ -1,0 +1,154 @@
+---
+import Header from "../navigation/Header.astro";
+import Footer from "./Footer.astro";
+---
+
+<Header />
+<main id="main-content">
+  <slot />
+</main>
+<Footer />
+
+<script>
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const revealTargets = document.querySelectorAll<HTMLElement>("[data-motion]");
+  const progressTargets = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-scrub], [data-stages]"),
+  );
+
+  if (
+    !reducedMotion &&
+    "IntersectionObserver" in window &&
+    (revealTargets.length || progressTargets.length)
+  ) {
+    document.documentElement.classList.add("motion-enhanced");
+
+    // Tier 2: one-shot reveals.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-motion-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -12%", threshold: 0.18 },
+    );
+    revealTargets.forEach((target) => observer.observe(target));
+    window.setTimeout(() => {
+      revealTargets.forEach((target) =>
+        target.classList.add("is-motion-visible"),
+      );
+      observer.disconnect();
+    }, 4000);
+
+    // Tier 3: scroll progress. Writes --p (0..1) and, for stage groups,
+    // --f (line fill), --active and the is-active/is-past item classes.
+    // Native scroll only; nothing is pinned or intercepted by script.
+    const clamp = (value: number) => Math.min(1, Math.max(0, value));
+    const pinQuery = window.matchMedia(
+      "(min-width: 64rem) and (min-height: 44rem)",
+    );
+    const parallaxQuery = window.matchMedia("(min-width: 48.0625rem)");
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const vh = window.innerHeight;
+      const pinned = pinQuery.matches;
+      const measured = progressTargets.map((el) => ({
+        el,
+        rect: el.getBoundingClientRect(),
+      }));
+
+      for (const { el, rect } of measured) {
+        if (rect.bottom < -vh || rect.top > vh * 2) continue;
+        const scrub = el.dataset.scrub;
+        const stages = el.dataset.stages;
+        let p: number;
+
+        if (scrub === "leave") {
+          p = parallaxQuery.matches
+            ? clamp(-rect.top / Math.max(rect.height, 1))
+            : 0;
+        } else if (stages === "pin" && pinned) {
+          p = clamp(-rect.top / Math.max(rect.height - vh, 1));
+        } else if (stages) {
+          p = clamp((vh * 0.6 - rect.top) / Math.max(rect.height, 1));
+        } else {
+          const from = Number(el.dataset.scrubFrom ?? 0.95);
+          const to = Number(el.dataset.scrubTo ?? 0.5);
+          const center = rect.top + rect.height / 2;
+          p = clamp((vh * from - center) / (vh * (from - to)));
+        }
+        el.style.setProperty("--p", p.toFixed(3));
+
+        if (!stages) continue;
+        const items = Array.from(
+          el.querySelectorAll<HTMLElement>("[data-stage]"),
+        );
+        const count = items.length;
+        let active = -1;
+        let fill: number;
+
+        if (stages === "pin" && pinned) {
+          active = Math.min(count - 1, Math.floor(p * count));
+          fill = clamp((p * count - 0.35) / Math.max(count - 1, 1));
+        } else {
+          const tops = items.map((item) => item.getBoundingClientRect().top);
+          tops.forEach((top, index) => {
+            if (top < vh * 0.6) active = index;
+          });
+          const span = tops[count - 1] - tops[0];
+          fill = span > 0 ? clamp((vh * 0.6 - tops[0]) / span) : 0;
+        }
+        el.style.setProperty("--f", fill.toFixed(3));
+        el.style.setProperty("--active", String(active));
+        items.forEach((item, index) => {
+          item.classList.toggle("is-active", index === active);
+          item.classList.toggle("is-past", index < active);
+        });
+      }
+    };
+
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+
+    // Desktop-only pointer depth. Never required for comprehension.
+    const pointerTarget = document.querySelector<HTMLElement>("[data-pointer]");
+    if (
+      pointerTarget &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      let x = 0;
+      let y = 0;
+      let pointerFrame = 0;
+      const apply = () => {
+        pointerFrame = 0;
+        pointerTarget.style.setProperty("--px", x.toFixed(3));
+        pointerTarget.style.setProperty("--py", y.toFixed(3));
+      };
+      const queue = () => {
+        if (!pointerFrame) pointerFrame = window.requestAnimationFrame(apply);
+      };
+      pointerTarget.addEventListener("pointermove", (event) => {
+        if (!parallaxQuery.matches) return;
+        const rect = pointerTarget.getBoundingClientRect();
+        x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+        queue();
+      });
+      pointerTarget.addEventListener("pointerleave", () => {
+        x = 0;
+        y = 0;
+        queue();
+      });
+    }
+  }
+</script>
