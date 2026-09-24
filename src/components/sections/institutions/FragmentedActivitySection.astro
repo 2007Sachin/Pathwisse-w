@@ -1,5 +1,6 @@
 ---
 import { institutionActivities } from "../../../content/pages/institutions";
+import EmployabilityJourney from "../../visuals/EmployabilityJourney.astro";
 ---
 
 <section
@@ -9,16 +10,17 @@ import { institutionActivities } from "../../../content/pages/institutions";
   <div class="container fragmented__grid">
     <header>
       <p>Fragmented employability activity</p>
-      <h2 id="fragmented-title">
-        Important activity can still be difficult to connect.
-      </h2>
+      <h2 id="fragmented-title">Useful work can happen in separate places.</h2>
       <p>
         The issue is not that institutions are doing nothing. It is that
-        valuable experiences often happen in different places, at different
-        times, and with different immediate purposes.
+        valuable experiences can happen at different times, with different
+        immediate purposes, before students need to explain the full story.
       </p>
     </header>
-    <ol aria-label="Institutional employability activities">
+    <ol
+      class="fragmented__activities"
+      aria-label="Disconnected institutional employability activities"
+    >
       {institutionActivities.map((activity, index) => (
         <li>
           <span>{String(index + 1).padStart(2, "0")}</span>
@@ -26,6 +28,29 @@ import { institutionActivities } from "../../../content/pages/institutions";
         </li>
       ))}
     </ol>
+    <div
+      class="fragmented__connection"
+      aria-label="Conceptual connected journey: direction, development, application, preparation"
+    >
+      {["Direction", "Development", "Application", "Preparation"].map(
+        (stage, index) => (
+          <span>
+            <b>{index + 1}</b>
+            {stage}
+          </span>
+        ),
+      )}
+    </div>
+    <div
+      class="fragmented__journey"
+      data-scrub
+      data-scrub-from="0.85"
+      data-scrub-to="0.35"
+    >
+      <EmployabilityJourney
+        stages={["Direction", "Development", "Application", "Preparation"]}
+      />
+    </div>
   </div>
 </section>
 
@@ -49,6 +74,32 @@ import { institutionActivities } from "../../../content/pages/institutions";
     padding: 0;
     list-style: none;
   }
+  .fragmented__connection {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-primary);
+  }
+  .fragmented__connection span {
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-ink);
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .fragmented__connection b {
+    display: grid;
+    width: 1.5rem;
+    height: 1.5rem;
+    place-items: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+  }
   .fragmented li {
     display: grid;
     grid-template-columns: 3rem 1fr;
@@ -67,6 +118,9 @@ import { institutionActivities } from "../../../content/pages/institutions";
   @media (max-width: 48rem) {
     .fragmented__grid {
       grid-template-columns: 1fr;
+    }
+    .fragmented__connection {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

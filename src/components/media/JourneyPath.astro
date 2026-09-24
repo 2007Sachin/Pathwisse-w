@@ -23,6 +23,7 @@ const {
   ]}
   aria-label={label}
   data-motion={motion === "reveal" ? "journey" : undefined}
+  style={`--path-count: ${stages.length}`}
 >
   {stages.map((stage, index) => (
     <li

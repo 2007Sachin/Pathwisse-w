@@ -35,14 +35,14 @@ export const studentPrinciples = {
   },
   application: {
     eyebrow: "Apply what you learn",
-    title: "Use knowledge somewhere real enough to question it.",
+    title: "Apply what you learn in a practical context.",
     lead: "A project, assignment, case, or practical problem can reveal the decisions and limitations that completion alone may not show.",
-    note: "This is an employability principle. Pathwisse does not currently claim to host or grade this work.",
+    note: "The point is simple: learning is easier to discuss when it has been used on a real task.",
   },
   demonstration: {
     eyebrow: "Have something you can talk about",
     title: "Move from a skill label to an example.",
-    lead: "A label such as Excel, Python, marketing, or analytics says little about what happened when you used it.",
+    lead: "A label such as Excel, Python, marketing, or data analysis says little about what happened when you used it.",
     before: "I know this.",
     after: "Here is where I used it, what I did, and what I learned.",
   },
@@ -50,7 +50,7 @@ export const studentPrinciples = {
     eyebrow: "Prepare for placement conversations",
     title: "Your work still needs a clear explanation.",
     lead: "Preparation can include articulating experience in a resume, discussing a project, and connecting your contribution to the role in front of you.",
-    note: "These are needs students may prepare for—not verified Pathwisse software features or a promise of a hiring result.",
+    note: "The goal is to make your work easier to explain when an opportunity conversation arrives.",
   },
 } as const;
 

@@ -27,8 +27,7 @@ export const approachStages = [
       "A student does not need a perfect career answer on day one. A useful direction can begin with understanding the kind of work a role involves and the expectations that surround it.",
       "The principle is simple: learning choices become easier to question when there is a destination against which to judge their relevance.",
     ],
-    contrast:
-      "Not a prediction or a score. A direction to explore with intent.",
+    contrast: "A direction to explore with intent.",
   },
   {
     number: "02",
@@ -38,7 +37,7 @@ export const approachStages = [
     lead: "Development becomes more intentional when it is connected to a destination.",
     body: [
       "Random learning can create activity without helping a student understand what matters next. Relevant development asks how a skill, concept, or experience relates to the work being explored.",
-      "Structure here is an employability principle—not a claim about a verified course engine, learning system, or progress tracker.",
+      "Development becomes more useful when each activity has a clearer reason for being there.",
     ],
     contrast:
       "Less accumulation for its own sake. More attention to relevance.",
@@ -51,7 +50,7 @@ export const approachStages = [
     lead: "Knowledge becomes easier to understand when it is put to work.",
     body: [
       "Projects, assignments, practical work, and bounded real problems can help students encounter the decisions, limitations, and trade-offs that completion alone may not reveal.",
-      "Pathwisse does not currently claim to host or assess these experiences. Application describes the move from learning toward doing.",
+      "Learning becomes easier to explain when students have a concrete place to use it.",
     ],
     contrast: "Learning → doing → reflection.",
   },
@@ -63,7 +62,7 @@ export const approachStages = [
     lead: "Employability asks students to explain what they did, not only what they completed.",
     body: [
       "A project can become more meaningful when a student can describe the problem, their contribution, the choices they made, and what they would improve.",
-      "Demonstration is a philosophy here. It does not imply that Pathwisse currently stores, scores, verifies, or publishes evidence of capability.",
+      "The value is in making the work understandable, not treating an artifact as proof by itself.",
     ],
     contrast:
       "An example that can be explained—not a credential treated as proof.",
@@ -76,7 +75,7 @@ export const approachStages = [
     lead: "The final transition requires more than having completed the work.",
     body: [
       "Students may need to articulate experience in a resume, discuss decisions in an interview, and connect examples of work to the opportunity in front of them.",
-      "These are employability requirements, not verified Pathwisse product features or promises of a hiring result.",
+      "Preparation helps students connect the work they have done with the conversation ahead.",
     ],
     contrast: "Prepare to communicate capability without claiming certainty.",
   },
@@ -96,8 +95,8 @@ export const institutionPerspective = [
 ] as const;
 
 export const boundaries = [
-  "A guaranteed job or placement",
-  "A claim that one program makes someone job-ready",
-  "A claim that certificates alone prove capability",
-  "A universal score for a student’s readiness or potential",
+  "Employment cannot be reduced to a platform promise",
+  "One program should not be treated as a complete path to future preparation",
+  "Certificates need context before they can explain capability",
+  "Student preparation should not be reduced to one universal measure",
 ] as const;

@@ -395,14 +395,13 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
       align-self: stretch;
     }
     .story__scene {
-      position: sticky;
-      top: var(--space-8);
+      align-self: start;
     }
     :global(.motion-enhanced) .story__steps li {
-      min-height: 26vh;
+      min-height: 14vh;
     }
     :global(.motion-enhanced) .story__steps li:last-child {
-      min-height: 22vh;
+      min-height: 12vh;
     }
   }
   :global(.motion-enhanced) .story__steps li:not(.is-active):not(.is-past) {
@@ -432,9 +431,6 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
       display: contents;
     }
     .story__scene {
-      position: sticky;
-      z-index: 3;
-      top: var(--space-3);
       width: min(100%, 18rem);
       justify-self: center;
     }

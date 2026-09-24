@@ -1,7 +1,7 @@
 # Pathwisse design system foundation
 
 **Status:** v1 implemented; brand palette and typography remain provisional  
-**Updated:** 2026-09-20
+**Updated:** 2026-09-24
 
 ## Design intent
 
@@ -33,7 +33,11 @@ The spacing scale runs from 0.25rem to 8rem and is used for gaps, component padd
 - Full bleed: only media/background may reach the viewport edge; readable content remains contained.
 - Section rhythms: compact, standard, and spacious.
 
-Whitespace must clarify hierarchy rather than create empty spectacle. Breakpoints are behavior-based, with mobile reductions to section rhythm and navigation layout.
+Whitespace must clarify hierarchy rather than create empty spectacle. The refinement pass reserves immersive spacing for the hero and major narrative transitions, while shared reading copy targets roughly 55–70 characters and consistent content edges. Breakpoints are behavior-based, with mobile reductions to section rhythm and navigation layout.
+
+Motion graphics use thin royal-blue SVG connectors and outlined nodes to communicate connection and progression. Orange is reserved for destination/opportunity emphasis. Each line must connect, progress, separate, or emphasize; otherwise it should be removed.
+
+The visual object vocabulary is intentionally small: path, node, fragment, connection, work object, and destination. Reuse these metaphors across routes instead of introducing unrelated icon styles or fabricated product UI.
 
 ## Surfaces, borders, radii, and elevation
 

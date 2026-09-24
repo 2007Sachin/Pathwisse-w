@@ -1,11 +1,15 @@
 ---
 import { studentPrinciples } from "../../../content/pages/students";
+import DrawnPath from "../../motion/DrawnPath.astro";
 const content = studentPrinciples.demonstration;
 ---
 
 <section
   class="demonstration section section--subtle"
   aria-labelledby="demonstration-title"
+  data-scrub
+  data-scrub-from="0.8"
+  data-scrub-to="0.35"
 >
   <div class="container demonstration__grid">
     <header>
@@ -21,7 +25,7 @@ const content = studentPrinciples.demonstration;
         <span>From</span>
         {content.before}
       </p>
-      <i aria-hidden="true"></i>
+      <DrawnPath />
       <p>
         <span>Toward</span>
         {content.after}
@@ -49,12 +53,23 @@ const content = studentPrinciples.demonstration;
     display: grid;
     align-content: center;
     gap: var(--space-5);
+    position: relative;
   }
   .demonstration__shift p {
     margin: 0;
     padding-block: var(--space-6);
     border-block: 1px solid var(--color-border);
     font-size: var(--text-h3);
+    transition:
+      opacity var(--motion-story) var(--ease-standard),
+      transform var(--motion-story) var(--ease-emphasis);
+  }
+  .demonstration__shift p:first-child {
+    opacity: clamp(0.62, calc(1 - var(--p, 0) * 0.35), 1);
+  }
+  .demonstration__shift p:last-child {
+    opacity: clamp(0.55, calc(0.55 + var(--p, 0) * 0.45), 1);
+    transform: translateY(calc((1 - var(--p, 0)) * 0.75rem));
   }
   .demonstration__shift span {
     display: block;
@@ -63,11 +78,16 @@ const content = studentPrinciples.demonstration;
     font-size: var(--text-caption);
     text-transform: uppercase;
   }
-  .demonstration__shift i {
+  .demonstration__shift .drawn-path {
     width: 1px;
     height: 2.5rem;
     margin-left: var(--space-4);
-    background: var(--color-primary);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .demonstration__shift p {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
   @media (max-width: 48rem) {
     .demonstration__grid {

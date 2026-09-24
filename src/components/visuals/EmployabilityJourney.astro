@@ -1,0 +1,119 @@
+---
+interface Props {
+  stages: readonly string[];
+  label?: string;
+  class?: string;
+}
+const {
+  stages,
+  label = "Conceptual Pathwisse journey",
+  class: className = "",
+} = Astro.props;
+---
+
+<div
+  class:list={["employability-journey", className]}
+  style={`--journey-count:${stages.length};`}
+  aria-label={label}
+>
+  <svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
+    <path class="journey-line" d="M2 6H98" />
+    <path class="journey-progress" d="M2 6H98" />
+  </svg>
+  <ol>
+    {stages.map((stage, index) => (
+      <li>
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <strong>{stage}</strong>
+      </li>
+    ))}
+  </ol>
+</div>
+<style>
+  .employability-journey {
+    position: relative;
+    padding-block: var(--space-6) var(--space-4);
+  }
+  .employability-journey svg {
+    position: absolute;
+    inset: 1.75rem 0 auto;
+    width: 100%;
+    height: 2px;
+    overflow: visible;
+  }
+  .journey-line,
+  .journey-progress {
+    fill: none;
+    stroke-width: 0.35;
+    stroke-linecap: round;
+  }
+  .journey-line {
+    stroke: var(--color-border-strong);
+  }
+  .journey-progress {
+    stroke: var(--color-primary);
+    stroke-dasharray: 96;
+    stroke-dashoffset: calc(96 * (1 - var(--p, 0)));
+    transition: stroke-dashoffset var(--motion-story) var(--ease-emphasis);
+  }
+  .employability-journey ol {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--journey-count), 1fr);
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .employability-journey li {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+    text-align: center;
+  }
+  .employability-journey li span {
+    display: grid;
+    width: 1.5rem;
+    height: 1.5rem;
+    place-items: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-bg);
+    color: var(--color-primary);
+    font-size: var(--text-caption);
+    transition: transform var(--motion-standard) var(--ease-emphasis);
+  }
+  .employability-journey li strong {
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
+  .employability-journey li:last-child span {
+    border-color: var(--color-accent);
+  }
+  @media (max-width: 48rem) {
+    .employability-journey svg {
+      inset: 0 auto 0 0.75rem;
+      width: 2px;
+      height: 100%;
+    }
+    .employability-journey ol {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .employability-journey li {
+      grid-template-columns: 1.5rem 1fr;
+      justify-items: start;
+      align-items: center;
+      text-align: start;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .journey-progress {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
+    .employability-journey li span {
+      transition: none;
+    }
+  }
+</style>

@@ -36,7 +36,7 @@ export const nextSteps = [
   },
   {
     title: "We respond",
-    copy: "A team member will reply within a few business days to understand your needs.",
+    copy: "A team member can follow up to understand what you would like to discuss.",
   },
   {
     title: "Let's talk",

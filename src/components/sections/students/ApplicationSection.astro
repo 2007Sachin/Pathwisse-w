@@ -1,14 +1,21 @@
 ---
 import { studentPrinciples } from "../../../content/pages/students";
+import DrawnPath from "../../motion/DrawnPath.astro";
 const content = studentPrinciples.application;
 ---
 
-<section class="application section" aria-labelledby="application-title">
+<section
+  class="application section"
+  aria-labelledby="application-title"
+  data-scrub
+  data-scrub-from="0.85"
+  data-scrub-to="0.35"
+>
   <div class="container application__grid">
     <div class="application__marker" aria-hidden="true">
-      <span></span>
-      <i></i>
-      <span></span>
+      <span class="application__node"></span>
+      <DrawnPath />
+      <span class="application__node application__node--end"></span>
     </div>
     <header>
       <p>{content.eyebrow}</p>
@@ -32,16 +39,15 @@ const content = studentPrinciples.application;
     gap: var(--space-3);
     min-height: 13rem;
   }
-  .application__marker span {
+  .application__node {
     width: 1rem;
     height: 1rem;
     border: 2px solid var(--color-primary);
     border-radius: 50%;
   }
-  .application__marker i {
-    width: 1px;
-    height: 100%;
-    background: var(--color-primary);
+  .application__node--end {
+    border-color: var(--color-accent);
+    transform: scale(calc(1 + (var(--p, 0) * 0.12)));
   }
   .application header > p:first-child {
     color: var(--color-primary);
@@ -56,6 +62,20 @@ const content = studentPrinciples.application;
     padding-top: var(--space-5);
     border-top: 1px solid var(--color-border-strong);
     color: var(--color-text-muted);
+    opacity: clamp(0.55, calc(0.55 + var(--p, 0) * 0.45), 1);
+    transform: translateX(calc((1 - var(--p, 0)) * 0.5rem));
+    transition:
+      opacity var(--motion-story) var(--ease-standard),
+      transform var(--motion-story) var(--ease-emphasis);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .application__note {
+      opacity: 1;
+      transform: none;
+    }
+    .application__node--end {
+      transform: none;
+    }
   }
   @media (max-width: 48rem) {
     .application__grid {

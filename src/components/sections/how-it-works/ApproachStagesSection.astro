@@ -1,8 +1,20 @@
 ---
-import { approachStages } from "../../../content/pages/howItWorks";
+import {
+  approachStages,
+  employabilityJourney,
+} from "../../../content/pages/howItWorks";
+import EmployabilityJourney from "../../visuals/EmployabilityJourney.astro";
 ---
 
-<div class="stages" aria-label="Five stages in the Pathwisse approach">
+<div class="stages" aria-label="Six stages in the Pathwisse approach">
+  <div
+    class="container stages__visual"
+    data-scrub
+    data-scrub-from="0.85"
+    data-scrub-to="0.35"
+  >
+    <EmployabilityJourney stages={employabilityJourney} />
+  </div>
   {approachStages.map((stage, index) => (
     <section
       id={stage.id}
@@ -31,6 +43,45 @@ import { approachStages } from "../../../content/pages/howItWorks";
 </div>
 
 <style>
+  .journey-visual {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding-block: var(--space-8);
+  }
+  .journey-visual__stage {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    padding-inline: var(--space-2);
+    color: var(--color-ink);
+  }
+  .journey-visual__stage:not(:last-child)::after {
+    position: absolute;
+    top: 0.55rem;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background: var(--color-primary);
+    content: "";
+    opacity: 0.45;
+  }
+  .journey-visual__stage span {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 1.2rem;
+    height: 1.2rem;
+    place-items: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-bg);
+    color: var(--color-primary);
+    font-size: 0.6rem;
+  }
+  .journey-visual__stage strong {
+    font-size: var(--text-small);
+    font-weight: var(--font-weight-semibold);
+  }
   .stage--subtle {
     background: var(--color-surface-subtle);
   }
@@ -83,6 +134,21 @@ import { approachStages } from "../../../content/pages/howItWorks";
     font-weight: var(--font-weight-medium);
   }
   @media (max-width: 48rem) {
+    .journey-visual {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      padding-block: var(--space-6);
+    }
+    .journey-visual__stage {
+      grid-template-columns: 1.2rem 1fr;
+      align-items: center;
+    }
+    .journey-visual__stage:not(:last-child)::after {
+      top: 1.2rem;
+      left: 0.6rem;
+      width: 1px;
+      height: calc(100% + var(--space-3));
+    }
     .stage__grid {
       grid-template-columns: 3rem 1fr;
       gap: var(--space-6);

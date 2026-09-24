@@ -1,6 +1,6 @@
 # Pathwisse motion system
 
-**Status:** Homepage motion upgraded (Phase 5B, 2026-09-20); secondary-page motion pending
+**Status:** Homepage motion upgraded and density-refined (2026-09-24); secondary pages use shared typography and spacing primitives
 **Detail for the homepage:** `HOMEPAGE_VISUAL_UPGRADE.md`
 
 Motion explains ideas, guides attention, and reinforces hierarchy. It must not delay comprehension, compete with reading, or make meaning depend on animation. Static markup is always the complete default; enhancement is opt-in.
@@ -62,3 +62,7 @@ Do not shrink desktop motion. At ≤ 48rem: horizontal sequences become vertical
 ## QA
 
 Test keyboard focus, reduced motion, slow devices, mobile touch, long copy, background-tab behaviour, and screenshots with animation paused. Verify static states tell the same story. Check console, horizontal overflow, single H1, and layout shift at 375 / 768 / 1024 / 1440.
+
+- Density refinement: the homepage keeps one major pinned journey at approximately 2.2 viewport heights; the student story is progressive rather than a second sticky sequence, and mobile uses normal flow.
+- Native story primitives: inline SVG paths use shared stroke-dash progress (`--p`); outlined nodes strengthen as their section progresses, while FROM/TOWARD copy resolves through restrained opacity and translation. Desktop may use short native sticky ranges; mobile falls back to normal flow. Reduced motion completes paths and exposes all copy without a motion dependency.
+- Visual vocabulary: paths communicate progression, nodes communicate stages, fragments communicate disconnected activity, and orange marks destination/opportunity only. Shared journey visuals are supplemental to semantic text and collapse to a vertical sequence on mobile.

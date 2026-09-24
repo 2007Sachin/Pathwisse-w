@@ -50,7 +50,7 @@ export const pathwisseConnections = [
   },
   {
     title: "Institutional employability strategy",
-    copy: "A shared approach for thinking about how the stages belong together.",
+    copy: "A shared way to keep the stages connected across the student journey.",
   },
 ] as const;
 
@@ -65,7 +65,7 @@ export const implementationPrinciples = [
 export const trustPrinciples = [
   "Use transparent, bounded claims",
   "Treat student information responsibly",
-  "Do not promise placement outcomes",
+  "Keep placement outcomes separate from preparation",
   "Replace marketing assumptions with approved product proof",
   "Publish privacy and security specifics only after verification",
 ] as const;

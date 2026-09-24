@@ -52,6 +52,9 @@ h3 {
 p {
   text-wrap: pretty;
 }
+.container p {
+  max-inline-size: var(--width-reading);
+}
 
 a {
   color: inherit;
@@ -307,8 +310,9 @@ video {
 @media (max-width: 40rem) {
   :root {
     --header-height: 4.25rem;
-    --section-standard: 4rem;
-    --section-spacious: 5.5rem;
+    --section-standard: 3.25rem;
+    --section-compact: 2.5rem;
+    --section-spacious: 4.5rem;
   }
   .button {
     min-height: 3rem;
