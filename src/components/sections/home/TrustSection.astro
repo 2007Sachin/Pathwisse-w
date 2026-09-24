@@ -10,9 +10,8 @@
     </header>
     <div class="trust__statement">
       <p>
-        Pathwisse is built by Shaquantum Labs Private Limited around a clear
-        education-to-employment problem. The public story separates product
-        intent, illustrative journeys, and verified proof.
+        Built by Shaquantum Labs Private Limited. We separate product intent,
+        illustrative journeys, and verified proof.
       </p>
       <p>
         Pathwisse does not promise placements, salaries, rankings, or guaranteed
@@ -41,27 +40,6 @@
         </dd>
       </div>
     </dl>
-    <div
-      class="trust__path"
-      data-motion="sequence"
-      aria-label="Pathwisse methodology: direction, structured development, applied work, evidence, and preparation"
-    >
-      <span data-motion-item style="--motion-index: 0">
-        Direction
-      </span>
-      <span data-motion-item style="--motion-index: 1">
-        Structured development
-      </span>
-      <span data-motion-item style="--motion-index: 2">
-        Applied work
-      </span>
-      <span data-motion-item style="--motion-index: 3">
-        Evidence
-      </span>
-      <span data-motion-item style="--motion-index: 4">
-        Preparation
-      </span>
-    </div>
   </div>
 </section>
 
@@ -91,33 +69,6 @@
     margin: var(--space-8) 0 0;
     border-top: var(--border-width) solid var(--color-border-strong);
   }
-  .trust__path {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin-top: var(--space-8);
-    border-top: 2px solid var(--color-primary);
-  }
-  .trust__path span {
-    position: relative;
-    padding: var(--space-6) var(--space-4) 0 0;
-    font-size: var(--text-small);
-    font-weight: var(--font-weight-semibold);
-  }
-  .trust__path span::before {
-    position: absolute;
-    top: -0.45rem;
-    left: 0;
-    width: 0.8rem;
-    height: 0.8rem;
-    border: 2px solid var(--color-primary);
-    border-radius: 50%;
-    background: var(--color-surface-subtle);
-    content: "";
-  }
-  .trust__path span:last-child::before {
-    border-color: var(--color-accent);
-  }
   .trust__method div {
     display: grid;
     grid-template-columns: 0.35fr 0.65fr;
@@ -141,20 +92,6 @@
     }
     .trust__method div {
       grid-template-columns: 1fr;
-    }
-    .trust__path {
-      grid-template-columns: 1fr;
-      padding-left: var(--space-8);
-      border-top: 0;
-      border-left: 2px solid var(--color-primary);
-    }
-    .trust__path span {
-      min-height: 4rem;
-      padding: 0 0 var(--space-5);
-    }
-    .trust__path span::before {
-      top: 0.2rem;
-      left: calc(-1 * var(--space-8) - 0.45rem);
     }
   }
 </style>

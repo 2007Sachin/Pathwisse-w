@@ -24,8 +24,7 @@ export const approachStages = [
     title: "Start with a clearer destination.",
     lead: "Direction gives learning a context before it becomes another disconnected activity.",
     body: [
-      "A student does not need a perfect career answer on day one. A useful direction can begin with understanding the kind of work a role involves and the expectations that surround it.",
-      "The principle is simple: learning choices become easier to question when there is a destination against which to judge their relevance.",
+      "No perfect career answer is needed on day one. Start by understanding what a role involves.",
     ],
     contrast: "A direction to explore with intent.",
   },
@@ -36,8 +35,7 @@ export const approachStages = [
     title: "Build for the work ahead.",
     lead: "Development becomes more intentional when it is connected to a destination.",
     body: [
-      "Random learning can create activity without helping a student understand what matters next. Relevant development asks how a skill, concept, or experience relates to the work being explored.",
-      "Development becomes more useful when each activity has a clearer reason for being there.",
+      "Random learning creates activity. Relevant development asks how each skill relates to the work ahead.",
     ],
     contrast:
       "Less accumulation for its own sake. More attention to relevance.",
@@ -49,8 +47,7 @@ export const approachStages = [
     title: "Use learning in context.",
     lead: "Knowledge becomes easier to understand when it is put to work.",
     body: [
-      "Projects, assignments, practical work, and bounded real problems can help students encounter the decisions, limitations, and trade-offs that completion alone may not reveal.",
-      "Learning becomes easier to explain when students have a concrete place to use it.",
+      "Projects and real problems surface decisions and trade-offs that completion may not reveal.",
     ],
     contrast: "Learning → doing → reflection.",
   },
@@ -61,8 +58,7 @@ export const approachStages = [
     title: "Make the work discussable.",
     lead: "Employability asks students to explain what they did, not only what they completed.",
     body: [
-      "A project can become more meaningful when a student can describe the problem, their contribution, the choices they made, and what they would improve.",
-      "The value is in making the work understandable, not treating an artifact as proof by itself.",
+      "Can the student describe the problem, their contribution, their choices, and what they would improve?",
     ],
     contrast:
       "An example that can be explained—not a credential treated as proof.",
@@ -74,8 +70,7 @@ export const approachStages = [
     title: "Prepare for the conversation.",
     lead: "The final transition requires more than having completed the work.",
     body: [
-      "Students may need to articulate experience in a resume, discuss decisions in an interview, and connect examples of work to the opportunity in front of them.",
-      "Preparation helps students connect the work they have done with the conversation ahead.",
+      "Students need to connect their work to the opportunity in front of them—in a resume or interview.",
     ],
     contrast: "Prepare to communicate capability without claiming certainty.",
   },

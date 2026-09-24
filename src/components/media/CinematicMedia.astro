@@ -3,9 +3,9 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 interface Props {
-  /** Public path without extension, e.g. /media/home/hero/pathwisse-hero-journey */
+  /** Public path without extension, e.g. /media/motion/home/pathwisse-hero-journey */
   src: string;
-  /** Public path to an optimized poster (WebP/AVIF). */
+  /** Public path to an optimized poster (WebP/AVIF). Defaults to `${src}-poster.webp`. */
   poster?: string;
   ratio?: string;
   /** Decorative media is hidden from assistive technology. */
@@ -14,47 +14,63 @@ interface Props {
   label?: string;
   /** Only the hero should use "high". */
   priority?: "high" | "low";
+  /**
+   * Behaviour at ≤ 48rem. "poster" (default) shows the still frame only, so
+   * secondary loops never download on phones; "play" keeps the loop.
+   */
+  mobile?: "play" | "poster";
+  /** Frame colour while media loads: match the scene's background. */
+  tone?: "ink" | "light";
   class?: string;
 }
 
 const {
   src,
-  poster,
+  poster = `${src}-poster.webp`,
   ratio = "16 / 9",
   decorative = true,
   label,
   priority = "low",
+  mobile = "poster",
+  tone = "ink",
   class: className,
 } = Astro.props;
 
 // Files are optional. Anything missing at build time is simply not rendered,
-// so the slotted fallback composition is always what visitors see until real
-// media is added to /public.
+// and the slotted native composition is shown instead. When a poster exists
+// the fallback markup is not emitted at all.
 const onDisk = (publicPath: string) =>
   existsSync(join(process.cwd(), "public", publicPath));
 const sources = [
   { type: "video/webm", path: `${src}.webm` },
   { type: "video/mp4", path: `${src}.mp4` },
 ].filter((source) => onDisk(source.path));
-const posterPath = poster && onDisk(poster) ? poster : undefined;
+const posterPath = onDisk(poster) ? poster : undefined;
 ---
 
 <div
-  class:list={["cinematic", className]}
+  class:list={[
+    "cinematic",
+    { "cinematic--light": tone === "light" },
+    className,
+  ]}
   style={`--ratio: ${ratio}`}
   data-cinematic
-  aria-hidden={decorative ? "true" : undefined}
-  role={decorative ? undefined : "img"}
-  aria-label={decorative ? undefined : label}
+  data-mobile={mobile}
 >
-  <div class="cinematic__fallback">
-    <slot />
-  </div>
+  {!posterPath && (
+    <div
+      class="cinematic__fallback"
+      aria-hidden={decorative ? "true" : undefined}
+    >
+      <slot />
+    </div>
+  )}
   {posterPath && (
     <img
       class="cinematic__poster"
       src={posterPath}
-      alt=""
+      alt={decorative ? "" : label}
       decoding="async"
       loading={priority === "high" ? "eager" : "lazy"}
       fetchpriority={priority === "high" ? "high" : "auto"}
@@ -68,6 +84,7 @@ const posterPath = poster && onDisk(poster) ? poster : undefined;
       playsinline
       preload="none"
       disablepictureinpicture
+      aria-hidden="true"
       tabindex="-1"
     >
       {sources.map((source) => (
@@ -78,6 +95,15 @@ const posterPath = poster && onDisk(poster) ? poster : undefined;
   <div class="cinematic__overlay">
     <slot name="overlay" />
   </div>
+  {sources.length > 0 && (
+    <button class="cinematic__toggle" type="button" aria-pressed="false" hidden>
+      <span class="visually-hidden">Pause animation</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <path class="icon-pause" d="M6 4h3v12H6zM11 4h3v12h-3z" />
+        <path class="icon-play" d="M6 4l10 6-10 6z" />
+      </svg>
+    </button>
+  )}
 </div>
 
 <style>
@@ -88,6 +114,18 @@ const posterPath = poster && onDisk(poster) ? poster : undefined;
     isolation: isolate;
     border-radius: var(--radius-lg);
     background: var(--color-ink);
+  }
+  .cinematic--light {
+    background: var(--color-bg);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+  }
+  .cinematic--light .cinematic__poster,
+  .cinematic--light .cinematic__video {
+    /* Keep the hairline frame visible above the media. */
+    inset: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: calc(var(--radius-lg) - 1px);
   }
   .cinematic__fallback,
   .cinematic__poster,
@@ -115,49 +153,135 @@ const posterPath = poster && onDisk(poster) ? poster : undefined;
   .cinematic__overlay > :global(*) {
     pointer-events: auto;
   }
+  .cinematic__toggle {
+    position: absolute;
+    inset-block-end: var(--space-3);
+    inset-inline-end: var(--space-3);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    padding: 0;
+    border: 1px solid rgb(255 255 255 / 0.7);
+    border-radius: 999px;
+    background: rgb(8 23 45 / 0.85);
+    color: var(--color-text-on-dark);
+    cursor: pointer;
+  }
+  .cinematic__toggle[hidden] {
+    display: none;
+  }
+  .cinematic__toggle:hover {
+    background: var(--color-ink);
+  }
+  .cinematic__toggle:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-surface);
+  }
+  .cinematic__toggle svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+    fill: currentColor;
+  }
+  .cinematic__toggle .icon-play,
+  .cinematic__toggle[aria-pressed="true"] .icon-pause {
+    display: none;
+  }
+  .cinematic__toggle[aria-pressed="true"] .icon-play {
+    display: inline;
+  }
 </style>
 
 <script>
   // Decorative loops start only when the visitor has not asked for reduced
-  // motion or data saving, and pause whenever they leave the viewport.
+  // motion or data saving, load only near the viewport, pause when off-screen,
+  // and stay paused once the visitor presses the pause control (WCAG 2.2.2).
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const small = window.matchMedia("(max-width: 48rem)");
   const connection = (
     navigator as Navigator & { connection?: { saveData?: boolean } }
   ).connection;
-  const allowed =
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
-    !connection?.saveData &&
-    "IntersectionObserver" in window;
 
-  if (allowed) {
-    document
-      .querySelectorAll<HTMLElement>("[data-cinematic]")
-      .forEach((media) => {
-        const video = media.querySelector("video");
-        if (!video) return;
-        video.addEventListener(
-          "playing",
-          () => media.classList.add("is-playing"),
-          { once: true },
+  const media = [...document.querySelectorAll<HTMLElement>("[data-cinematic]")]
+    .map((root) => ({
+      root,
+      video: root.querySelector("video"),
+      toggle: root.querySelector<HTMLButtonElement>(".cinematic__toggle"),
+      userPaused: false,
+      inView: false,
+      ratio: 0,
+    }))
+    .filter(
+      (item): item is typeof item & { video: HTMLVideoElement } =>
+        item.video !== null,
+    );
+
+  const canPlay = (item: (typeof media)[number]) =>
+    !reduce.matches &&
+    !connection?.saveData &&
+    !(small.matches && item.root.dataset.mobile === "poster") &&
+    !item.userPaused &&
+    item.inView &&
+    // Only the most visible loop plays, so two never run in one viewport.
+    media.every(
+      (other, i) =>
+        other === item ||
+        other.ratio < item.ratio ||
+        (other.ratio === item.ratio && i > media.indexOf(item)),
+    );
+
+  const sync = (item: (typeof media)[number]) => {
+    const allowed =
+      !reduce.matches &&
+      !connection?.saveData &&
+      !(small.matches && item.root.dataset.mobile === "poster");
+    if (item.toggle) item.toggle.hidden = !allowed;
+    if (canPlay(item)) {
+      if (item.video.preload !== "auto") item.video.preload = "auto";
+      void item.video.play().catch(() => undefined);
+    } else {
+      item.video.pause();
+      if (!allowed) item.root.classList.remove("is-playing");
+    }
+  };
+
+  if ("IntersectionObserver" in window && media.length > 0) {
+    const watcher = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const item = media.find((m) => m.root === entry.target);
+          if (!item) continue;
+          item.ratio = entry.isIntersecting ? entry.intersectionRatio : 0;
+          item.inView = item.ratio >= 0.25;
+        }
+        media.forEach(sync);
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    const begin = () => {
+      for (const item of media) {
+        item.video.addEventListener("playing", () =>
+          item.root.classList.add("is-playing"),
         );
-        const start = () => {
-          video.preload = "auto";
-          void video.play().catch(() => undefined);
-        };
-        const watcher = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (!entry.isIntersecting) {
-                video.pause();
-              } else if (document.readyState === "complete") {
-                start();
-              } else {
-                window.addEventListener("load", start, { once: true });
-              }
-            }
-          },
-          { threshold: 0.25 },
-        );
-        watcher.observe(media);
-      });
+        item.toggle?.addEventListener("click", () => {
+          item.userPaused = !item.userPaused;
+          // Static label + aria-pressed: "Pause animation, pressed" = paused.
+          item.toggle?.setAttribute("aria-pressed", String(item.userPaused));
+          sync(item);
+        });
+        watcher.observe(item.root);
+      }
+      const refresh = () => media.forEach(sync);
+      reduce.addEventListener("change", refresh);
+      small.addEventListener("change", refresh);
+    };
+
+    // Playback begins after the page has loaded so video never competes with
+    // first paint.
+    if (document.readyState === "complete") begin();
+    else window.addEventListener("load", begin, { once: true });
   }
 </script>

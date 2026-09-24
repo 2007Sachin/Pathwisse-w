@@ -17,154 +17,17 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
           Aanya has ambition. What she needs is a direction.
         </h2>
         <p>
-          Aanya knows she wants a technology career, but she does not yet know
-          which role fits or how her learning should add up. This fictional
-          story illustrates the journey Pathwisse is working toward. It is not a
+          Aanya wants a technology career but doesn’t know which role fits. This
+          fictional story shows the journey Pathwisse is working toward—not a
           product walkthrough or a real student result.
         </p>
       </div>
 
-      <div class="story__scene" data-motion="scene">
+      <div class="story__scene">
         <CinematicMedia
-          src="/media/home/student-journey/student-journey"
-          poster="/media/home/student-journey/student-journey-poster.webp"
-          ratio="5 / 4"
-        >
-          <svg class="desk" viewBox="0 0 500 400" fill="none">
-            <rect class="desk__top" width="500" height="400"></rect>
-            <ellipse
-              class="desk__pool"
-              cx="250"
-              cy="200"
-              rx="230"
-              ry="160"
-            ></ellipse>
-
-            <g class="lyr" style="--min: -1">
-              <g class="note" transform="rotate(-8 90 90)">
-                <rect x="50" y="56" width="84" height="70" rx="4"></rect>
-                <path d="M62 80h44M62 94h30"></path>
-              </g>
-              <g class="note" transform="rotate(7 400 80)">
-                <rect x="360" y="50" width="84" height="70" rx="4"></rect>
-                <path d="M372 74h44M372 88h28"></path>
-              </g>
-              <g class="pen" transform="rotate(-24 410 330)">
-                <rect x="360" y="326" width="100" height="9" rx="4"></rect>
-              </g>
-            </g>
-
-            <g class="lyr lyr--q">
-              <text class="q" x="82" y="112">
-                ?
-              </text>
-              <text class="q" x="392" y="106">
-                ?
-              </text>
-              <text class="q q--big" x="235" y="72">
-                ?
-              </text>
-            </g>
-
-            <g class="lyr" style="--min: -1">
-              <g class="book">
-                <rect x="90" y="150" width="170" height="200" rx="6"></rect>
-                <rect x="260" y="150" width="170" height="200" rx="6"></rect>
-                <path
-                  class="book__rule"
-                  d="M110 190h130M110 212h130M110 234h100"
-                ></path>
-                <path
-                  class="book__rule"
-                  d="M280 190h130M280 212h130M280 234h130M280 256h90"
-                ></path>
-              </g>
-            </g>
-
-            <g class="lyr" style="--min: 1">
-              <path
-                class="dir"
-                d="M116 322C168 322 168 286 222 286"
-                pathLength="1"
-              ></path>
-              <path class="dir dir--arrow" d="M214 278l12 8-12 8"></path>
-              <text class="tag" x="112" y="344">
-                Direction
-              </text>
-            </g>
-
-            <g class="lyr" style="--min: 2">
-              <g class="list" transform="rotate(3 350 200)">
-                <rect x="296" y="170" width="118" height="150" rx="5"></rect>
-                <path
-                  class="list__rule"
-                  d="M334 202h64M334 228h64M334 254h64M334 280h44"
-                ></path>
-                <circle class="list__box" cx="316" cy="202" r="6"></circle>
-                <circle class="list__box" cx="316" cy="228" r="6"></circle>
-                <circle class="list__box" cx="316" cy="254" r="6"></circle>
-                <circle class="list__box" cx="316" cy="280" r="6"></circle>
-              </g>
-            </g>
-            <g class="lyr" style="--min: 3">
-              <path
-                class="tick"
-                d="M312 202l3 3 6-7M312 228l3 3 6-7M312 254l3 3 6-7"
-              ></path>
-            </g>
-
-            <g class="lyr" style="--min: 4">
-              <g class="sketch" transform="rotate(-4 170 110)">
-                <rect x="80" y="40" width="180" height="120" rx="5"></rect>
-                <rect
-                  class="sk"
-                  x="96"
-                  y="56"
-                  width="148"
-                  height="20"
-                  rx="3"
-                ></rect>
-                <rect
-                  class="sk"
-                  x="96"
-                  y="88"
-                  width="66"
-                  height="56"
-                  rx="3"
-                ></rect>
-                <path class="sk" d="M176 96h68M176 114h68M176 132h44"></path>
-              </g>
-            </g>
-
-            <g class="lyr" style="--min: 5">
-              <path class="reflect" d="M118 306h112M118 324h84"></path>
-            </g>
-
-            <g class="lyr" style="--min: 6">
-              <g class="talk">
-                <rect
-                  class="talk__a"
-                  x="316"
-                  y="44"
-                  width="130"
-                  height="58"
-                  rx="12"
-                ></rect>
-                <path class="talk__aline" d="M334 66h74M334 82h48"></path>
-                <rect
-                  class="talk__b"
-                  x="266"
-                  y="112"
-                  width="120"
-                  height="52"
-                  rx="12"
-                ></rect>
-                <path class="talk__bline" d="M284 132h72M284 148h40"></path>
-                <circle class="dest" cx="452" cy="132" r="9"></circle>
-              </g>
-            </g>
-          </svg>
-        </CinematicMedia>
+          src="/media/motion/students/skill-to-story"
+          tone="light"
+        />
       </div>
     </div>
 
@@ -177,10 +40,12 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
       ))}
     </ol>
 
-    <p class="story__close">
-      A clearer story begins to take shape—not a promised result, but work and
-      decisions Aanya can explain.
-    </p>
+    <div class="story__close">
+      <p>Not a promised result—work and decisions Aanya can explain.</p>
+      <a class="button button--secondary" href="/students">
+        Explore Pathwisse for Students
+      </a>
+    </div>
   </div>
 </section>
 
@@ -261,151 +126,20 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
       color var(--motion-standard) var(--ease-standard);
   }
   .story__close {
+    display: flex;
+    flex-wrap: wrap;
     grid-column: 1 / -1;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5) var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .story__close p {
     max-width: 34rem;
-    margin: 0 0 0 auto;
+    margin: 0;
     color: var(--color-text-muted);
     font-size: var(--text-body-lg);
-  }
-
-  /* Scene: browser-built editorial illustration, not product UI. */
-  .desk {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    font-family: var(--font-sans);
-  }
-  .desk__top {
-    fill: #dfe7f3;
-  }
-  .desk__pool {
-    fill: #eef3fa;
-  }
-  .lyr {
-    --a: var(--active, 6);
-    opacity: clamp(0, calc(var(--a) - var(--min, 0) + 1), 1);
-    transition: opacity 700ms var(--ease-standard);
-  }
-  .lyr--q {
-    opacity: clamp(0, calc(1 - var(--a)), 1);
-  }
-  .note rect,
-  .list rect {
-    fill: #fff;
-    stroke: #c3d0e3;
-  }
-  .note path,
-  .list__rule {
-    stroke: #175cd3;
-    stroke-opacity: 0.35;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-  }
-  .pen rect {
-    fill: #08172d;
-  }
-  .q {
-    fill: #175cd3;
-    font-size: 30px;
-    font-weight: 650;
-  }
-  .q--big {
-    font-size: 44px;
-    fill: #536176;
-  }
-  .book rect {
-    fill: #fff;
-    stroke: #b7c6dc;
-    stroke-width: 1.5;
-  }
-  .book__rule {
-    stroke: #175cd3;
-    stroke-opacity: 0.22;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-  }
-  :global(.motion-enhanced) .story__scene.is-motion-visible .book {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: page-drift 12s ease-in-out 1s infinite alternate;
-  }
-  :global(.motion-enhanced) .story__scene.is-motion-visible .talk {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: page-drift 10s ease-in-out 2.4s infinite alternate-reverse;
-  }
-  @keyframes page-drift {
-    from {
-      translate: 0 0;
-    }
-    to {
-      translate: 0 -2px;
-    }
-  }
-  .dir {
-    stroke: #175cd3;
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .tag {
-    fill: #175cd3;
-    font-size: 14px;
-    font-weight: 650;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .list__box {
-    fill: none;
-    stroke: #175cd3;
-    stroke-width: 1.5;
-  }
-  .tick {
-    stroke: #175cd3;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .sketch rect:first-child {
-    fill: #fff;
-    stroke: #08172d;
-    stroke-opacity: 0.4;
-    stroke-width: 1.5;
-  }
-  .sk {
-    fill: none;
-    stroke: #08172d;
-    stroke-opacity: 0.5;
-    stroke-width: 2;
-    stroke-dasharray: 5 4;
-    stroke-linecap: round;
-  }
-  .reflect {
-    stroke: #175cd3;
-    stroke-width: 3;
-    stroke-linecap: round;
-  }
-  .talk__a {
-    fill: #fff;
-    stroke: #b7c6dc;
-  }
-  .talk__aline {
-    stroke: #175cd3;
-    stroke-opacity: 0.4;
-    stroke-width: 3;
-    stroke-linecap: round;
-  }
-  .talk__b {
-    fill: #175cd3;
-  }
-  .talk__bline {
-    stroke: #fff;
-    stroke-width: 3;
-    stroke-linecap: round;
-  }
-  .dest {
-    fill: var(--color-accent);
   }
 
   @media (min-width: 56rem) {
@@ -443,14 +177,12 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
     }
     .story__close {
       grid-column: auto;
-      margin-left: 0;
     }
     .story__left {
       display: contents;
     }
     .story__scene {
-      width: min(100%, 18rem);
-      justify-self: center;
+      width: 100%;
     }
   }
 </style>

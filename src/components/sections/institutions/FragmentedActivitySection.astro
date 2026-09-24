@@ -1,6 +1,6 @@
 ---
 import { institutionActivities } from "../../../content/pages/institutions";
-import EmployabilityJourney from "../../visuals/EmployabilityJourney.astro";
+import CinematicMedia from "../../media/CinematicMedia.astro";
 ---
 
 <section
@@ -12,115 +12,58 @@ import EmployabilityJourney from "../../visuals/EmployabilityJourney.astro";
       <p>Fragmented employability activity</p>
       <h2 id="fragmented-title">Useful work can happen in separate places.</h2>
       <p>
-        The issue is not that institutions are doing nothing. It is that
-        valuable experiences can happen at different times, with different
-        immediate purposes, before students need to explain the full story.
+        The issue isn’t a lack of effort. Useful experiences happen at different
+        times, for different purposes—before students need to explain the full
+        story.
       </p>
+      <ul aria-label="Separate institutional employability activities">
+        {institutionActivities.map((activity) => (
+          <li>{activity}</li>
+        ))}
+      </ul>
     </header>
-    <ol
-      class="fragmented__activities"
-      aria-label="Disconnected institutional employability activities"
-    >
-      {institutionActivities.map((activity, index) => (
-        <li>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <strong>{activity}</strong>
-        </li>
-      ))}
-    </ol>
-    <div
-      class="fragmented__connection"
-      aria-label="Conceptual connected journey: direction, development, application, preparation"
-    >
-      {["Direction", "Development", "Application", "Preparation"].map(
-        (stage, index) => (
-          <span>
-            <b>{index + 1}</b>
-            {stage}
-          </span>
-        ),
-      )}
-    </div>
-    <div
-      class="fragmented__journey"
-      data-scrub
-      data-scrub-from="0.85"
-      data-scrub-to="0.35"
-    >
-      <EmployabilityJourney
-        stages={["Direction", "Development", "Application", "Preparation"]}
-      />
-    </div>
+    <CinematicMedia
+      src="/media/motion/institutions/institution-fragments-to-journey"
+      tone="light"
+    />
   </div>
 </section>
 
 <style>
   .fragmented__grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(3rem, 9vw, 9rem);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
   }
   .fragmented header > p:first-child {
     color: var(--color-primary);
     font-size: var(--text-small);
     font-weight: var(--font-weight-semibold);
   }
-  .fragmented header > p:last-child {
+  .fragmented header > p:nth-of-type(2) {
     color: var(--color-text-muted);
     font-size: var(--text-body-lg);
   }
-  .fragmented ol {
-    margin: 0;
+  .fragmented ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-6) 0 0;
     padding: 0;
     list-style: none;
   }
-  .fragmented__connection {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-3);
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--color-primary);
-  }
-  .fragmented__connection span {
-    display: grid;
-    gap: var(--space-2);
-    color: var(--color-ink);
-    font-size: var(--text-small);
-    font-weight: var(--font-weight-semibold);
-  }
-  .fragmented__connection b {
-    display: grid;
-    width: 1.5rem;
-    height: 1.5rem;
-    place-items: center;
-    border: 1px solid var(--color-primary);
-    border-radius: 50%;
-    color: var(--color-primary);
-    font-size: var(--text-caption);
-  }
   .fragmented li {
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: var(--space-5);
-    padding-block: var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .fragmented li span {
-    color: var(--color-text-muted);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text);
     font-size: var(--text-small);
-  }
-  .fragmented li strong {
-    font-size: var(--text-h3);
-    font-weight: var(--font-weight-medium);
   }
   @media (max-width: 48rem) {
     .fragmented__grid {
       grid-template-columns: 1fr;
-    }
-    .fragmented__connection {
-      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

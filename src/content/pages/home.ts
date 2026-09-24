@@ -28,27 +28,27 @@ export const learningFragments = [
 export const approachStages = [
   {
     title: "Direction",
-    copy: "Begin with a clearer destination and ask what relevant capability would mean for it.",
+    copy: "Start with a clearer destination.",
   },
   {
     title: "Development",
-    copy: "Connect learning decisions to the kind of work you want to understand and practise.",
+    copy: "Connect learning to the work you want to do.",
   },
   {
     title: "Application",
-    copy: "Use learning in context so it becomes work you can discuss, question, and improve.",
+    copy: "Use learning in context.",
   },
   {
     title: "Demonstration",
-    copy: "Move beyond completion toward applied work you can discuss.",
+    copy: "Turn completed work into examples you can discuss.",
   },
   {
     title: "Preparation",
-    copy: "Prepare to explain your decisions, contribution, and learning in an opportunity conversation.",
+    copy: "Practise explaining your decisions and contribution.",
   },
   {
     title: "Opportunity",
-    copy: "Build a clearer account of what you did, why it mattered, and what you learned.",
+    copy: "Bring a clearer account of your work to the conversation.",
   },
 ] as const;
 
@@ -70,25 +70,6 @@ export const studentJourney = [
   "Prepare for hiring conversations",
 ] as const;
 
-export const studentValues = [
-  {
-    title: "Know where you’re going",
-    copy: "Move from a broad career interest toward a clearer role direction.",
-  },
-  {
-    title: "Know what to work on",
-    copy: "Connect the next learning decision to the capability you want to build.",
-  },
-  {
-    title: "Have something to show",
-    copy: "Move beyond completion toward applied work you can discuss.",
-  },
-  {
-    title: "Prepare to communicate it",
-    copy: "Build a clearer account of what you did, why it mattered, and what you learned.",
-  },
-] as const;
-
 export const institutionValues = [
   {
     title: "Connect the journey",
@@ -97,9 +78,5 @@ export const institutionValues = [
   {
     title: "Keep support human",
     copy: "Keep faculty, mentors, and placement teams central to how students understand what comes next.",
-  },
-  {
-    title: "Bring preparation closer",
-    copy: "Treat employability development and placement preparation as related parts of the student journey.",
   },
 ] as const;

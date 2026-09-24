@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathwisse skill to story</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      #canvas {
+        display: block;
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+    <script src="../shared/palette.js"></script>
+    <script src="../shared/base.js"></script>
+    <script src="js/animation.js"></script>
+    <script>
+      // No custom fonts: the scene contains no text.
+      const animation = new window.SkillToStory(
+        document.getElementById("canvas"),
+      );
+      animation.start();
+      window.animation = animation; // Required by motion/export.mjs
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "r") animation.restart();
+        if (e.key === " ") {
+          e.preventDefault();
+          animation.isPlaying ? animation.stop() : animation.start();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -197,6 +197,7 @@ video {
 
 .action-link {
   display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: var(--space-2);
   color: var(--color-primary);

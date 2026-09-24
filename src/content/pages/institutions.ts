@@ -74,12 +74,12 @@ export const institutionFaqs = [
   {
     question: "Is Pathwisse an LMS?",
     answer:
-      "Pathwisse is being built around the employability journey between direction, development, application, and placement preparation. It should not be understood as a replacement for an institution’s verified learning systems.",
+      "Pathwisse focuses on the journey from direction to placement preparation. It isn’t positioned to replace your verified learning systems.",
   },
   {
     question: "Is Pathwisse a placement management system?",
     answer:
-      "Pathwisse’s current public positioning focuses on employability development before and around placement preparation. Any overlap with placement workflows must be evaluated against the verified product rather than assumed from this website.",
+      "Its public focus is development before and around placement preparation. Any overlap with placement workflows must be evaluated against the verified product rather than assumed from this website.",
   },
   {
     question: "Does Pathwisse guarantee placement outcomes?",

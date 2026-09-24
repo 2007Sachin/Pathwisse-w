@@ -45,6 +45,14 @@ Astro + TypeScript; semantic HTML; CSS variables and scoped styles; native CSS/S
 - Hydrate only form behavior, accessible menu state, and motion that cannot be expressed with CSS/SVG.
 - Use `prefers-reduced-motion` as a first-class fallback.
 - Use optimized responsive images; video is optional and must not carry essential meaning.
+
+### Decision: generated motion-graphic video (2026-09-24)
+
+- **Decision:** the owner requested cinematic, video-led storytelling. Silent, decorative, looping motion-graphic videos are approved for selected sections (one per viewport at most). Details and inventory: `docs/design/MOTION_SYSTEM.md` → "Generated motion-graphic video".
+- **Authoring:** scenes are Canvas 2D sources in `motion/` built with the canvas-video skill architecture, sharing one palette (`motion/shared/palette.js`, copied from `tokens.css`) and one shape vocabulary (`motion/shared/base.js`).
+- **Export:** `motion/export.mjs` renders offline (headless Chrome via `puppeteer-core` + ffmpeg) to WebM (VP9), MP4 (H.264) and a WebP poster in `public/media/motion/<page>/`. `puppeteer-core` is **not** a project dependency; it is installed in a scratch folder only when re-rendering (`MOTION_TOOLS_DIR`). No frame sequences are written into the repository.
+- **Runtime:** no new packages. Playback is handled by the existing `CinematicMedia.astro` (native `<video>`, `IntersectionObserver`), so the site stays static with no third-party scripts.
+- **Alternatives rejected:** Lottie/GSAP/Remotion (runtime or build dependencies), live `<canvas>` rendering on the page (continuous main-thread cost on every visitor), stock or generated-people footage (claims and brand risk).
 - Forms require a confirmed submission destination before implementation. A serverless endpoint or external form service is a later decision, not an assumption.
 
 ## Route responsibilities

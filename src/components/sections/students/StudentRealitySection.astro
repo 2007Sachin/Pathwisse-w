@@ -1,5 +1,6 @@
 ---
 import { studentWork } from "../../../content/pages/students";
+import CinematicMedia from "../../media/CinematicMedia.astro";
 ---
 
 <section
@@ -10,58 +11,56 @@ import { studentWork } from "../../../content/pages/students";
     <header>
       <p>You’ve been doing the work</p>
       <h2 id="student-reality-title">
-        The effort is real. The connection can still be unclear.
+        The effort is real. The connection may not be.
       </h2>
       <p>
-        These experiences can all matter without automatically becoming one
-        coherent story about where you are going or what you can do.
+        Completing something tells you it ended—not always what should follow or
+        how it adds up.
       </p>
+      <ul aria-label="Familiar student experiences">
+        {studentWork.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
     </header>
-    <ol aria-label="Familiar student experiences">
-      {studentWork.map((item, index) => (
-        <li>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <strong>{item}</strong>
-        </li>
-      ))}
-    </ol>
+    <CinematicMedia
+      src="/media/motion/students/student-fragments-to-path"
+      tone="light"
+    />
   </div>
 </section>
 
 <style>
   .student-reality__grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(3rem, 9vw, 9rem);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
   }
   .student-reality header > p:first-child {
     color: var(--color-primary);
     font-size: var(--text-small);
     font-weight: var(--font-weight-semibold);
   }
-  .student-reality header > p:last-child {
+  .student-reality header > p:nth-of-type(2) {
     color: var(--color-text-muted);
     font-size: var(--text-body-lg);
   }
-  .student-reality ol {
-    margin: 0;
+  .student-reality ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-6) 0 0;
     padding: 0;
     list-style: none;
   }
   .student-reality li {
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: var(--space-5);
-    padding-block: var(--space-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .student-reality li span {
-    color: var(--color-text-muted);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text);
     font-size: var(--text-small);
-  }
-  .student-reality li strong {
-    font-size: var(--text-h3);
-    font-weight: var(--font-weight-medium);
   }
   @media (max-width: 48rem) {
     .student-reality__grid {

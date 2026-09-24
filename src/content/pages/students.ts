@@ -8,19 +8,11 @@ export const studentWork = [
   "Placement preparation",
 ] as const;
 
-export const studentQuestions = [
-  "Which role am I actually preparing for?",
-  "What should I work on next?",
-  "Which skills matter for that direction?",
-  "How does this project connect to hiring?",
-  "What will I say when someone asks what I can do?",
-] as const;
-
 export const studentPrinciples = {
   direction: {
     eyebrow: "Start with direction",
-    title: "A destination makes the next choice easier to question.",
-    lead: "You do not need a perfect career answer. You need enough context to decide what deserves your attention next.",
+    title: "A destination makes the next choice clearer.",
+    lead: "You don’t need a perfect career answer—just enough context to choose what’s next.",
     points: [
       "Explore the work behind a role",
       "Notice what that work asks of you",
@@ -30,27 +22,26 @@ export const studentPrinciples = {
   development: {
     eyebrow: "Build with purpose",
     title: "Another course is not always the next step.",
-    lead: "Development becomes more useful when it connects to the direction you are exploring instead of adding another disconnected completion.",
+    lead: "Development helps more when it connects to your direction.",
     contrast: ["More activity", "More relevant activity"],
   },
   application: {
     eyebrow: "Apply what you learn",
-    title: "Apply what you learn in a practical context.",
-    lead: "A project, assignment, case, or practical problem can reveal the decisions and limitations that completion alone may not show.",
-    note: "The point is simple: learning is easier to discuss when it has been used on a real task.",
+    title: "Use learning on a real task.",
+    lead: "Projects and practical problems reveal decisions that completion alone may not show.",
+    note: "Learning is easier to discuss once it has been used.",
   },
   demonstration: {
-    eyebrow: "Have something you can talk about",
+    eyebrow: "Something to talk about",
     title: "Move from a skill label to an example.",
-    lead: "A label such as Excel, Python, marketing, or data analysis says little about what happened when you used it.",
+    lead: "A label like Python or Excel says little about how you used it.",
     before: "I know this.",
     after: "Here is where I used it, what I did, and what I learned.",
   },
   preparation: {
     eyebrow: "Prepare for placement conversations",
     title: "Your work still needs a clear explanation.",
-    lead: "Preparation can include articulating experience in a resume, discussing a project, and connecting your contribution to the role in front of you.",
-    note: "The goal is to make your work easier to explain when an opportunity conversation arrives.",
+    lead: "Preparation can mean describing a project and connecting it to the role in front of you.",
   },
 } as const;
 
@@ -74,7 +65,7 @@ export const studentFaqs = [
   {
     question: "Is Pathwisse another course platform?",
     answer:
-      "Pathwisse is being built around the connection between career direction, relevant development, application, and preparation. Programs may support parts of that journey, but a catalogue of courses is not the whole idea.",
+      "Pathwisse is being built around connecting direction, development, application, and preparation. Programs may support parts of it.",
   },
   {
     question: "Does Pathwisse guarantee a job?",

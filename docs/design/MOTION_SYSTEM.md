@@ -7,12 +7,12 @@ Motion explains ideas, guides attention, and reinforces hierarchy. It must not d
 
 ## Motion tiers
 
-| Tier | Name              | Use                                                         | Duration / easing                                                                | Allowed when                                                                               | Prohibited                                                                                         |
-| ---- | ----------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| 1    | Interaction       | Buttons, links, focus, menu state                           | 120–220 ms; `--ease-standard`                                                    | Everywhere                                                                                 | Motion that delays activation; hover-only meaning                                                  |
-| 2    | Reveal            | Text and illustration entrances, object settling            | 400–1300 ms; `--ease-emphasis`; once                                             | Section first visible; never on the LCP text                                               | Repeats, staggers > 1 s total for text, hiding content until reveal                                |
-| 3    | Story progression | Path draws, stage activation, scroll-bound progress (`--p`) | Scroll-bound (no time easing) or 700–2000 ms once; opacity/transform/stroke only | Sections where order or connection is the point                                            | Scroll-jacking, intercepting wheel/touch, layout-property animation                                |
-| 4    | Cinematic media   | Silent decorative video loops, complex hero scenes          | Loop ≥ 6 s, no flashes; fade-in 760 ms                                           | Hero and at most one secondary moment; visitor has not asked to reduce motion or save data | Audio, controls-dependent meaning, autoplay for reduced-motion users, more than one video per view |
+| Tier | Name              | Use                                                         | Duration / easing                                                                | Allowed when                                                                                                                                   | Prohibited                                                                                         |
+| ---- | ----------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| 1    | Interaction       | Buttons, links, focus, menu state                           | 120–220 ms; `--ease-standard`                                                    | Everywhere                                                                                                                                     | Motion that delays activation; hover-only meaning                                                  |
+| 2    | Reveal            | Text and illustration entrances, object settling            | 400–1300 ms; `--ease-emphasis`; once                                             | Section first visible; never on the LCP text                                                                                                   | Repeats, staggers > 1 s total for text, hiding content until reveal                                |
+| 3    | Story progression | Path draws, stage activation, scroll-bound progress (`--p`) | Scroll-bound (no time easing) or 700–2000 ms once; opacity/transform/stroke only | Sections where order or connection is the point                                                                                                | Scroll-jacking, intercepting wheel/touch, layout-property animation                                |
+| 4    | Cinematic media   | Silent decorative video loops, complex hero scenes          | Loop ≥ 6 s, no flashes; fade-in 760 ms                                           | Approved scenes listed under "Generated motion-graphic video" (never two in one viewport); visitor has not asked to reduce motion or save data | Audio, controls-dependent meaning, autoplay for reduced-motion users, more than one video per view |
 
 Global rules for every tier: opacity, `transform`/`translate`, and SVG stroke offset only; no continuous loops except approved Tier 4 media and the two restrained CSS illustration scenes documented below; warm orange appears only at a meaningful opportunity/next-step moment; meaning must survive with motion off.
 
@@ -43,13 +43,30 @@ Global rules for every tier: opacity, `transform`/`translate`, and SVG stroke of
 ## Media performance rules
 
 - Hero video: target ≤ 2.5 MB WebM, silent (no audio track), ≤ ~10 s loop. Secondary video: target ≤ 2 MB.
-- Posters: WebP/AVIF, ≈ ≤ 120 KB, matching the first frame, with explicit ratio to prevent layout shift.
-- `preload="none"` on every video; the script raises it to `auto` only when the frame is in view. Never preload all videos.
+- Posters: WebP/AVIF, ≈ ≤ 120 KB, showing the fully resolved composition (the reduced-motion and mobile state), with explicit ratio to prevent layout shift.
+- `preload="none"` on every secondary video (hero: `metadata`); the script raises it to `auto` only when the frame is in view. Never preload all videos.
+- Every playing loop has a visible pause control (WCAG 2.2.2); a visitor's pause is never overridden by scrolling.
+- At ≤ 48rem, secondary videos show the poster only (`mobile="poster"`, the default); only the hero loop plays on phones.
 - Only hero media may use elevated loading priority (`fetchpriority="high"` poster). Hero playback begins after `window.load`.
 - Skip playback when `prefers-reduced-motion: reduce` or `saveData` is set. Pause when off-screen.
 - MP4 (H.264) is an optional fallback for Safari-era codecs; do not ship more than two formats.
 - Decorative videos need no captions. **Any future video carrying unique information requires captions and a transcript** and must set `decorative={false}` with a label.
 - No external embeds, stock filler, or generated people.
+
+## Generated motion-graphic video
+
+Added 2026-09-24 at the owner's request (decision recorded in `docs/architecture/WEBSITE_ARCHITECTURE.md`). Scenes are Canvas 2D sources in `motion/<scene>/`, built on the canvas-video skill architecture and sharing `motion/shared/palette.js` (exact `tokens.css` values) and `motion/shared/base.js` (thin blue paths, circular nodes, rounded paper cards, restrained shadows, soft radial depth, orange destination only). No readable text, people, numbers, charts, scores, or UI chrome are rendered. Every loop returns to its first frame (build → hold → release), so it never visibly restarts. Re-render with `node motion/export.mjs [scene]` (see file header).
+
+| Scene                              | Page / section                               | Theme | Loop | Output                 | WebM   | MP4    | Poster |
+| ---------------------------------- | -------------------------------------------- | ----- | ---- | ---------------------- | ------ | ------ | ------ |
+| `pathwisse-hero-journey`           | Home › Hero                                  | ink   | 10 s | 960×1120 (6:7), 30 fps | 432 KB | 421 KB | 27 KB  |
+| `student-fragments-to-path`        | Students › Student reality                   | light | 9 s  | 1600×900, 30 fps       | 269 KB | 358 KB | 19 KB  |
+| `skill-to-story`                   | Home › Aanya story; Students › Demonstration | light | 10 s | 1600×900, 30 fps       | 224 KB | 273 KB | 16 KB  |
+| `employability-journey`            | How It Works › Employability model           | ink   | 12 s | 1600×900, 30 fps       | 469 KB | 532 KB | 26 KB  |
+| `institution-fragments-to-journey` | Institutions › Fragmented activity           | light | 10 s | 1600×900, 30 fps       | 309 KB | 377 KB | 29 KB  |
+| `education-to-opportunity`         | About › Last mile                            | ink   | 9 s  | 1600×900, 30 fps       | 391 KB | 442 KB | 24 KB  |
+
+The replaced native visuals (Students `DrawnPath` demonstration, How It Works `JourneyPath` reveal and duplicate stage bar, Institutions activity list/chips/stage bar) were removed rather than stacked under the video. Hero and Aanya native scenes remain only as the no-file fallback (`CinematicMedia` emits them only when no poster exists). Stage names stay in HTML beside each video.
 
 ## Dependency budget
 

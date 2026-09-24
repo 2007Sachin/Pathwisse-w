@@ -1,47 +1,47 @@
+---
+import CinematicMedia from "../../media/CinematicMedia.astro";
+---
+
 <section
   class="last-mile section section--dark"
   aria-labelledby="last-mile-title"
 >
   <div class="container last-mile__grid">
-    <p>The last mile</p>
     <div>
-      <h2 id="last-mile-title">
-        The transition from learning to being able to explain capability.
-      </h2>
+      <p>The last mile</p>
+      <h2 id="last-mile-title">From learning to explaining capability.</h2>
       <p>
-        “The last mile of education” is Pathwisse shorthand for the space
-        between learning something and communicating its relevance in a hiring
-        context.
+        Classes, courses, projects, and placement preparation each matter. The
+        difficulty comes when a student must explain what they can do.
       </p>
       <p>
-        The phrase names one transition that deserves greater connection and
-        intention: from learning activity to work a student can discuss with
-        clarity.
+        “The last mile of education” is our shorthand for that gap—between
+        learning something and communicating its relevance in a hiring context.
       </p>
     </div>
+    <CinematicMedia src="/media/motion/about/education-to-opportunity" />
   </div>
 </section>
 
 <style>
   .last-mile__grid {
     display: grid;
-    grid-template-columns: 0.45fr 1.55fr;
-    gap: var(--space-16);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
   }
-  .last-mile__grid > p {
+  .last-mile__grid div > p:first-child {
     color: #79a8ff;
     font-size: var(--text-small);
     font-weight: var(--font-weight-semibold);
   }
-  .last-mile__grid div > p {
-    max-width: 49rem;
+  .last-mile__grid div > p:not(:first-child) {
     color: var(--color-text-muted-on-dark);
     font-size: var(--text-body-lg);
   }
   @media (max-width: 48rem) {
     .last-mile__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-5);
     }
   }
 </style>

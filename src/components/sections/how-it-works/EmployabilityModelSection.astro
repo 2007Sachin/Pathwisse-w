@@ -1,4 +1,5 @@
 ---
+import CinematicMedia from "../../media/CinematicMedia.astro";
 import JourneyPath from "../../media/JourneyPath.astro";
 import { employabilityJourney } from "../../../content/pages/howItWorks";
 ---
@@ -14,16 +15,17 @@ import { employabilityJourney } from "../../../content/pages/howItWorks";
       <div>
         <h2 id="model-title">One journey. Six connected ideas.</h2>
         <p>
-          This is the employability journey Pathwisse is being built around. It
-          is a strategic model, not a list of verified software modules.
+          The journey Pathwisse is being built around—a strategic model, not
+          verified software modules.
         </p>
       </div>
     </header>
     <div class="model__path">
+      <CinematicMedia src="/media/motion/how-it-works/employability-journey" />
       <JourneyPath
         stages={employabilityJourney}
         dark
-        motion="reveal"
+        compact
         label="Direction, development, application, demonstration, preparation, and opportunity"
       />
     </div>
@@ -33,8 +35,7 @@ import { employabilityJourney } from "../../../content/pages/howItWorks";
 <style>
   .model__header {
     display: grid;
-    grid-template-columns: 0.5fr 1.5fr;
-    gap: var(--space-12);
+    gap: var(--space-4);
   }
   .model__header > p,
   .model__header div > p {
@@ -44,16 +45,18 @@ import { employabilityJourney } from "../../../content/pages/howItWorks";
     font-size: var(--text-small);
   }
   .model__header div > p {
-    max-width: 43rem;
+    max-width: var(--width-reading);
     font-size: var(--text-body-lg);
   }
-  .model__path {
-    margin-top: var(--space-20);
+  .model__header > p {
+    margin: 0;
   }
-  @media (max-width: 48rem) {
-    .model__header {
-      grid-template-columns: 1fr;
-      gap: var(--space-5);
-    }
+  .model__path > :global(.cinematic) {
+    width: min(100%, 56rem);
+  }
+  .model__path {
+    display: grid;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
   }
 </style>

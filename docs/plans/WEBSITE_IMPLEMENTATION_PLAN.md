@@ -148,6 +148,8 @@ Authoritative product capability verification remains a separate unresolved exte
 **Verification:** Reduced motion, performance, mobile, keyboard, and visual QA.  
 **Exit:** Motion never blocks or changes essential meaning.
 
+**Status (2026-09-24):** Generated motion-graphic video pass complete — six branded Canvas loops embedded via `CinematicMedia` (see `docs/design/MOTION_SYSTEM.md`); redundant sections merged or removed; copy reduced. Open: real-device Safari/iOS and screen-reader QA.
+
 ## Phase 10 — SEO / accessibility / performance
 
 **Objective:** Complete technical quality pass.  

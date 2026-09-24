@@ -1,6 +1,6 @@
 ---
 import { studentPrinciples } from "../../../content/pages/students";
-import DrawnPath from "../../motion/DrawnPath.astro";
+import CinematicMedia from "../../media/CinematicMedia.astro";
 const content = studentPrinciples.demonstration;
 ---
 
@@ -17,6 +17,7 @@ const content = studentPrinciples.demonstration;
       <h2 id="demonstration-title">{content.title}</h2>
       <p>{content.lead}</p>
     </header>
+    <CinematicMedia src="/media/motion/students/skill-to-story" tone="light" />
     <div
       class="demonstration__shift"
       aria-label="From a skill label to a grounded example"
@@ -25,7 +26,6 @@ const content = studentPrinciples.demonstration;
         <span>From</span>
         {content.before}
       </p>
-      <DrawnPath />
       <p>
         <span>Toward</span>
         {content.after}
@@ -37,8 +37,9 @@ const content = studentPrinciples.demonstration;
 <style>
   .demonstration__grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(3rem, 9vw, 9rem);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: var(--space-10) clamp(2.5rem, 6vw, 6rem);
   }
   .demonstration header > p:first-child {
     color: var(--color-primary);
@@ -51,9 +52,9 @@ const content = studentPrinciples.demonstration;
   }
   .demonstration__shift {
     display: grid;
-    align-content: center;
-    gap: var(--space-5);
-    position: relative;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) clamp(2rem, 5vw, 4rem);
   }
   .demonstration__shift p {
     margin: 0;
@@ -78,11 +79,6 @@ const content = studentPrinciples.demonstration;
     font-size: var(--text-caption);
     text-transform: uppercase;
   }
-  .demonstration__shift .drawn-path {
-    width: 1px;
-    height: 2.5rem;
-    margin-left: var(--space-4);
-  }
   @media (prefers-reduced-motion: reduce) {
     .demonstration__shift p {
       opacity: 1 !important;
@@ -90,7 +86,8 @@ const content = studentPrinciples.demonstration;
     }
   }
   @media (max-width: 48rem) {
-    .demonstration__grid {
+    .demonstration__grid,
+    .demonstration__shift {
       grid-template-columns: 1fr;
     }
   }
