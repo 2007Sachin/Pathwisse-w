@@ -14,7 +14,7 @@ Motion explains ideas, guides attention, and reinforces hierarchy. It must not d
 | 3    | Story progression | Path draws, stage activation, scroll-bound progress (`--p`) | Scroll-bound (no time easing) or 700–2000 ms once; opacity/transform/stroke only | Sections where order or connection is the point                                            | Scroll-jacking, intercepting wheel/touch, layout-property animation                                |
 | 4    | Cinematic media   | Silent decorative video loops, complex hero scenes          | Loop ≥ 6 s, no flashes; fade-in 760 ms                                           | Hero and at most one secondary moment; visitor has not asked to reduce motion or save data | Audio, controls-dependent meaning, autoplay for reduced-motion users, more than one video per view |
 
-Global rules for every tier: opacity, `transform`/`translate`, and SVG stroke offset only; no continuous loops except an approved Tier 4 video; warm orange appears only at a meaningful opportunity/next-step moment; meaning must survive with motion off.
+Global rules for every tier: opacity, `transform`/`translate`, and SVG stroke offset only; no continuous loops except approved Tier 4 media and the two restrained CSS illustration scenes documented below; warm orange appears only at a meaningful opportunity/next-step moment; meaning must survive with motion off.
 
 ## Implementation architecture
 
@@ -66,3 +66,4 @@ Test keyboard focus, reduced motion, slow devices, mobile touch, long copy, back
 - Density refinement: the homepage keeps one major pinned journey at approximately 2.2 viewport heights; the student story is progressive rather than a second sticky sequence, and mobile uses normal flow.
 - Native story primitives: inline SVG paths use shared stroke-dash progress (`--p`); outlined nodes strengthen as their section progresses, while FROM/TOWARD copy resolves through restrained opacity and translation. Desktop may use short native sticky ranges; mobile falls back to normal flow. Reduced motion completes paths and exposes all copy without a motion dependency.
 - Visual vocabulary: paths communicate progression, nodes communicate stages, fragments communicate disconnected activity, and orange marks destination/opportunity only. Shared journey visuals are supplemental to semantic text and collapse to a vertical sequence on mobile.
+- Rest-state refinement (2026-09-24): after the entrance completes, only three hero paper objects and two Aanya illustration layers drift by 2–3 px on independent 9.5–13 second cycles. The effect is opt-in under `.motion-enhanced`, uses compositor-friendly translation/rotation, and is absent for reduced-motion visitors and in the static fallback.

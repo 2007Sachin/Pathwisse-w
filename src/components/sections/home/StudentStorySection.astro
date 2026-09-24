@@ -24,7 +24,7 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
         </p>
       </div>
 
-      <div class="story__scene">
+      <div class="story__scene" data-motion="scene">
         <CinematicMedia
           src="/media/home/student-journey/student-journey"
           poster="/media/home/student-journey/student-journey-poster.webp"
@@ -324,6 +324,24 @@ import CinematicMedia from "../../media/CinematicMedia.astro";
     stroke-opacity: 0.22;
     stroke-width: 2.5;
     stroke-linecap: round;
+  }
+  :global(.motion-enhanced) .story__scene.is-motion-visible .book {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: page-drift 12s ease-in-out 1s infinite alternate;
+  }
+  :global(.motion-enhanced) .story__scene.is-motion-visible .talk {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: page-drift 10s ease-in-out 2.4s infinite alternate-reverse;
+  }
+  @keyframes page-drift {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 0 -2px;
+    }
   }
   .dir {
     stroke: #175cd3;
